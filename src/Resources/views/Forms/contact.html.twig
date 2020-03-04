@@ -1,1 +1,15 @@
-normal-form.html.twig
+<div class="js-form-container">
+    {%- for message in app.flashes('contact_form')|filter(message => message == 'success') -%}
+        <div class="form__ok">
+            <h2 class="t-h2">{{ 'form.messages.ok_title'|trans }}</h2>
+            <p class="p-big">{{ 'form.messages.ok_description'|trans }}</p>
+        </div>
+    {%- else -%}
+        {% include '@Samples/Forms/components/contact-form.html.twig' with {
+            'action': path(
+                app.request.attributes.get('_route'),
+                app.request.attributes.get('_route_params')|merge({'_fragment': 'form'})
+            ),
+        } %}
+    {% endfor %}
+</div>

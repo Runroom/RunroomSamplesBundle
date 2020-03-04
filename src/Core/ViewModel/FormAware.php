@@ -39,7 +39,7 @@ trait FormAware
 
     public function getIsSuccess(): bool
     {
-        if (\is_null($this->isSuccess)) {
+        if (null === $this->isSuccess) {
             $this->isSuccess = $this->formIsValid();
         }
 
@@ -48,7 +48,7 @@ trait FormAware
 
     public function getFormView(): FormView
     {
-        if (\is_null($this->formView)) {
+        if (null === $this->formView) {
             $this->formView = $this->form->createView();
         }
 

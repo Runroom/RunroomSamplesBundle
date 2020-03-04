@@ -19,7 +19,6 @@ use Runroom\SamplesBundle\Core\Admin\BasePositionAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\MediaBundle\Form\Type\MediaType;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -47,7 +46,9 @@ class BookAdmin extends BasePositionAdmin
                 'sort_parent_association_mappings' => [['fieldName' => 'translations']],
             ])
             ->add('category')
-            ->add('publish')
+            ->add('publish', null, [
+                'editable' => true,
+            ])
             ->add('_action', 'actions', [
                 'actions' => [
                     'delete' => [],

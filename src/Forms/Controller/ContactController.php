@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\Forms\Controller;
 
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
-use Runroom\SamplesBundle\Core\Service\FormHandler;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -26,18 +25,15 @@ class ContactController
     protected $renderer;
     protected $router;
     protected $service;
-    protected $formHandler;
 
     public function __construct(
         PageRenderer $renderer,
         UrlGeneratorInterface $router,
-        ContactService $service,
-        FormHandler $formHandler
+        ContactService $service
     ) {
         $this->renderer = $renderer;
         $this->router = $router;
         $this->service = $service;
-        $this->formHandler = $formHandler;
     }
 
     public function contact(): Response
@@ -46,7 +42,7 @@ class ContactController
 
         if ($model->getIsSuccess()) {
             return new RedirectResponse(
-                $this->router->generate('archetype.demo.route.demo', [
+                $this->router->generate('samples.forms.contact', [
                     '_fragment' => 'form',
                 ])
             );

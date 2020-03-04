@@ -1,15 +1,24 @@
 <?php
 
+/*
+ * This file is part of the SamplesBundle.
+ *
+ * (c) Runroom <runroom@runroom.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Runroom\SamplesBundle\Core\Service;
 
 use Runroom\SamplesBundle\Core\ViewModel\BasicFormViewModel;
 use Runroom\SamplesBundle\Core\ViewModel\FormAwareInterface;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class FormHandler
 {
@@ -57,6 +66,6 @@ class FormHandler
     {
         $dataClass = $form->getConfig()->getDataClass();
 
-        return $dataClass && \is_null($form->getData()) ? new $dataClass() : $form->getData();
+        return $dataClass && null === $form->getData() ? new $dataClass() : $form->getData();
     }
 }

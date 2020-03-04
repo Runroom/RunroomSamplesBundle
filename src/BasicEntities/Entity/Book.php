@@ -17,7 +17,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Runroom\BaseBundle\Entity\Media;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\Core\Behaviors as Behaviors;
 use Symfony\Component\Validator\Constraints as Assert;

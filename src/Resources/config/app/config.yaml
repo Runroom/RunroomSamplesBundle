@@ -11,3 +11,13 @@ doctrine:
                 dir: '%kernel.project_dir%/vendor/runroom/samples-bundle/src/Forms/Entity'
                 prefix: Runroom\SamplesBundle\Forms\Entity
                 is_bundle: false
+
+sonata_admin:
+    dashboard:
+        groups:
+            demo:
+                label: Samples
+                items:
+                    - samples.basic_entities.admin.book
+                    - samples.basic_entities.admin.category
+                    - samples.forms.admin.contact

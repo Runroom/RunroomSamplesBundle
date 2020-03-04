@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\CoreBundle\Form\Type\DateTimeRangePickerType;
+use Sonata\Form\Type\DateTimeRangePickerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ContactAdmin extends AbstractAdmin
@@ -72,10 +72,6 @@ class ContactAdmin extends AbstractAdmin
         $datagridMapper
             ->add('date', 'doctrine_orm_date_range', [
                 'field_type' => DateTimeRangePickerType::class,
-                'field_options' => [
-                    'field_options_start' => ['format' => 'dd/MM/YYYY hh:mm'],
-                    'field_options_end' => ['format' => 'dd/MM/YYYY hh:mm'],
-                ],
             ])
             ->add('name')
             ->add('email')
@@ -105,7 +101,7 @@ class ContactAdmin extends AbstractAdmin
                 'catalogue' => 'messages',
                 'choices' => array_flip(Contact::$statusChoices),
                 'editable' => true,
-                'template' => 'sonata/list/list_status.html.twig',
+                'template' => '@Samples/Forms/sonata/contact-status.html.twig',
             ])
             ->add('_action', 'actions', [
                 'actions' => [
