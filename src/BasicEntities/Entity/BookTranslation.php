@@ -55,7 +55,7 @@ class BookTranslation implements TranslationInterface
     protected $description;
 
     /**
-     * @ORM\Column(type="text", length="5")
+     * @ORM\Column(type="string", length=5)
      */
     protected $locale;
 

@@ -40,7 +40,7 @@ class ContactController
         $this->formHandler = $formHandler;
     }
 
-    public function normalForm(): Response
+    public function contact(): Response
     {
         $model = $this->service->getContactForm();
 
@@ -53,22 +53,22 @@ class ContactController
         }
 
         return $this->renderer->renderResponse(
-            '@SamplesBundle/Forms/normal-form.html.twig',
+            '@Samples/Forms/contact.html.twig',
             $model
         );
     }
 
-    public function ajaxForm(): Response
+    public function contactAjax(): Response
     {
         $model = $this->service->getContactForm();
 
         return $this->renderer->renderResponse(
-            '@SamplesBundle/Forms/ajax-form.html.twig',
+            '@Samples/Forms/contact-ajax.html.twig',
             $model
         );
     }
 
-    public function ajaxPostForm(): JsonResponse
+    public function contactAjaxPost(): JsonResponse
     {
         $model = $this->service->getContactForm();
 

@@ -27,6 +27,6 @@ class HomeController
 
     public function home(): Response
     {
-        return $this->renderer->renderResponse('@SamplesBundle/home.html.twig');
+        return $this->renderer->renderResponse('@Samples/home.html.twig');
     }
 }

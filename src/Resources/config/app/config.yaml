@@ -1,0 +1,13 @@
+doctrine:
+    orm:
+        mappings:
+            BasicEntities:
+                type: annotation
+                dir: '%kernel.project_dir%/vendor/runroom/samples-bundle/src/BasicEntities/Entity'
+                prefix: Runroom\SamplesBundle\BasicEntities\Entity
+                is_bundle: false
+            Forms:
+                type: annotation
+                dir: '%kernel.project_dir%/vendor/runroom/samples-bundle/src/Forms/Entity'
+                prefix: Runroom\SamplesBundle\Forms\Entity
+                is_bundle: false

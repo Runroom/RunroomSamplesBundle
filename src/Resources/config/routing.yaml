@@ -1,6 +1,6 @@
 samples.home:
     path: /
-    controller: Runroom\SamplesBundle\Controller\HomeController::index
+    controller: Runroom\SamplesBundle\Controller\HomeController::home
 
 # BasicEntities
 samples.basic_entities.books:
@@ -12,15 +12,15 @@ samples.basic_entities.book:
     controller: Runroom\SamplesBundle\BasicEntities\Controller\BookController::book
 
 # Forms
-samples.forms.normal_form:
-    path: /normal-form
-    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::ajaxForm
-
-samples.forms.ajax_form:
-    path: /ajax-form
-    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::ajaxForm
-
-samples.forms.ajax_post:
+samples.forms.contact:
     path: /contact
+    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contact
+
+samples.forms.contact_ajax:
+    path: /contact-ajax
+    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactAjax
+
+samples.forms.contact_ajax_post:
+    path: /contact-ajax
     methods: [POST]
-    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactData
+    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactAjaxPost
