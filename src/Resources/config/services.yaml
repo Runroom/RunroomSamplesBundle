@@ -1,0 +1,25 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Runroom\SamplesBundle\:
+        resource: ../../*
+
+    Runroom\SamplesBundle\Controller:
+        resource: ../../Controller
+        public: true
+        tags: [controller.service_arguments]
+
+    # BasicEntities
+    Runroom\SamplesBundle\BasicEntities\Controller:
+        resource: ../../BasicEntities/Controller
+        public: true
+        tags: [controller.service_arguments]
+
+    # Forms
+    Runroom\SamplesBundle\Forms\Controller:
+        resource: ../../Forms/Controller
+        public: true
+        tags: [controller.service_arguments]

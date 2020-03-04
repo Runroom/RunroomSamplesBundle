@@ -1,0 +1,26 @@
+samples.home:
+    path: /
+    controller: Runroom\SamplesBundle\Controller\HomeController::index
+
+# BasicEntities
+samples.basic_entities.books:
+    path: /books
+    controller: Runroom\SamplesBundle\BasicEntities\Controller\BookController::books
+
+samples.basic_entities.book:
+    path: /book/{slug}
+    controller: Runroom\SamplesBundle\BasicEntities\Controller\BookController::book
+
+# Forms
+samples.forms.normal_form:
+    path: /normal-form
+    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::ajaxForm
+
+samples.forms.ajax_form:
+    path: /ajax-form
+    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::ajaxForm
+
+samples.forms.ajax_post:
+    path: /contact
+    methods: [POST]
+    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactData
