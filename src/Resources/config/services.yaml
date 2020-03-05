@@ -7,11 +7,6 @@ services:
     Runroom\SamplesBundle\:
         resource: ../../*
 
-    Runroom\SamplesBundle\Controller\:
-        resource: ../../Controller
-        public: true
-        tags: [controller.service_arguments]
-
     # BasicEntities
     Runroom\SamplesBundle\BasicEntities\Controller\:
         resource: ../../BasicEntities/Controller
