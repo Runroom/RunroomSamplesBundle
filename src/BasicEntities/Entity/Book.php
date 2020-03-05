@@ -68,6 +68,11 @@ class Book implements TranslatableInterface
         return $this->translate($locale, false)->getTitle();
     }
 
+    public function getSlug(string $locale = null): ?string
+    {
+        return $this->translate($locale, false)->getSlug();
+    }
+
     public function getDescription(string $locale = null): ?string
     {
         return $this->translate($locale, false)->getDescription();

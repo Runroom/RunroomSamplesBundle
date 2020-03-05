@@ -1,6 +1,8 @@
 samples.home:
     path: /
-    controller: Runroom\SamplesBundle\Controller\HomeController::home
+    controller: Runroom\RenderEventBundle\Controller\TemplateController
+    defaults:
+        $template: '@Samples/home.html.twig'
 
 # BasicEntities
 samples.basic_entities.books:

@@ -1,1 +1,10 @@
-books.html.twig
+{% extends '@Samples/layout.html.twig' %}
+
+{% block body %}
+    {% for book in model.books %}
+        <a href="{{ path('samples.basic_entities.book', {slug: book.slug}) }}">
+            <p>{{ book.title }}</p>
+            <div>{{ book.description|raw }}</div>
+        </a>
+    {% endfor %}
+{% endblock %}

@@ -71,6 +71,18 @@ class BookTranslation implements TranslationInterface
         return $this->title;
     }
 
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
     public function setDescription(?string $description): self
     {
         $this->description = $description;
