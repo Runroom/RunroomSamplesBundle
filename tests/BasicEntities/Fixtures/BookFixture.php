@@ -1,9 +1,17 @@
 <?php
 
-namespace Tests\Archetype\DemoBundle\Fixtures;
+/*
+ * This file is part of the SamplesBundle.
+ *
+ * (c) Runroom <runroom@runroom.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use Archetype\DemoBundle\Entity\Book;
-use Runroom\BaseBundle\Entity\Media;
+namespace Runroom\SamplesBundle\Tests\BasicEntities\Fixtures;
+
+use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BookFixture
 {
@@ -14,14 +22,15 @@ class BookFixture
     public static function create(): Book
     {
         $category = CategoryFixture::create();
-        $picture = new Media();
 
         $book = new Book();
         $book->translate()->setTitle(self::TITLE);
         $book->translate()->setDescription(self::DESCRIPTION);
         $book->setPosition(self::POSITION);
         $book->setCategory($category);
-        $book->setPicture($picture);
+
+        // $picture = new Media();
+        // $book->setPicture($picture);
 
         $category->addBook($book);
 

@@ -1,11 +1,20 @@
 <?php
 
-namespace Tests\Runroom\BaseBundle\Unit;
+/*
+ * This file is part of the SamplesBundle.
+ *
+ * (c) Runroom <runroom@runroom.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Runroom\SamplesBundle\Tests\Core\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
-use Runroom\BaseBundle\Service\FormHandler;
-use Runroom\BaseBundle\ViewModel\BasicFormViewModel;
+use Runroom\SamplesBundle\Core\Service\FormHandler;
+use Runroom\SamplesBundle\Core\ViewModel\BasicFormViewModel;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
