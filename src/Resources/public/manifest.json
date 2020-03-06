@@ -1,0 +1,10 @@
+{
+  "bundles/easyadmin/app.js": "./app.js",
+  "bundles/easyadmin/runtime.js": "./runtime.js",
+  "bundles/easyadmin/styles.css": "./styles.css",
+  "bundles/easyadmin/img/background.jpeg": "./img/background.jpeg",
+  "bundles/easyadmin/img/city-fog.jpg": "./img/city-fog.jpg",
+  "bundles/easyadmin/svg/exit.svg": "./svg/exit.svg",
+  "bundles/easyadmin/svg/r-runroom.svg": "./svg/r-runroom.svg",
+  "bundles/easyadmin/svg/runroom-logo.svg": "./svg/runroom-logo.svg"
+}

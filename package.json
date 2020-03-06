@@ -1,0 +1,50 @@
+{
+  "name": "archetype-symfony",
+  "version": "3.0.0",
+  "description": "Runroom Symfony archetype",
+  "author": "@runroom",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Runroom/archetype-symfony.git"
+  },
+  "private": true,
+  "scripts": {
+    "start": "encore dev",
+    "watch": "yarn encore dev --watch"
+  },
+  "engines": {
+    "node": ">=10.15"
+  },
+  "dependencies": {
+    "@runroom/purejs": "3.0.1",
+    "picturefill": "3.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.8.7",
+    "@babel/preset-env": "7.8.7",
+    "@babel/register": "7.8.6",
+    "@runroom/eslint-config-runroom": "1.0.1",
+    "@runroom/stylelint-config-runroom": "1.3.0",
+    "@symfony/webpack-encore": "0.28.3",
+    "autoprefixer": "9.7.4",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.0.6",
+    "css-mqpacker": "7.0.0",
+    "cssnano": "4.1.10",
+    "eslint": "6.8.0",
+    "eslint-loader": "3.0.3",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-standard": "4.0.1",
+    "glob-all": "3.1.0",
+    "mini-css-extract-plugin": "0.9.0",
+    "node-sass": "4.13.1",
+    "postcss-loader": "3.0.0",
+    "sass-loader": "7.3.1",
+    "stylelint": "13.2.0",
+    "stylelint-webpack-plugin": "1.2.3",
+    "terser-webpack-plugin": "2.3.5",
+    "webpack-notifier": "1.8.0"
+  }
+}
