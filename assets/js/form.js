@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'jquery/dist/jquery.slim';
 import 'jquery-validation';
 
 $(document).ready(function() {
