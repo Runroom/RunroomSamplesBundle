@@ -1,11 +1,11 @@
 {
-  "bundles/easyadmin/app.js": "./app.js",
-  "bundles/easyadmin/form.js": "./form.js",
-  "bundles/easyadmin/runtime.js": "./runtime.js",
-  "bundles/easyadmin/styles.css": "./styles.css",
-  "bundles/easyadmin/img/background.jpeg": "./img/background.jpeg",
-  "bundles/easyadmin/img/city-fog.jpg": "./img/city-fog.jpg",
-  "bundles/easyadmin/svg/exit.svg": "./svg/exit.svg",
-  "bundles/easyadmin/svg/r-runroom.svg": "./svg/r-runroom.svg",
-  "bundles/easyadmin/svg/runroom-logo.svg": "./svg/runroom-logo.svg"
+  "bundles/samples/app.js": "./app.js",
+  "bundles/samples/form.js": "./form.js",
+  "bundles/samples/runtime.js": "./runtime.js",
+  "bundles/samples/styles.css": "./styles.css",
+  "bundles/samples/img/background.jpeg": "./img/background.jpeg",
+  "bundles/samples/img/city-fog.jpg": "./img/city-fog.jpg",
+  "bundles/samples/svg/exit.svg": "./svg/exit.svg",
+  "bundles/samples/svg/r-runroom.svg": "./svg/r-runroom.svg",
+  "bundles/samples/svg/runroom-logo.svg": "./svg/runroom-logo.svg"
 }
