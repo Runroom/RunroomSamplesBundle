@@ -21,8 +21,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BookControllerTest extends TestCase
 {
-    private const INDEX_VIEW = '@Samples/BasicEntities/books.html.twig';
-    private const AJAX_FORM_VIEW = '@Samples/BasicEntities/book.html.twig';
+    private const BOOKS_VIEW = '@Samples/BasicEntities/pages/books.html.twig';
+    private const BOOK_VIEW = '@Samples/BasicEntities/pages/book.html.twig';
 
     private $renderer;
     private $service;
@@ -49,7 +49,7 @@ class BookControllerTest extends TestCase
 
         $this->service->getBooksViewModel()->willReturn($model);
 
-        $this->renderer->renderResponse(self::INDEX_VIEW, $model, null)
+        $this->renderer->renderResponse(self::BOOKS_VIEW, $model, null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->books();
@@ -66,7 +66,7 @@ class BookControllerTest extends TestCase
         $model = new BookViewModel();
 
         $this->service->getBookViewModel('book')->willReturn($model);
-        $this->renderer->renderResponse(self::AJAX_FORM_VIEW, $model, null)
+        $this->renderer->renderResponse(self::BOOK_VIEW, $model, null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->book('book');

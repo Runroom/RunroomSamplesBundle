@@ -45,7 +45,7 @@ class BookController
         $model = $this->service->getBookViewModel($slug);
 
         return $this->renderer->renderResponse(
-            '@Samples/BasicEntities/book.html.twig',
+            '@Samples/BasicEntities/pages/book.html.twig',
             $model
         );
     }
