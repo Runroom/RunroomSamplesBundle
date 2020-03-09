@@ -2,7 +2,7 @@ samples.home:
     path: /
     controller: Runroom\RenderEventBundle\Controller\TemplateController
     defaults:
-        $template: '@Samples/home.html.twig'
+        template: '@Samples/Core/pages/home.html.twig'
 
 # BasicEntities
 samples.basic_entities.books:
@@ -20,6 +20,7 @@ samples.forms.contact:
 
 samples.forms.contact_ajax:
     path: /contact-ajax
+    methods: [GET]
     controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactAjax
 
 samples.forms.contact_ajax_post:

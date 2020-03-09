@@ -1,10 +1,11 @@
-{% extends '@Samples/layout.html.twig' %}
+{% extends 'layouts/default.html.twig' %}
 
-{% block body %}
+{% block content %}
     <div class="demo__section js-form-container">
         <div class="js-form-display">
             {% include '@Samples/Forms/components/contact-form.html.twig' with {
                 'class': 'js-validate form js-form-ajax',
+                'action': path('samples.forms.contact_ajax_post'),
             } %}
         </div>
         <div class="form__ok js-form-success" style="display: none" aria-hidden="true">
@@ -16,4 +17,8 @@
             <p class="p-big">{{ 'form.messages.ko_description'|trans }}</p>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {% include '@Samples/Core/form/validation.html.twig' %}
 {% endblock %}

@@ -1,6 +1,6 @@
-{% extends '@Samples/layout.html.twig' %}
+{% extends 'layouts/default.html.twig' %}
 
-{% block body %}
+{% block content %}
     {% for book in model.books %}
         <a href="{{ path('samples.basic_entities.book', {slug: book.slug}) }}">
             <p>{{ book.title }}</p>
