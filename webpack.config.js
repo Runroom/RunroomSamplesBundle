@@ -38,6 +38,7 @@ Encore
   .enablePostCssLoader()
 
   .addEntry('app', './assets/js/app.js')
+  .addEntry('form', './assets/js/form.js')
   .addStyleEntry('styles', './assets/scss/styles.scss');
 
 module.exports = Encore.getWebpackConfig();

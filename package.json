@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "@runroom/purejs": "3.0.1",
-    "picturefill": "3.0.3"
+    "picturefill": "3.0.3",
+    "jquery": "3.4.1",
+    "jquery-validation": "1.19.1"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",

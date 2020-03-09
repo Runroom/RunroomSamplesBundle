@@ -1,5 +1,6 @@
 {
   "bundles/easyadmin/app.js": "./app.js",
+  "bundles/easyadmin/form.js": "./form.js",
   "bundles/easyadmin/runtime.js": "./runtime.js",
   "bundles/easyadmin/styles.css": "./styles.css",
   "bundles/easyadmin/img/background.jpeg": "./img/background.jpeg",

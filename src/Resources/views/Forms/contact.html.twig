@@ -1,23 +1,25 @@
 {% extends 'layouts/default.html.twig' %}
 
 {% block content %}
-    <div class="js-form-container">
-        {%- for message in app.flashes('contact_form')|filter(message => message == 'success') -%}
-            <div class="form__ok">
-                <h2 class="t-h2">{{ 'form.messages.ok_title'|trans }}</h2>
-                <p class="p-big">{{ 'form.messages.ok_description'|trans }}</p>
-            </div>
-        {%- else -%}
-            {% include '@Samples/Forms/components/contact-form.html.twig' with {
-                'action': path(
-                    app.request.attributes.get('_route'),
-                    app.request.attributes.get('_route_params')|merge({'_fragment': 'form'})
-                ),
-            } %}
-        {% endfor %}
+    <div class="demo">
+        <section class="demp__section js-form-container">
+            {%- for message in app.flashes('contact_form')|filter(message => message == 'success') -%}
+                <div class="form__ok">
+                    <h2 class="t-h2">{{ 'form.messages.ok_title'|trans }}</h2>
+                    <p class="p-big">{{ 'form.messages.ok_description'|trans }}</p>
+                </div>
+            {%- else -%}
+                {% include '@Samples/Forms/components/contact-form.html.twig' with {
+                    'action': path(
+                        app.request.attributes.get('_route'),
+                        app.request.attributes.get('_route_params')|merge({'_fragment': 'form'})
+                    ),
+                } %}
+            {% endfor %}
+        </section>
     </div>
 {% endblock %}
 
 {% block scripts %}
-    {% include '@Samples/Core/form/validation.html.twig' %}
+    <script src="{{ asset('bundles/samples/form.js') }}"></script>
 {% endblock %}

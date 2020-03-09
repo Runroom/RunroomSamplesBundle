@@ -6,6 +6,12 @@
         "./app.js"
       ]
     },
+    "form": {
+      "js": [
+        "./runtime.js",
+        "./form.js"
+      ]
+    },
     "styles": {
       "js": [
         "./runtime.js"
