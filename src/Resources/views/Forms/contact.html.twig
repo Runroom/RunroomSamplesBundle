@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="demo">
-        <section class="demp__section js-form-container">
+        <section class="demp__section u-wrapper js-form-container">
             {%- for message in app.flashes('contact_form')|filter(message => message == 'success') -%}
                 <div class="form__ok">
                     <h2 class="t-h2">{{ 'form.messages.ok_title'|trans }}</h2>
