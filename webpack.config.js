@@ -6,7 +6,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 Encore
   .setOutputPath('./src/Resources/public/')
   .setPublicPath('./')
-  .setManifestKeyPrefix('bundles/samples')
+  .setManifestKeyPrefix('bundles/runroomsamples')
 
   .copyFiles({
     from: './assets/img',

@@ -1,11 +1,11 @@
 {
-  "bundles/samples/app.js": "./app.js",
-  "bundles/samples/form.js": "./form.js",
-  "bundles/samples/runtime.js": "./runtime.js",
-  "bundles/samples/styles.css": "./styles.css",
-  "bundles/samples/img/background.jpeg": "./img/background.jpeg",
-  "bundles/samples/img/city-fog.jpg": "./img/city-fog.jpg",
-  "bundles/samples/svg/exit.svg": "./svg/exit.svg",
-  "bundles/samples/svg/r-runroom.svg": "./svg/r-runroom.svg",
-  "bundles/samples/svg/runroom-logo.svg": "./svg/runroom-logo.svg"
+  "bundles/runroomsamples/app.js": "./app.js",
+  "bundles/runroomsamples/form.js": "./form.js",
+  "bundles/runroomsamples/runtime.js": "./runtime.js",
+  "bundles/runroomsamples/styles.css": "./styles.css",
+  "bundles/runroomsamples/img/background.jpeg": "./img/background.jpeg",
+  "bundles/runroomsamples/img/city-fog.jpg": "./img/city-fog.jpg",
+  "bundles/runroomsamples/svg/exit.svg": "./svg/exit.svg",
+  "bundles/runroomsamples/svg/r-runroom.svg": "./svg/r-runroom.svg",
+  "bundles/runroomsamples/svg/runroom-logo.svg": "./svg/runroom-logo.svg"
 }
