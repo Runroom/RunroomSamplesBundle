@@ -19,6 +19,7 @@ use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\Core\Behaviors as Behaviors;
+use Runroom\SortableBehaviorBundle\Behaviors\Sortable;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -31,7 +32,7 @@ class Book implements TranslatableInterface
 {
     use ORMBehaviors\Translatable\TranslatableTrait;
     use Behaviors\Publishable;
-    use Behaviors\Sortable;
+    use Sortable;
 
     /**
      * @ORM\Id
