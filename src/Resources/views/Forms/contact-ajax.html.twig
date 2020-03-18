@@ -4,9 +4,9 @@
     <div class="demo">
         <section class="demp__section u-wrapper js-form-container">
             <div class="js-form-display">
-                {% include '@Samples/Forms/components/contact-form.html.twig' with {
+                {% include '@RunroomSamples/Forms/components/contact-form.html.twig' with {
                     'class': 'js-validate form js-form-ajax',
-                    'action': path('samples.forms.contact_ajax_post'),
+                    'action': path('runroom_samples.forms.contact_ajax_post'),
                 } %}
             </div>
             <div class="form__ok js-form-success" style="display: none" aria-hidden="true">
@@ -22,5 +22,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="{{ asset('bundles/samples/form.js') }}"></script>
+    <script src="{{ asset('bundles/runroomsamples/form.js') }}"></script>
 {% endblock %}

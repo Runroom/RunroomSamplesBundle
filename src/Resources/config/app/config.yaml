@@ -16,8 +16,8 @@ sonata_admin:
     dashboard:
         groups:
             demo:
-                label: Samples
+                label: Runroom Samples
                 items:
-                    - samples.basic_entities.admin.book
-                    - samples.basic_entities.admin.category
-                    - samples.forms.admin.contact
+                    - runroom_samples.basic_entities.admin.book
+                    - runroom_samples.basic_entities.admin.category
+                    - runroom_samples.forms.admin.contact

@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for book in model.books %}
-        <a href="{{ path('samples.basic_entities.book', {slug: book.slug}) }}">
+        <a href="{{ path('runroom_samples.basic_entities.book', {slug: book.slug}) }}">
             <p>{{ book.title }}</p>
             <div>{{ book.description|raw }}</div>
         </a>

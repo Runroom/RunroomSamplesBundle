@@ -1,29 +1,29 @@
-samples.home:
+runroom_samples.home:
     path: /
     controller: Runroom\RenderEventBundle\Controller\TemplateController
     defaults:
-        template: '@Samples/Core/pages/home.html.twig'
+        template: '@RunroomSamples/Core/pages/home.html.twig'
 
 # BasicEntities
-samples.basic_entities.books:
+runroom_samples.basic_entities.books:
     path: /books
     controller: Runroom\SamplesBundle\BasicEntities\Controller\BookController::books
 
-samples.basic_entities.book:
+runroom_samples.basic_entities.book:
     path: /book/{slug}
     controller: Runroom\SamplesBundle\BasicEntities\Controller\BookController::book
 
 # Forms
-samples.forms.contact:
+runroom_samples.forms.contact:
     path: /contact
     controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contact
 
-samples.forms.contact_ajax:
+runroom_samples.forms.contact_ajax:
     path: /contact-ajax
     methods: [GET]
     controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactAjax
 
-samples.forms.contact_ajax_post:
+runroom_samples.forms.contact_ajax_post:
     path: /contact-ajax
     methods: [POST]
     controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactAjaxPost
