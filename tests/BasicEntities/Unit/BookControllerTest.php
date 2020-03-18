@@ -21,12 +21,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BookControllerTest extends TestCase
 {
-    private const BOOKS_VIEW = '@Samples/BasicEntities/pages/books.html.twig';
-    private const BOOK_VIEW = '@Samples/BasicEntities/pages/book.html.twig';
+    protected const BOOKS_VIEW = '@RunroomSamples/BasicEntities/pages/books.html.twig';
+    protected const BOOK_VIEW = '@RunroomSamples/BasicEntities/pages/book.html.twig';
 
-    private $renderer;
-    private $service;
-    private $controller;
+    protected $renderer;
+    protected $service;
+    protected $controller;
 
     protected function setUp(): void
     {

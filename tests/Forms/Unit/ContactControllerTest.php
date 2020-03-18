@@ -23,8 +23,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ContactControllerTest extends TestCase
 {
-    protected const INDEX_VIEW = '@Samples/Forms/contact.html.twig';
-    protected const AJAX_FORM_VIEW = '@Samples/Forms/contact-ajax.html.twig';
+    protected const INDEX_VIEW = '@RunroomSamples/Forms/contact.html.twig';
+    protected const AJAX_FORM_VIEW = '@RunroomSamples/Forms/contact-ajax.html.twig';
 
     protected $renderer;
     protected $router;

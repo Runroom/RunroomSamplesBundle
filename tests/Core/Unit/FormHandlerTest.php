@@ -104,7 +104,7 @@ class FormHandlerTest extends TestCase
         $this->assertSame(['success'], $this->session->getFlashBag()->get('form_types'));
     }
 
-    private function configureForm(bool $submitted = true, bool $valid = true): ObjectProphecy
+    protected function configureForm(bool $submitted = true, bool $valid = true): ObjectProphecy
     {
         $form = $this->prophesize(FormInterface::class);
         $formView = $this->prophesize(FormView::class);

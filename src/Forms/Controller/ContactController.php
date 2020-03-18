@@ -42,14 +42,14 @@ class ContactController
 
         if ($model->getIsSuccess()) {
             return new RedirectResponse(
-                $this->router->generate('samples.forms.contact', [
+                $this->router->generate('runroom_samples.forms.contact', [
                     '_fragment' => 'form',
                 ])
             );
         }
 
         return $this->renderer->renderResponse(
-            '@Samples/Forms/contact.html.twig',
+            '@RunroomSamples/Forms/contact.html.twig',
             $model
         );
     }
@@ -59,7 +59,7 @@ class ContactController
         $model = $this->service->getContactForm();
 
         return $this->renderer->renderResponse(
-            '@Samples/Forms/contact-ajax.html.twig',
+            '@RunroomSamples/Forms/contact-ajax.html.twig',
             $model
         );
     }

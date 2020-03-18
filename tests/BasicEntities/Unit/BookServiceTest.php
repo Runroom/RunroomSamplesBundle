@@ -20,8 +20,8 @@ use Runroom\SamplesBundle\Tests\BasicEntities\Fixtures\BookFixture;
 
 class BookServiceTest extends TestCase
 {
-    private $repository;
-    private $service;
+    protected $repository;
+    protected $service;
 
     protected function setUp(): void
     {
