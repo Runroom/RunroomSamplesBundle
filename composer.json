@@ -7,7 +7,7 @@
         "twig",
         "symfony"
     ],
-    "homepage": "https://github.com/runroom/SamplesBundle",
+    "homepage": "https://github.com/runroom/RunroomSamplesBundle",
     "license": "MIT",
     "authors": [
         {
