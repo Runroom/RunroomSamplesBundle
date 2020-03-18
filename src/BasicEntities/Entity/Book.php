@@ -18,7 +18,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
-use Runroom\SamplesBundle\Core\Behaviors as Behaviors;
 use Runroom\SortableBehaviorBundle\Behaviors\Sortable;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -31,7 +30,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Book implements TranslatableInterface
 {
     use ORMBehaviors\Translatable\TranslatableTrait;
-    use Behaviors\Publishable;
     use Sortable;
 
     /**
@@ -53,6 +51,11 @@ class Book implements TranslatableInterface
      * @Assert\Valid
      */
     protected $picture;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $publish;
 
     public function __toString(): string
     {
@@ -101,5 +104,17 @@ class Book implements TranslatableInterface
     public function getPicture(): ?object
     {
         return $this->picture;
+    }
+
+    public function setPublish(?bool $publish): self
+    {
+        $this->publish = $publish;
+
+        return $this;
+    }
+
+    public function getPublish(): ?bool
+    {
+        return $this->publish;
     }
 }
