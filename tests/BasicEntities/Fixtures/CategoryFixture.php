@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the SamplesBundle.
+ * This file is part of the RunroomSamplesBundle.
  *
  * (c) Runroom <runroom@runroom.com>
  *
