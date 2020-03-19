@@ -1,6 +1,5 @@
 {
-  "bundles/runroomsamples/app.js": "./app.js",
-  "bundles/runroomsamples/form.js": "./form.js",
+  "bundles/runroomsamples/forms.js": "./forms.js",
   "bundles/runroomsamples/runtime.js": "./runtime.js",
   "bundles/runroomsamples/styles.css": "./styles.css",
   "bundles/runroomsamples/img/background.jpeg": "./img/background.jpeg",

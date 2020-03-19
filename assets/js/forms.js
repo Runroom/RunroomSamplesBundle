@@ -1,13 +1,14 @@
-import $ from 'jquery/dist/jquery.slim';
+import events from '@runroom/purejs/lib/events';
+import jQuery from 'jquery';
 import 'jquery-validation';
 
-$(document).ready(function() {
+events.onDocumentReady(() => {
   function ajaxSubmit(form) {
     const request = new XMLHttpRequest();
     const data = new FormData(form);
 
     function showMessage(type) {
-      const formContainer = $(form).closest('.js-form-container');
+      const formContainer = jQuery(form).closest('.js-form-container');
       const formDisplay = formContainer.find('.js-form-display');
       const successMessage = formContainer.find('.js-form-success');
       const errorMessage = formContainer.find('.js-form-error');
@@ -24,14 +25,14 @@ $(document).ready(function() {
         errorMessage.attr('aria-hidden', 'false');
       }
 
-      $(window).scrollTop(successMessage.offset().top - 80);
+      jQuery(window).scrollTop(successMessage.offset().top - 80);
     }
 
     request.open(form.method, form.action, true);
 
-    request.onload = function() {
-      if (this.status >= 200 && this.status < 400) {
-        const response = JSON.parse(this.response);
+    request.onload = () => {
+      if (request.status >= 200 && request.status < 400) {
+        const response = JSON.parse(request.response);
 
         showMessage(response.status);
       } else {
@@ -39,14 +40,14 @@ $(document).ready(function() {
       }
     };
 
-    request.onerror = function() {
+    request.onerror = () => {
       showMessage('error');
     };
 
     request.send(data);
   }
 
-  $(this).find('form.js-validate').validate({
+  jQuery('form.js-validate').validate({
     errorClass: 'form__message--invalid',
     errorElement: 'span',
     highlight: (element, errorClass, validClass) => {
@@ -57,14 +58,14 @@ $(document).ready(function() {
     },
     errorPlacement: (error, element) => {
       if (element.attr('type') === 'radio') {
-        element = $(element).parent().parent();
+        element = jQuery(element).parent().parent();
       }
 
-      $(element).before(error);
+      jQuery(element).before(error);
     },
     normalizer: value => (value ? value.trim() : ''),
     submitHandler: form => {
-      const formContainer = $(form).closest('.js-form-container');
+      const formContainer = jQuery(form).closest('.js-form-container');
       const button = formContainer.find('button[type="submit"]');
 
       button.prop('disabled', true);

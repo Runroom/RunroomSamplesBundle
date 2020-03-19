@@ -1,15 +1,9 @@
 {
   "entrypoints": {
-    "app": {
+    "forms": {
       "js": [
         "./runtime.js",
-        "./app.js"
-      ]
-    },
-    "form": {
-      "js": [
-        "./runtime.js",
-        "./form.js"
+        "./forms.js"
       ]
     },
     "styles": {

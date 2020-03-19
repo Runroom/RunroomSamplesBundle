@@ -2,7 +2,7 @@ runroom_samples.home:
     path: /
     controller: Runroom\RenderEventBundle\Controller\TemplateController
     defaults:
-        template: '@RunroomSamples/Core/pages/home.html.twig'
+        template: '@RunroomSamples/home.html.twig'
 
 # BasicEntities
 runroom_samples.basic_entities.books:
