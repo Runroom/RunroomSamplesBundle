@@ -14,35 +14,49 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\DependencyInjection;
 
 use Runroom\BaseBundle\Entity\Media;
-use Runroom\SamplesBundle\BasicEntities\Book;
-use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
-use Sonata\Doctrine\Mapper\DoctrineCollector;
+use Runroom\SamplesBundle\BasicEntities\Entity\Book;
+// use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
+// use Sonata\Doctrine\Mapper\DoctrineCollector;
+use Sonata\EasyExtendsBundle\Mapper\DoctrineCollector;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
+
 class RunroomSamplesExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
         $loader->load('admin.yaml');
 
-        $this->mapMediaField('picture', Book::class);
+        $this->mapMediaField('picture', Book::class, $config);
     }
 
-    protected function mapMediaField(string $fieldName, string $entityName): void
+    protected function mapMediaField(string $fieldName, string $entityName, array $config): void
     {
-        $options = OptionsBuilder::create()
-            ->add('fieldName', $fieldName)
-            ->add('targetEntity', Media::class)
-            ->add('cascade', ['all'])
-            ->add('mappedBy', null)
-            ->add('inversedBy', null)
-            ->add('joinColumns', [['referencedColumnName' => 'id']])
-            ->add('orphanRemoval', false);
+        // $options = OptionsBuilder::create()
+        //     ->add('fieldName', $fieldName)
+        //     ->add('targetEntity', $config['class']['media'])
+        //     ->add('cascade', ['all'])
+        //     ->add('mappedBy', null)
+        //     ->add('inversedBy', null)
+        //     ->add('joinColumns', [['referencedColumnName' => 'id']])
+        //     ->add('orphanRemoval', false);
+        $options = [
+            'fieldName' => $fieldName,
+            'targetEntity' => $config['class']['media'],
+            'cascade' => ['all'],
+            'mappedBy' => null,
+            'inversedBy' => null,
+            'joinColumns' => [['referencedColumnName' => 'id']],
+            'orphanRemoval' => false,
+        ];
 
         DoctrineCollector::getInstance()->addAssociation($entityName, 'mapManyToOne', $options);
     }
