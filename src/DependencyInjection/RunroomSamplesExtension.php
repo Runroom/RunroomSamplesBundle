@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\DependencyInjection;
 
+use Runroom\BaseBundle\Entity\Media;
+use Runroom\SamplesBundle\BasicEntities\Book;
+use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
+use Sonata\Doctrine\Mapper\DoctrineCollector;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -25,5 +29,21 @@ class RunroomSamplesExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
         $loader->load('admin.yaml');
+
+        $this->mapMediaField('picture', Book::class);
+    }
+
+    protected function mapMediaField(string $fieldName, string $entityName): void
+    {
+        $options = OptionsBuilder::create()
+            ->add('fieldName', $fieldName)
+            ->add('targetEntity', Media::class)
+            ->add('cascade', ['all'])
+            ->add('mappedBy', null)
+            ->add('inversedBy', null)
+            ->add('joinColumns', [['referencedColumnName' => 'id']])
+            ->add('orphanRemoval', false);
+
+        DoctrineCollector::getInstance()->addAssociation($entityName, 'mapManyToOne', $options);
     }
 }
