@@ -35,7 +35,7 @@ class BookController
         $model = $this->service->getBooksViewModel();
 
         return $this->renderer->renderResponse(
-            '@RunroomSamples/BasicEntities/pages/books.html.twig',
+            '@RunroomSamples/BasicEntities/books.html.twig',
             $model
         );
     }
@@ -45,7 +45,7 @@ class BookController
         $model = $this->service->getBookViewModel($slug);
 
         return $this->renderer->renderResponse(
-            '@RunroomSamples/BasicEntities/pages/book.html.twig',
+            '@RunroomSamples/BasicEntities/book.html.twig',
             $model
         );
     }

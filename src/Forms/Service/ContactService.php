@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Forms\Service;
 
-use Runroom\SamplesBundle\Core\Service\FormHandler;
-use Runroom\SamplesBundle\Core\ViewModel\FormAwareInterface;
+use Runroom\FormHandlerBundle\FormHandler;
+use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
 
 class ContactService
