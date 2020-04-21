@@ -18,9 +18,12 @@ use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 use Symfony\Component\HttpFoundation\Response;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class BookControllerTest extends TestCase
 {
+    use ProphecyTrait;
+
     protected const BOOKS_VIEW = '@RunroomSamples/BasicEntities/books.html.twig';
     protected const BOOK_VIEW = '@RunroomSamples/BasicEntities/book.html.twig';
 

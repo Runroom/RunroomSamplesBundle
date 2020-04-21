@@ -20,9 +20,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ContactControllerTest extends TestCase
 {
+    use ProphecyTrait;
+
     protected const INDEX_VIEW = '@RunroomSamples/Forms/contact.html.twig';
     protected const AJAX_FORM_VIEW = '@RunroomSamples/Forms/contact-ajax.html.twig';
 

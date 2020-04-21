@@ -17,9 +17,12 @@ use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 use Runroom\SamplesBundle\Tests\BasicEntities\Fixtures\BookFixture;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class BookServiceTest extends TestCase
 {
+    use ProphecyTrait;
+
     protected $repository;
     protected $service;
 

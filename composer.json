@@ -46,15 +46,19 @@
         "friendsofphp/php-cs-fixer": "^2.16",
         "jangregor/phpstan-prophecy": "^0.6",
         "matthiasnoback/symfony-dependency-injection-test": "^4.1",
+        "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/phpstan": "^0.12",
         "phpstan/phpstan-doctrine": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",
         "phpstan/phpstan-symfony": "^0.12",
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^9.1",
         "symfony/phpunit-bridge": "^5.0"
     },
     "config": {
         "sort-packages": true
+    },
+    "conflict": {
+        "phpunit/phpunit": "9.1.2"
     },
     "extra": {
         "branch-alias": {
