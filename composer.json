@@ -41,6 +41,9 @@
         "symfony/yaml": "^4.4 || ^5.0",
         "twig/twig": "^2.12 || ^3.0"
     },
+    "conflict": {
+        "phpunit/phpunit": "9.1.2"
+    },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.2",
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -56,9 +59,6 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "conflict": {
-        "phpunit/phpunit": "9.1.2"
     },
     "extra": {
         "branch-alias": {
