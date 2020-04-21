@@ -12,8 +12,8 @@
 namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
 use PHPUnit\Framework\TestCase;
+use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
-use Runroom\SamplesBundle\Core\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Controller\ContactController;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
 use Symfony\Component\HttpFoundation\JsonResponse;

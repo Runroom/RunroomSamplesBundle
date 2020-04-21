@@ -12,8 +12,8 @@
 namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Runroom\SamplesBundle\Core\Service\FormHandler;
-use Runroom\SamplesBundle\Core\ViewModel\FormAwareInterface;
+use Runroom\FormHandlerBundle\FormHandler;
+use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
 
