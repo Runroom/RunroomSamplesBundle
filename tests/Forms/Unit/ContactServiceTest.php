@@ -12,11 +12,11 @@
 namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Runroom\FormHandlerBundle\FormHandler;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
-use Prophecy\PhpUnit\ProphecyTrait;
 
 class ContactServiceTest extends TestCase
 {

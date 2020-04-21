@@ -12,12 +12,12 @@
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 use Runroom\SamplesBundle\Tests\BasicEntities\Fixtures\BookFixture;
-use Prophecy\PhpUnit\ProphecyTrait;
 
 class BookServiceTest extends TestCase
 {

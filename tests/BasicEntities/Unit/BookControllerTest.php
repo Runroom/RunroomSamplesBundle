@@ -12,13 +12,13 @@
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\BasicEntities\Controller\BookController;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 use Symfony\Component\HttpFoundation\Response;
-use Prophecy\PhpUnit\ProphecyTrait;
 
 class BookControllerTest extends TestCase
 {

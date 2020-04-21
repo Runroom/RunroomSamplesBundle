@@ -12,6 +12,7 @@
 namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\Forms\Controller\ContactController;
@@ -20,7 +21,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Prophecy\PhpUnit\ProphecyTrait;
 
 class ContactControllerTest extends TestCase
 {
