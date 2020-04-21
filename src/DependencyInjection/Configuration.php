@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Runroom package.
+ * This file is part of the RunroomSamplesBundle.
  *
  * (c) Runroom <runroom@runroom.com>
  *
@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\DependencyInjection;
 
+use Sonata\MediaBundle\Model\Media;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Sonata\MediaBundle\Model\Media;
 
 final class Configuration implements ConfigurationInterface
 {
