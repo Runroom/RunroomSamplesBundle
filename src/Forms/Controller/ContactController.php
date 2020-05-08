@@ -40,7 +40,7 @@ class ContactController
     {
         $model = $this->service->getContactForm();
 
-        if ($model->getIsSuccess()) {
+        if ($model->formIsValid()) {
             return new RedirectResponse(
                 $this->router->generate('runroom_samples.forms.contact', [
                     '_fragment' => 'form',
@@ -68,7 +68,7 @@ class ContactController
     {
         $model = $this->service->getContactForm();
 
-        if ($model->getIsSuccess()) {
+        if ($model->formIsValid()) {
             return new JsonResponse(['status' => 'ok']);
         }
 

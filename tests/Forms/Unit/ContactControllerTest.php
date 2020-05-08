@@ -57,7 +57,7 @@ class ContactControllerTest extends TestCase
 
         $model = $this->prophesize(FormAwareInterface::class);
 
-        $model->getIsSuccess()->willReturn(false);
+        $model->formIsValid()->willReturn(false);
 
         $this->service->getContactForm()->willReturn($model->reveal());
         $this->renderer->renderResponse(self::INDEX_VIEW, $model->reveal(), null)
@@ -96,7 +96,7 @@ class ContactControllerTest extends TestCase
 
         $this->service->getContactForm()->willReturn($model);
 
-        $model->getIsSuccess()->willReturn(true);
+        $model->formIsValid()->willReturn(true);
 
         $response = $this->controller->contactAjaxPost();
 
@@ -104,7 +104,7 @@ class ContactControllerTest extends TestCase
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
         $this->assertSame(json_encode(['status' => 'ok']), $response->getContent());
 
-        $model->getIsSuccess()->willReturn(false);
+        $model->formIsValid()->willReturn(false);
 
         $response = $this->controller->contactAjaxPost();
 
