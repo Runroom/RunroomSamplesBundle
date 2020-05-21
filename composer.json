@@ -55,14 +55,15 @@
         "phpstan/phpstan-phpunit": "^0.12",
         "phpstan/phpstan-symfony": "^0.12",
         "phpunit/phpunit": "^9.1",
-        "symfony/phpunit-bridge": "^5.0"
+        "symfony/phpunit-bridge": "^5.0",
+        "symplify/changelog-linker": "^7.3"
     },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.x-dev"
+            "dev-master": "0.x-dev"
         }
     },
     "autoload": {
@@ -76,6 +77,11 @@
         }
     },
     "scripts": {
+        "changelog": [
+            "changelog-linker dump-merges --in-packages --in-categories --ansi",
+            "changelog-linker link --ansi",
+            "changelog-linker cleanup --ansi"
+        ],
         "php-cs-fixer": "php-cs-fixer fix --ansi --verbose",
         "phpstan": "phpstan analyse --level=5 --no-progress src tests"
     }
