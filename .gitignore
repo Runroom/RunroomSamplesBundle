@@ -1,5 +1,4 @@
 composer.lock
-node_modules
 phpstan.neon
 phpunit.xml
 vendor

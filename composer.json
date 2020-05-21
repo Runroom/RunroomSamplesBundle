@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "a2lix/translation-form-bundle": "^2.4",
+        "a2lix/translation-form-bundle": "^2.4 || ^3.0",
         "doctrine/doctrine-bundle": "^2.0",
         "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.0",
         "gedmo/doctrine-extensions": "^2.4",
