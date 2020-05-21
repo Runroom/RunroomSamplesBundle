@@ -23,9 +23,9 @@
         "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.0",
         "gedmo/doctrine-extensions": "^2.4",
         "knplabs/doctrine-behaviors": "^2.0",
-        "runroom-packages/form-handler-bundle": "^0.4",
-        "runroom-packages/render-event-bundle": "^0.4",
-        "runroom-packages/sortable-behavior-bundle": "^0.4",
+        "runroom-packages/form-handler-bundle": "^0.5",
+        "runroom-packages/render-event-bundle": "^0.5",
+        "runroom-packages/sortable-behavior-bundle": "^0.5",
         "sonata-project/admin-bundle": "^3.61",
         "sonata-project/doctrine-extensions": "^1.5",
         "sonata-project/media-bundle": "^3.23",
@@ -78,7 +78,7 @@
     },
     "scripts": {
         "changelog": [
-            "changelog-linker dump-merges --in-packages --in-categories --ansi",
+            "changelog-linker dump-merges --ansi",
             "changelog-linker link --ansi",
             "changelog-linker cleanup --ansi"
         ],
