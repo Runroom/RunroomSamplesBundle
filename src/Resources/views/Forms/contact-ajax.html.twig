@@ -1,5 +1,9 @@
 {% extends 'layouts/default.html.twig' %}
 
+{% block crp %}
+    {% include 'helpers/inline-crp.html.twig' with { crp: 'crp.demo' } %}
+{% endblock %}
+
 {% block content %}
     <div class="demo">
         <section class="demp__section u-wrapper js-form-container">
