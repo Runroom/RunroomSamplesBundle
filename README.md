@@ -12,6 +12,8 @@ RunroomSamplesBundle
 ![ci](https://github.com/Runroom/RunroomSamplesBundle/workflows/ci/badge.svg?branch=master)
 ![qa](https://github.com/Runroom/RunroomSamplesBundle/workflows/qa/badge.svg?branch=master)
 
+This bundle is a collection of samples that we often need to implement in our projects. Currently this project is not usable outside the [ArchetypeSymfony](https://github.com/Runroom/archetype-symfony)
+
 ## Installation
 
 Open a command console, enter your project directory and execute the following command to download the latest stable version of this bundle:
