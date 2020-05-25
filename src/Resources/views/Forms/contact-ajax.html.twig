@@ -1,8 +1,4 @@
-{% extends 'layouts/default.html.twig' %}
-
-{% block crp %}
-    {% include 'helpers/inline-crp.html.twig' with { crp: 'crp.demo' } %}
-{% endblock %}
+{% extends '@RunroomSamples/Forms/contact.html.twig' %}
 
 {% block content %}
     <div class="demo">
@@ -23,8 +19,4 @@
             </div>
         </section>
     </div>
-{% endblock %}
-
-{% block scripts %}
-    {{ encore_entry_script_tags('form') }}
 {% endblock %}
