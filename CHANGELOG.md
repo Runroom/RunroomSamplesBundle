@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- changelog-linker -->
 
+## [v0.1.6] - 2020-06-02
+
+### Added
+
+- [#11] Add coverage
+
+### Changed
+
+- [#12] Allow runroom-packages 0.7
+
 ## [v0.1.5] - 2020-05-25
 
 - [#10] Improve templates
@@ -31,7 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v0.1.0] - 2020-05-21
 
-#### Added
+### Added
 
 - Add Initial configuration
 
@@ -46,3 +56,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [v0.1.3]: https://github.com/Runroom/SamplesBundle/compare/v0.1.2...v0.1.3
 [#10]: https://github.com/Runroom/SamplesBundle/pull/10
 [v0.1.5]: https://github.com/Runroom/SamplesBundle/compare/v0.1.4...v0.1.5
+[#12]: https://github.com/Runroom/SamplesBundle/pull/12
+[#11]: https://github.com/Runroom/SamplesBundle/pull/11
+[v0.1.6]: https://github.com/Runroom/SamplesBundle/compare/v0.1.5...v0.1.6

@@ -78,7 +78,7 @@
     },
     "scripts": {
         "changelog": [
-            "changelog-linker dump-merges --ansi",
+            "changelog-linker dump-merges --in-categories --ansi",
             "changelog-linker link --ansi",
             "changelog-linker cleanup --ansi"
         ],
