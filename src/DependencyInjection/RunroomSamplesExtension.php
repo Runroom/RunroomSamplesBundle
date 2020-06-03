@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\DependencyInjection;
 
-use Runroom\BaseBundle\Entity\Media;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 // use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 // use Sonata\Doctrine\Mapper\DoctrineCollector;
