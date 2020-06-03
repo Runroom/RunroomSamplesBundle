@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- changelog-linker -->
 
+## [v0.1.8] - 2020-06-03
+
+### Changed
+
+- [#14] Try to make prefer lowest build faster
+
+### Removed
+
+- [#15] Remove missing admin.yaml
+
 ## [v0.1.7] - 2020-06-03
 
 ### Changed
@@ -67,3 +77,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [v0.1.6]: https://github.com/Runroom/SamplesBundle/compare/v0.1.5...v0.1.6
 [#13]: https://github.com/Runroom/SamplesBundle/pull/13
 [v0.1.7]: https://github.com/Runroom/SamplesBundle/compare/v0.1.6...v0.1.7
+[#15]: https://github.com/Runroom/SamplesBundle/pull/15
+[#14]: https://github.com/Runroom/SamplesBundle/pull/14
+[v0.1.8]: https://github.com/Runroom/SamplesBundle/compare/v0.1.7...v0.1.8
