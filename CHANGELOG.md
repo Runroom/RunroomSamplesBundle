@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- changelog-linker -->
 
+## [v0.1.7] - 2020-06-03
+
+### Changed
+
+- [#13] Improve static analysis
+
 ## [v0.1.6] - 2020-06-02
 
 ### Added
@@ -59,3 +65,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [#12]: https://github.com/Runroom/SamplesBundle/pull/12
 [#11]: https://github.com/Runroom/SamplesBundle/pull/11
 [v0.1.6]: https://github.com/Runroom/SamplesBundle/compare/v0.1.5...v0.1.6
+[#13]: https://github.com/Runroom/SamplesBundle/pull/13
+[v0.1.7]: https://github.com/Runroom/SamplesBundle/compare/v0.1.6...v0.1.7
