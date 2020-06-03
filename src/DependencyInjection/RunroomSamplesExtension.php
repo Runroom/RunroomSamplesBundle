@@ -37,7 +37,7 @@ class RunroomSamplesExtension extends Extension
         $this->mapMediaField('picture', Book::class, $config);
     }
 
-    protected function mapMediaField(string $fieldName, string $entityName, array $config): void
+    private function mapMediaField(string $fieldName, string $entityName, array $config): void
     {
         // $options = OptionsBuilder::create()
         //     ->add('fieldName', $fieldName)

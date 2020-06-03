@@ -20,6 +20,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 class ContactEventHandler implements EventSubscriberInterface
 {
+    /** @var EntityManagerInterface */
     protected $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
@@ -27,7 +28,7 @@ class ContactEventHandler implements EventSubscriberInterface
         $this->entityManager = $entityManager;
     }
 
-    public function onContactSuccess(GenericEvent $event)
+    public function onContactSuccess(GenericEvent $event): void
     {
         $model = $event->getSubject()->getForm()->getData();
 
@@ -46,7 +47,7 @@ class ContactEventHandler implements EventSubscriberInterface
         $this->entityManager->flush();
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'form.contact_form.event.success' => 'onContactSuccess',

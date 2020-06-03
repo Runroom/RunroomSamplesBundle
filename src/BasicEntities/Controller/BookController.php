@@ -19,8 +19,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BookController
 {
-    protected $renderer;
-    protected $service;
+    /** @var PageRenderer */
+    private $renderer;
+
+    /** @var BookService */
+    private $service;
 
     public function __construct(
         PageRenderer $renderer,

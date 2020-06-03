@@ -18,26 +18,28 @@ use Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity
- */
+/** @ORM\Entity */
 class CategoryTranslation implements TranslationInterface
 {
     use ORMBehaviors\Translatable\TranslationTrait;
 
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
+     * @var string
+     *
      * @Assert\NotNull
      * @Assert\Length(max=255)
      * @ORM\Column(type="string")
      */
-    protected $name;
+    private $name;
 
     public function setName(?string $name): self
     {

@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class ContactFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
@@ -104,7 +104,7 @@ class ContactFormType extends AbstractType
             ->add('send', SubmitType::class);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Contact::class,

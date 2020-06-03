@@ -13,9 +13,12 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\ViewModel;
 
+use Runroom\SamplesBundle\BasicEntities\Entity\Book;
+
 class BooksViewModel
 {
-    protected $books;
+    /** @var Book[] */
+    private $books;
 
     public function setBooks(array $books): void
     {

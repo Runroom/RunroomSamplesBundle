@@ -22,9 +22,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ContactController
 {
-    protected $renderer;
-    protected $router;
-    protected $service;
+    /** @var PageRenderer */
+    private $renderer;
+
+    /** @var UrlGeneratorInterface */
+    private $router;
+
+    /** @var ContactService */
+    private $service;
 
     public function __construct(
         PageRenderer $renderer,

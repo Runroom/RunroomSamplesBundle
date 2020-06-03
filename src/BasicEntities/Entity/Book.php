@@ -19,6 +19,7 @@ use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SortableBehaviorBundle\Behaviors\Sortable;
+use Sonata\MediaBundle\Model\MediaInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -33,29 +34,37 @@ class Book implements TranslatableInterface
     use Sortable;
 
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
+     * @var Category
+     *
      * @Assert\Valid
      * @Gedmo\SortableGroup
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="books")
      * @ORM\JoinColumn(referencedColumnName="id")
      */
-    protected $category;
+    private $category;
 
     /**
+     * @var MediaInterface
+     *
      * @Assert\Valid
      */
-    protected $picture;
+    private $picture;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
-    protected $publish;
+    private $publish;
 
     public function __toString(): string
     {
@@ -94,14 +103,14 @@ class Book implements TranslatableInterface
         return $this->category;
     }
 
-    public function setPicture(?object $picture): self
+    public function setPicture(?MediaInterface $picture): self
     {
         $this->picture = $picture;
 
         return $this;
     }
 
-    public function getPicture(): ?object
+    public function getPicture(): ?MediaInterface
     {
         return $this->picture;
     }

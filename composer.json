@@ -41,22 +41,21 @@
         "symfony/yaml": "^4.4 || ^5.0",
         "twig/twig": "^2.12 || ^3.0"
     },
-    "conflict": {
-        "phpunit/phpunit": "9.1.2"
-    },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.2",
         "friendsofphp/php-cs-fixer": "^2.16",
-        "jangregor/phpstan-prophecy": "^0.6",
-        "matthiasnoback/symfony-dependency-injection-test": "^4.1",
+        "jangregor/phpstan-prophecy": "^0.8",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/phpstan": "^0.12",
         "phpstan/phpstan-doctrine": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",
         "phpstan/phpstan-symfony": "^0.12",
-        "phpunit/phpunit": "^9.1",
-        "symfony/phpunit-bridge": "^5.0",
-        "symplify/changelog-linker": "^7.3"
+        "phpunit/phpunit": "^9.1.3",
+        "psalm/plugin-phpunit": "^0.10",
+        "symfony/phpunit-bridge": "^5.0.8",
+        "symplify/changelog-linker": "^7.3",
+        "vimeo/psalm": "^3.11",
+        "weirdan/doctrine-psalm-plugin": "^0.11"
     },
     "config": {
         "sort-packages": true
@@ -83,6 +82,7 @@
             "changelog-linker cleanup --ansi"
         ],
         "php-cs-fixer": "php-cs-fixer fix --ansi --verbose",
-        "phpstan": "phpstan analyse --level=5 --no-progress src tests"
+        "phpstan": "phpstan analyse --no-progress",
+        "psalm": "psalm --stats"
     }
 }

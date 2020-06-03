@@ -1,5 +1,5 @@
 includes:
-    - vendor/jangregor/phpstan-prophecy/src/extension.neon
+    - vendor/jangregor/phpstan-prophecy/extension.neon
     - vendor/knplabs/doctrine-behaviors/phpstan-extension.neon
     - vendor/phpstan/phpstan-doctrine/extension.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon
@@ -7,6 +7,10 @@ includes:
     - vendor/phpstan/phpstan-symfony/rules.neon
 
 parameters:
+    level: 6
+    paths:
+        - src
+        - tests
     ignoreErrors:
         - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition(.|\n)+#'
-    inferPrivatePropertyTypeFromConstructor: true
+    checkMissingIterableValueType: false

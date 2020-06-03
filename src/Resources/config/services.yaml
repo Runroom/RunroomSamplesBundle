@@ -13,8 +13,26 @@ services:
         public: true
         tags: [controller.service_arguments]
 
+    Runroom\SamplesBundle\BasicEntities\Admin\BookAdmin:
+        public: true
+        arguments: [null, Runroom\SamplesBundle\BasicEntities\Entity\Book, Runroom\SortableBehaviorBundle\Controller\SortableAdminController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'Books' }
+
+    Runroom\SamplesBundle\BasicEntities\Admin\CategoryAdmin:
+        public: true
+        arguments: [null, Runroom\SamplesBundle\BasicEntities\Entity\Category, null]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'Categories' }
+
     # Forms
     Runroom\SamplesBundle\Forms\Controller\:
         resource: ../../Forms/Controller
         public: true
         tags: [controller.service_arguments]
+
+    Runroom\SamplesBundle\Forms\Admin\ContactAdmin:
+        public: true
+        arguments: [null, Runroom\SamplesBundle\Forms\Entity\Contact, null]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'Contacts' }

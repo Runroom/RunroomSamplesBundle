@@ -19,25 +19,27 @@ use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
-/**
- * @ORM\Entity
- */
+/** @ORM\Entity */
 class Category implements TranslatableInterface
 {
     use ORMBehaviors\Translatable\TranslatableTrait;
 
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
+     * @var Collection<int, Book>
+     *
      * @ORM\OneToMany(targetEntity="Book", mappedBy="category")
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    protected $books;
+    private $books;
 
     public function __construct()
     {
@@ -71,6 +73,7 @@ class Category implements TranslatableInterface
         $this->books->removeElement($book);
     }
 
+    /** @return Collection<int, Book> */
     public function getBooks(): ?Collection
     {
         return $this->books;

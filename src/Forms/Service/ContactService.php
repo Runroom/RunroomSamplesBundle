@@ -19,7 +19,8 @@ use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
 
 class ContactService
 {
-    protected $handler;
+    /** @var FormHandler */
+    private $handler;
 
     public function __construct(FormHandler $handler)
     {

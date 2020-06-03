@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the RunroomSamplesBundle.
  *
@@ -13,6 +15,7 @@ namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
@@ -23,8 +26,11 @@ class BookServiceTest extends TestCase
 {
     use ProphecyTrait;
 
-    protected $repository;
-    protected $service;
+    /** @var ObjectProphecy<BookRepository> */
+    private $repository;
+
+    /** @var BookService */
+    private $service;
 
     protected function setUp(): void
     {
@@ -33,10 +39,8 @@ class BookServiceTest extends TestCase
         $this->service = new BookService($this->repository->reveal());
     }
 
-    /**
-     * @test
-     */
-    public function itBuildsBooksViewModel()
+    /** @test */
+    public function itBuildsBooksViewModel(): void
     {
         $expectedBooks = [BookFixture::create()];
 
@@ -48,10 +52,8 @@ class BookServiceTest extends TestCase
         $this->assertSame($model->getBooks(), $expectedBooks);
     }
 
-    /**
-     * @test
-     */
-    public function itBuildsBookViewModel()
+    /** @test */
+    public function itBuildsBookViewModel(): void
     {
         $expectedBook = BookFixture::create();
 
