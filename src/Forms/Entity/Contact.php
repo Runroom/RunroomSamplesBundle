@@ -15,42 +15,44 @@ namespace Runroom\SamplesBundle\Forms\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
+/** @ORM\Entity */
 class Contact
 {
     public const SUBJECT_GENERAL = 1;
-    protected const SUBJECT_SPECIFIC = 2;
+    private const SUBJECT_SPECIFIC = 2;
 
-    protected const STATUS_UNREAD = 1;
-    protected const STATUS_READ = 2;
-    protected const STATUS_PROCESSED = 3;
+    private const STATUS_UNREAD = 1;
+    private const STATUS_READ = 2;
+    private const STATUS_PROCESSED = 3;
 
-    protected const TYPE_COMMENT = 1;
-    protected const TYPE_BUG = 2;
+    private const TYPE_COMMENT = 1;
+    private const TYPE_BUG = 2;
 
-    protected const PREFERENCE_DESIGN = 1;
-    protected const PREFERENCE_BACKEND = 2;
-    protected const PREFERENCE_FRONTEND = 3;
-    protected const PREFERENCE_MARKETING = 4;
+    private const PREFERENCE_DESIGN = 1;
+    private const PREFERENCE_BACKEND = 2;
+    private const PREFERENCE_FRONTEND = 3;
+    private const PREFERENCE_MARKETING = 4;
 
+    /** @var array<string, int> */
     public static $subjectChoices = [
         'form.subject.general' => self::SUBJECT_GENERAL,
         'form.subject.specific' => self::SUBJECT_SPECIFIC,
     ];
 
+    /** @var array<string, int> */
     public static $statusChoices = [
         'contact.status.unread' => self::STATUS_UNREAD,
         'contact.status.read' => self::STATUS_READ,
         'contact.status.processed' => self::STATUS_PROCESSED,
     ];
 
+    /** @var array<string, int> */
     public static $typeChoices = [
         'form.type.comment' => self::TYPE_COMMENT,
         'form.type.bug' => self::TYPE_BUG,
     ];
 
+    /** @var array<string, int> */
     public static $preferenceChoices = [
         'form.preference.design' => self::PREFERENCE_DESIGN,
         'form.preference.backend' => self::PREFERENCE_BACKEND,
@@ -59,66 +61,90 @@ class Contact
     ];
 
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
-    protected $name;
+    private $name;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
-    protected $email;
+    private $email;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
-    protected $phone;
+    private $phone;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
-    protected $subject;
+    private $subject;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
-    protected $type;
+    private $type;
 
     /**
+     * @var array
+     *
      * @ORM\Column(type="array")
      */
-    protected $preferences;
+    private $preferences;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text")
      */
-    protected $comment;
+    private $comment;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
-    protected $newsletter;
+    private $newsletter;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
-    protected $privacyPolicy;
+    private $privacyPolicy;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
-    protected $date;
+    private $date;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
-    protected $status = self::STATUS_UNREAD;
+    private $status = self::STATUS_UNREAD;
 
     public function __construct()
     {

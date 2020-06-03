@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the RunroomSamplesBundle.
  *
@@ -13,6 +15,7 @@ namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\FormHandlerBundle\FormHandler;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
@@ -22,9 +25,11 @@ class ContactServiceTest extends TestCase
 {
     use ProphecyTrait;
 
-    protected $repository;
-    protected $handler;
-    protected $service;
+    /** @var ObjectProphecy<FormHandler> */
+    private $handler;
+
+    /** @var ContactService */
+    private $service;
 
     protected function setUp(): void
     {
@@ -35,10 +40,8 @@ class ContactServiceTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function itGeneratesDemoViewModel()
+    /** @test */
+    public function itGeneratesDemoViewModel(): void
     {
         $formAware = $this->prophesize(FormAwareInterface::class);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the RunroomSamplesBundle.
  *
@@ -13,6 +15,7 @@ namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\BasicEntities\Controller\BookController;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
@@ -24,12 +27,17 @@ class BookControllerTest extends TestCase
 {
     use ProphecyTrait;
 
-    protected const BOOKS_VIEW = '@RunroomSamples/BasicEntities/books.html.twig';
-    protected const BOOK_VIEW = '@RunroomSamples/BasicEntities/book.html.twig';
+    private const BOOKS_VIEW = '@RunroomSamples/BasicEntities/books.html.twig';
+    private const BOOK_VIEW = '@RunroomSamples/BasicEntities/book.html.twig';
 
-    protected $renderer;
-    protected $service;
-    protected $controller;
+    /** @var ObjectProphecy<PageRenderer> */
+    private $renderer;
+
+    /** @var ObjectProphecy<BookService> */
+    private $service;
+
+    /** @var BookController */
+    private $controller;
 
     protected function setUp(): void
     {
@@ -42,10 +50,8 @@ class BookControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function itRenderBooks()
+    /** @test */
+    public function itRenderBooks(): void
     {
         $expectedResponse = new Response();
         $model = new BooksViewModel();
@@ -60,10 +66,8 @@ class BookControllerTest extends TestCase
         $this->assertSame($expectedResponse, $response);
     }
 
-    /**
-     * @test
-     */
-    public function itRenderBook()
+    /** @test */
+    public function itRenderBook(): void
     {
         $expectedResponse = new Response();
         $model = new BookViewModel();

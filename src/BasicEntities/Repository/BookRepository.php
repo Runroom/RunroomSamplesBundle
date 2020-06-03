@@ -21,7 +21,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class BookRepository extends ServiceEntityRepository
 {
-    protected $requestStack;
+    /** @var RequestStack */
+    private $requestStack;
 
     public function __construct(ManagerRegistry $registry, RequestStack $requestStack)
     {

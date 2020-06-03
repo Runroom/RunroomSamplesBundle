@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the RunroomSamplesBundle.
  *
@@ -13,12 +15,12 @@ namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\Forms\Controller\ContactController;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -26,13 +28,20 @@ class ContactControllerTest extends TestCase
 {
     use ProphecyTrait;
 
-    protected const INDEX_VIEW = '@RunroomSamples/Forms/contact.html.twig';
-    protected const AJAX_FORM_VIEW = '@RunroomSamples/Forms/contact-ajax.html.twig';
+    private const INDEX_VIEW = '@RunroomSamples/Forms/contact.html.twig';
+    private const AJAX_FORM_VIEW = '@RunroomSamples/Forms/contact-ajax.html.twig';
 
-    protected $renderer;
-    protected $router;
-    protected $service;
-    protected $controller;
+    /** @var ObjectProphecy<PageRenderer> */
+    private $renderer;
+
+    /** @var ObjectProphecy<UrlGeneratorInterface> */
+    private $router;
+
+    /** @var ObjectProphecy<ContactService> */
+    private $service;
+
+    /** @var ContactController */
+    private $controller;
 
     protected function setUp(): void
     {
@@ -47,12 +56,9 @@ class ContactControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function itRendersContact()
+    /** @test */
+    public function itRendersContact(): void
     {
-        $request = new Request();
         $expectedResponse = new Response();
 
         $model = $this->prophesize(FormAwareInterface::class);
@@ -63,17 +69,14 @@ class ContactControllerTest extends TestCase
         $this->renderer->renderResponse(self::INDEX_VIEW, $model->reveal(), null)
             ->willReturn($expectedResponse);
 
-        $response = $this->controller->contact($request);
+        $response = $this->controller->contact();
 
         $this->assertSame($expectedResponse, $response);
     }
 
-    /**
-     * @test
-     */
-    public function itRendersContactAjax()
+    /** @test */
+    public function itRendersContactAjax(): void
     {
-        $request = new Request();
         $expectedResponse = new Response();
 
         $model = $this->prophesize(FormAwareInterface::class);
@@ -82,15 +85,13 @@ class ContactControllerTest extends TestCase
         $this->renderer->renderResponse(self::AJAX_FORM_VIEW, $model->reveal(), null)
             ->willReturn($expectedResponse);
 
-        $response = $this->controller->contactAjax($request);
+        $response = $this->controller->contactAjax();
 
         $this->assertSame($expectedResponse, $response);
     }
 
-    /**
-     * @test
-     */
-    public function itProcessesAjaxForm()
+    /** @test */
+    public function itProcessesAjaxForm(): void
     {
         $model = $this->prophesize(FormAwareInterface::class);
 
