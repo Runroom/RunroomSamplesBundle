@@ -19,6 +19,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/** @extends ServiceEntityRepository<Book> */
 class BookRepository extends ServiceEntityRepository
 {
     /** @var RequestStack */
