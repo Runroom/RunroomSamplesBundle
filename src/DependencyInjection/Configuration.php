@@ -22,23 +22,23 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('runroom_samples');
+        $rootNode = $treeBuilder->getRootNode();
 
-        $treeBuilder->getRootNode()
-            ->children()
-                ->arrayNode('class')
-                    ->children()
-                        ->scalarNode('media')
-                            ->cannotBeEmpty()
-                            ->validate()
-                                ->ifTrue(function ($config) {
-                                    return !is_a($config, Media::class, true);
-                                })
-                                ->thenInvalid('%s must extend ' . Media::class)
-                            ->end()
+        $rootNode->children()
+            ->arrayNode('class')
+                ->children()
+                    ->scalarNode('media')
+                        ->cannotBeEmpty()
+                        ->validate()
+                            ->ifTrue(function ($config) {
+                                return !is_a($config, Media::class, true);
+                            })
+                            ->thenInvalid('%s must extend ' . Media::class)
                         ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+        ->end();
 
         return $treeBuilder;
     }

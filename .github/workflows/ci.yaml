@@ -10,27 +10,31 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['7.3', '7.4']
-        dependencies: [highest]
+        php: ['7.4']
+        dependencies: [highest, lowest]
+        composer: [v2]
         include:
           - php: '7.3'
-            dependencies: lowest
+            dependencies: highest
+            composer: v1
     steps:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: pcov
-      - name: Setup problem matchers for PHPUnit
-        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+          tools: composer:${{ matrix.composer }}
+      - run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+      - id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
       - uses: actions/cache@v1
         with:
-          path: ~/.composer/cache
-          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ matrix.dependencies }}
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ matrix.composer }}-${{ matrix.dependencies }}
           restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
       - if: matrix.dependencies == 'lowest'
-        run: composer update --no-interaction --no-progress --no-suggest --prefer-lowest
+        run: composer update --no-interaction --no-progress --prefer-lowest
       - if: matrix.dependencies == 'highest'
-        run: composer update --no-interaction --no-progress --no-suggest
+        run: composer update --no-interaction --no-progress
       - run: vendor/bin/phpunit --coverage-clover=clover.xml
       - uses: codecov/codecov-action@v1
