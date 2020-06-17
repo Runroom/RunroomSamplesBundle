@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\Forms\Form;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Entity\Contact;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -28,6 +29,10 @@ class ContactEventHandler implements EventSubscriberInterface
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * @phpstan-param GenericEvent<FormAwareInterface> $event
+     * @psalm-param GenericEvent $event
+     */
     public function onContactSuccess(GenericEvent $event): void
     {
         $model = $event->getSubject()->getForm()->getData();

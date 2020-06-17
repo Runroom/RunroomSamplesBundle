@@ -20,11 +20,13 @@ class BooksViewModel
     /** @var Book[] */
     private $books;
 
+    /** @param Book[] $books */
     public function setBooks(array $books): void
     {
         $this->books = $books;
     }
 
+    /** @return Book[]|null */
     public function getBooks(): ?array
     {
         return $this->books;

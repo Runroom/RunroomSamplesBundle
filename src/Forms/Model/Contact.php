@@ -32,7 +32,7 @@ class Contact
     /** @var int */
     private $type;
 
-    /** @var array */
+    /** @var int[] */
     private $preferences = [];
 
     /** @var string */
@@ -104,11 +104,13 @@ class Contact
         return $this;
     }
 
+    /** @return int[]|null */
     public function getPreferences(): ?array
     {
         return $this->preferences;
     }
 
+    /** @param int[]|null $preferences */
     public function setPreferences(?array $preferences): self
     {
         $this->preferences = $preferences;

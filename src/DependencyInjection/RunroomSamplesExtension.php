@@ -27,6 +27,7 @@ class RunroomSamplesExtension extends Extension
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
+        /** @var array{ class: array{ media: class-string } } */
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -35,6 +36,7 @@ class RunroomSamplesExtension extends Extension
         $this->mapMediaField('picture', Book::class, $config);
     }
 
+    /** @param array{ class: array{ media: class-string } } $config */
     private function mapMediaField(string $fieldName, string $entityName, array $config): void
     {
         // $options = OptionsBuilder::create()
