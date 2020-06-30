@@ -30,7 +30,7 @@ final class Configuration implements ConfigurationInterface
                     ->scalarNode('media')
                         ->cannotBeEmpty()
                         ->validate()
-                            ->ifTrue(function ($config) {
+                            ->ifTrue(function ($config): bool {
                                 return !is_a($config, Media::class, true);
                             })
                             ->thenInvalid('%s must extend ' . Media::class)

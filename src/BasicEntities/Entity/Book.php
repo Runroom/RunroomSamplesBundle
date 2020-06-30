@@ -34,7 +34,7 @@ class Book implements TranslatableInterface
     use Sortable;
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -43,7 +43,7 @@ class Book implements TranslatableInterface
     private $id;
 
     /**
-     * @var Category
+     * @var Category|null
      *
      * @Assert\Valid
      * @Gedmo\SortableGroup
@@ -53,14 +53,14 @@ class Book implements TranslatableInterface
     private $category;
 
     /**
-     * @var MediaInterface
+     * @var MediaInterface|null
      *
      * @Assert\Valid
      */
     private $picture;
 
     /**
-     * @var bool
+     * @var bool|null
      *
      * @ORM\Column(type="boolean")
      */

@@ -18,8 +18,6 @@ use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
-use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
-use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 use Runroom\SamplesBundle\Tests\BasicEntities\Fixtures\BookFixture;
 
 class BookServiceTest extends TestCase
@@ -48,8 +46,7 @@ class BookServiceTest extends TestCase
 
         $model = $this->service->getBooksViewModel();
 
-        $this->assertInstanceOf(BooksViewModel::class, $model);
-        $this->assertSame($model->getBooks(), $expectedBooks);
+        self::assertSame($model->getBooks(), $expectedBooks);
     }
 
     /** @test */
@@ -61,7 +58,6 @@ class BookServiceTest extends TestCase
 
         $model = $this->service->getBookViewModel('slug');
 
-        $this->assertInstanceOf(BookViewModel::class, $model);
-        $this->assertSame($model->getBook(), $expectedBook);
+        self::assertSame($model->getBook(), $expectedBook);
     }
 }

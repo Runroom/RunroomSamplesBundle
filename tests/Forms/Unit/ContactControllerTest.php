@@ -20,7 +20,6 @@ use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\Forms\Controller\ContactController;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -71,7 +70,7 @@ class ContactControllerTest extends TestCase
 
         $response = $this->controller->contact();
 
-        $this->assertSame($expectedResponse, $response);
+        self::assertSame($expectedResponse, $response);
     }
 
     /** @test */
@@ -87,7 +86,7 @@ class ContactControllerTest extends TestCase
 
         $response = $this->controller->contactAjax();
 
-        $this->assertSame($expectedResponse, $response);
+        self::assertSame($expectedResponse, $response);
     }
 
     /** @test */
@@ -101,16 +100,14 @@ class ContactControllerTest extends TestCase
 
         $response = $this->controller->contactAjaxPost();
 
-        $this->assertInstanceOf(JsonResponse::class, $response);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
-        $this->assertSame(json_encode(['status' => 'ok']), $response->getContent());
+        self::assertSame(Response::HTTP_OK, $response->getStatusCode());
+        self::assertSame(json_encode(['status' => 'ok']), $response->getContent());
 
         $model->formIsValid()->willReturn(false);
 
         $response = $this->controller->contactAjaxPost();
 
-        $this->assertInstanceOf(JsonResponse::class, $response);
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
-        $this->assertSame(json_encode(['status' => 'error']), $response->getContent());
+        self::assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+        self::assertSame(json_encode(['status' => 'error']), $response->getContent());
     }
 }

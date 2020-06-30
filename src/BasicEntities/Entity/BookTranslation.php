@@ -30,14 +30,14 @@ class BookTranslation implements TranslationInterface
     use ORMBehaviors\Translatable\TranslationTrait;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=5)
      */
     protected $locale;
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -46,7 +46,7 @@ class BookTranslation implements TranslationInterface
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @Assert\NotNull
      * @Assert\Length(max=255)
@@ -55,7 +55,7 @@ class BookTranslation implements TranslationInterface
     private $title;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @Gedmo\Slug(fields={"title"}, unique_base="locale")
      * @ORM\Column(type="string", nullable=true)
@@ -63,7 +63,7 @@ class BookTranslation implements TranslationInterface
     private $slug;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text", nullable=true)
      */

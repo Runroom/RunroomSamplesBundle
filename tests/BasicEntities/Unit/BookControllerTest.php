@@ -63,7 +63,7 @@ class BookControllerTest extends TestCase
 
         $response = $this->controller->books();
 
-        $this->assertSame($expectedResponse, $response);
+        self::assertSame($expectedResponse, $response);
     }
 
     /** @test */
@@ -78,6 +78,6 @@ class BookControllerTest extends TestCase
 
         $response = $this->controller->book('book');
 
-        $this->assertSame($expectedResponse, $response);
+        self::assertSame($expectedResponse, $response);
     }
 }
