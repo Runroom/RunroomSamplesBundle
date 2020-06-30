@@ -61,7 +61,7 @@ class Contact
     ];
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -70,77 +70,77 @@ class Contact
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string")
      */
     private $email;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string")
      */
     private $phone;
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Column(type="integer")
      */
     private $subject;
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Column(type="integer")
      */
     private $type;
 
     /**
-     * @var int[]
+     * @var int[]|null
      *
      * @ORM\Column(type="array")
      */
     private $preferences;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text")
      */
     private $comment;
 
     /**
-     * @var bool
+     * @var bool|null
      *
      * @ORM\Column(type="boolean")
      */
     private $newsletter;
 
     /**
-     * @var bool
+     * @var bool|null
      *
      * @ORM\Column(type="boolean")
      */
     private $privacyPolicy;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
      * @ORM\Column(type="datetime")
      */
     private $date;
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Column(type="integer")
      */

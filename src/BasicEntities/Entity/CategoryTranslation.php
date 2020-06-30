@@ -24,7 +24,7 @@ class CategoryTranslation implements TranslationInterface
     use ORMBehaviors\Translatable\TranslationTrait;
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -33,7 +33,7 @@ class CategoryTranslation implements TranslationInterface
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @Assert\NotNull
      * @Assert\Length(max=255)

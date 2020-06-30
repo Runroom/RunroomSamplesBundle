@@ -17,6 +17,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /** @extends ServiceEntityRepository<Book> */
@@ -34,7 +35,7 @@ class BookRepository extends ServiceEntityRepository
 
     public function findBySlug(string $slug): Book
     {
-        $request = $this->requestStack->getCurrentRequest();
+        $request = $this->requestStack->getCurrentRequest() ?? new Request();
 
         $query = $this->createQueryBuilder('book')
             ->leftJoin('book.translations', 'translations', Join::WITH, 'translations.locale = :locale')

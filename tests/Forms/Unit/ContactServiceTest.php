@@ -50,6 +50,6 @@ class ContactServiceTest extends TestCase
 
         $model = $this->service->getContactForm();
 
-        $this->assertInstanceOf(FormAwareInterface::class, $model);
+        self::assertSame($formAware->reveal(), $model);
     }
 }

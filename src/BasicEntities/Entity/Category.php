@@ -25,7 +25,7 @@ class Category implements TranslatableInterface
     use ORMBehaviors\Translatable\TranslatableTrait;
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Id
      * @ORM\GeneratedValue
