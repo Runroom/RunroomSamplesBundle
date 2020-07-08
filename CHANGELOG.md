@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- changelog-linker -->
 
+## [v0.2.0] - 2020-07-08
+
+### Changed
+
+- [#20] Upgrade runroom packages and increase coverage
+- [#19] Increase phpstan to level 8
+- [#18] improve static code analisis
+- [#17] Improve workflows and upgrade
+
 ## [v0.1.8] - 2020-06-03
 
 ### Changed
@@ -80,3 +89,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [#15]: https://github.com/Runroom/SamplesBundle/pull/15
 [#14]: https://github.com/Runroom/SamplesBundle/pull/14
 [v0.1.8]: https://github.com/Runroom/SamplesBundle/compare/v0.1.7...v0.1.8
+[#20]: https://github.com/Runroom/RunroomSamplesBundle/pull/20
+[#19]: https://github.com/Runroom/RunroomSamplesBundle/pull/19
+[#18]: https://github.com/Runroom/RunroomSamplesBundle/pull/18
+[#17]: https://github.com/Runroom/RunroomSamplesBundle/pull/17
+[v0.2.0]: https://github.com/Runroom/SamplesBundle/compare/v0.1.8...v0.2.0
