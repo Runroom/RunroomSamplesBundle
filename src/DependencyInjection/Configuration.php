@@ -26,8 +26,10 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode->children()
             ->arrayNode('class')
+                ->isRequired()
                 ->children()
                     ->scalarNode('media')
+                        ->isRequired()
                         ->cannotBeEmpty()
                         ->validate()
                             ->ifTrue(function ($config): bool {
