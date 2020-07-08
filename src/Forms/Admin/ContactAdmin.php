@@ -19,17 +19,18 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\DoctrineORMAdminBundle\Filter\DateRangeFilter;
 use Sonata\Form\Type\DateTimeRangePickerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ContactAdmin extends AbstractAdmin
 {
-    /** @var array{ _page: int, _sort_order: 'ASC'|'DESC', _sort_by: string } */
-    protected $datagridValues = [
-        '_page' => 1,
-        '_sort_order' => 'DESC',
-        '_sort_by' => 'date',
-    ];
+    /** @param array{ _page?: int, _sort_order?: 'ASC'|'DESC', _sort_by?: string } $sortValues */
+    protected function configureDefaultSortValues(array &$sortValues): void
+    {
+        $sortValues['_sort_order'] = 'DESC';
+        $sortValues['_sort_by'] = 'date';
+    }
 
     protected function configureRoutes(RouteCollection $collection): void
     {
@@ -71,7 +72,7 @@ class ContactAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            ->add('date', 'doctrine_orm_date_range', [
+            ->add('date', DateRangeFilter::class, [
                 'field_type' => DateTimeRangePickerType::class,
             ])
             ->add('name')
