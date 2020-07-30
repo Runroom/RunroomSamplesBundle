@@ -21,16 +21,8 @@ class HubspotService
         $this->portalId = $portalId;
         $this->formId = $formId;
     }
-    public function send($model)
+    public function send(array $data)
     {
-        $array = [
-            'fields' => [
-                [
-                    'name' => 'email',
-                    'value' => 'oscar@runroom.com',
-                ]
-            ],
-        ];
-        $this->hubspotForms->submit($this->portalId, $this->formId, $array);
+        $this->hubspotForms->submit($this->portalId, $this->formId, $data);
     }
 }

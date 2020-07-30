@@ -59,7 +59,24 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
         $this->entityManager->persist($contact);
         $this->entityManager->flush();
 
-        $this->hubspotService->send($model);
+
+        $data = [
+            'fields' => [
+                [
+                    'name' => 'firstname',
+                    'value' => $model->getName(),
+                ],
+                [
+                    'name' => 'phone',
+                    'value' => $model->getPhone(),
+                ],
+                [
+                    'name' => 'email',
+                    'value' => $model->getEmail(),
+                ]
+            ],
+        ];
+        $this->hubspotService->send($data);
     }
 
     public static function getSubscribedEvents(): array
