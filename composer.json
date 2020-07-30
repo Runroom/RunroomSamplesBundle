@@ -22,6 +22,7 @@
         "doctrine/doctrine-bundle": "^2.1",
         "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.2",
         "gedmo/doctrine-extensions": "^2.4",
+        "hubspot/hubspot-php": "2.0.4",
         "knplabs/doctrine-behaviors": "^2.0.6",
         "runroom-packages/form-handler-bundle": "^0.8",
         "runroom-packages/render-event-bundle": "^0.8",
