@@ -16,6 +16,7 @@ namespace Runroom\SamplesBundle\Forms\Form;
 use Doctrine\ORM\EntityManagerInterface;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Entity\Contact;
+use Runroom\SamplesBundle\Forms\Service\HubspotService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -24,9 +25,16 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
     /** @var EntityManagerInterface */
     protected $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    /** @var HubspotService */
+    protected $hubspotService;
+
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        HubspotService $hubspotService
+    )
     {
         $this->entityManager = $entityManager;
+        $this->hubspotService = $hubspotService;
     }
 
     /**
@@ -50,6 +58,8 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
 
         $this->entityManager->persist($contact);
         $this->entityManager->flush();
+
+        $this->hubspotService->send($model);
     }
 
     public static function getSubscribedEvents(): array
