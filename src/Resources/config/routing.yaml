@@ -27,3 +27,7 @@ runroom_samples.forms.contact_ajax_post:
     path: /contact-ajax
     methods: [POST]
     controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactAjaxPost
+
+runroom_samples.forms.hubspot:
+    path: /hubspot
+    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::hubspot
