@@ -8,12 +8,18 @@ use SevenShores\Hubspot\Resources\Forms;
 class HubspotService
 {
     protected $hubspotForms;
+    protected $portalId;
+    protected $formId;
 
     public function __construct(
-        Forms $hubspotForms
+        Forms $hubspotForms,
+        string $portalId,
+        string $formId
     )
     {
         $this->hubspotForms = $hubspotForms;
+        $this->portalId = $portalId;
+        $this->formId = $formId;
     }
     public function send($model)
     {
@@ -25,6 +31,6 @@ class HubspotService
                 ]
             ],
         ];
-        $this->hubspotForms->submit('4299768', 'f754ad44-75dc-4917-9f48-b2e736f62f52', $array);
+        $this->hubspotForms->submit($this->portalId, $this->formId, $array);
     }
 }
