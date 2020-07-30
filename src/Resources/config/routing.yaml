@@ -30,4 +30,4 @@ runroom_samples.forms.contact_ajax_post:
 
 runroom_samples.forms.hubspot:
     path: /hubspot
-    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::hubspot
+    controller: Runroom\SamplesBundle\Forms\Controller\ContactController::contactHubspot

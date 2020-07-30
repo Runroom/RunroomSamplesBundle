@@ -4,3 +4,6 @@ phpunit.xml
 vendor
 .php_cs
 .php_cs.cache
+
+#IDES
+.idea

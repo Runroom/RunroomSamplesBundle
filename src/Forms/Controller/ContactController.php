@@ -15,6 +15,7 @@ namespace Runroom\SamplesBundle\Forms\Controller;
 
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
+use Runroom\SamplesBundle\Forms\Service\HubspotService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -80,9 +81,9 @@ class ContactController
         return new JsonResponse(['status' => 'error'], Response::HTTP_BAD_REQUEST);
     }
 
-    public function hubspot(): Response
+    public function contactHubspot(): Response
     {
-        $model = $this->service->getContactForm();
+        $model = $this->service->getContactHubspotForm();
 
         if ($model->formIsValid()) {
             return new RedirectResponse(
