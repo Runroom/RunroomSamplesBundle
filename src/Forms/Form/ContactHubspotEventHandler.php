@@ -67,12 +67,16 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
                     'value' => $model->getName(),
                 ],
                 [
-                    'name' => 'phone',
+                    'name' => 'mobilephone',
                     'value' => $model->getPhone(),
                 ],
                 [
                     'name' => 'email',
                     'value' => $model->getEmail(),
+                ],
+                [
+                    'name' => 'comentario',
+                    'value' => $model->getComment(),
                 ]
             ],
         ];
