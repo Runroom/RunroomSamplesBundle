@@ -36,3 +36,11 @@ services:
         arguments: [null, Runroom\SamplesBundle\Forms\Entity\Contact, null]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'Contacts' }
+
+    SevenShores\Hubspot\Http\Client:
+        arguments:
+            - { key: '%env(HUBSPOT_KEY)%' }
+
+    SevenShores\Hubspot\Resources\Forms:
+        bind:
+            $client: '@SevenShores\Hubspot\Http\Client'
