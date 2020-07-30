@@ -20,8 +20,8 @@ class HubspotService
         $array = [
             'fields' => [
                 [
-                    'name' => 'name',
-                    'value' => 'Test',
+                    'name' => 'email',
+                    'value' => 'oscar@runroom.com',
                 ]
             ],
         ];
