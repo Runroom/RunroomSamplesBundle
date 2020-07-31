@@ -47,4 +47,12 @@ class BookRepository extends ServiceEntityRepository
 
         return $query->getSingleResult();
     }
+
+    public function getBooksQueryBuilder()
+    {
+        return $this->createQueryBuilder('book')
+            ->where('book.publish = true')
+            ->leftJoin('book.translations', 'translations', Join::WITH, 'translations.locale = :locale')
+            ->setParameter('locale', $request->getLocale());
+    }
 }
