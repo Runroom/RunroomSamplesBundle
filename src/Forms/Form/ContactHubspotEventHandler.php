@@ -18,21 +18,27 @@ use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Service\HubspotService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class ContactHubspotEventHandler implements EventSubscriberInterface
 {
     /** @var EntityManagerInterface */
     protected $entityManager;
 
+    /** @var TranslatorInterface */
+    protected $translator;
+
     /** @var HubspotService */
     protected $hubspotService;
 
     public function __construct(
         EntityManagerInterface $entityManager,
+        TranslatorInterface $translator,
         HubspotService $hubspotService
     )
     {
         $this->entityManager = $entityManager;
+        $this->translator = $translator;
         $this->hubspotService = $hubspotService;
     }
 
@@ -66,11 +72,13 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
                     'name' => 'comentario',
                     'value' => $model->getComment(),
                 ],
-                [
-                    'name' => 'acepto_la_pol_tica_de_privacidad',
-                    'value' => $model->getPrivacyPolicy(),
-                ],
             ],
+            'legalConsentOptions' => [
+                'consent' => [
+                    'text' => $this->translator->trans('form.privacy_policy', [], 'messages','es'),
+                    'consentToProcess' => $model->getPrivacyPolicy(),
+                ],
+            ]
         ];
         $this->hubspotService->send($data);
     }
