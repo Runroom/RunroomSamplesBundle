@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Forms\Model;
 
-class ContactHubspot
+final class ContactHubspot
 {
     /** @var string|null */
     private $name;

@@ -22,13 +22,14 @@ use Symfony\Component\Translation\TranslatorInterface;
 final class ContactHubspotEventHandler implements EventSubscriberInterface
 {
     /** @var Forms */
-    protected $hubspotForms;
+    private $hubspotForms;
 
     /** @var int */
-    protected $portalId;
+    private $portalId;
 
     /** @var string */
-    protected $formId;
+    private $formId;
+
     /** @var TranslatorInterface */
     private $translator;
 
