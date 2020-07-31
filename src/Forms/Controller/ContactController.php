@@ -87,14 +87,14 @@ class ContactController
 
         if ($model->formIsValid()) {
             return new RedirectResponse(
-                $this->router->generate('runroom_samples.forms.contact', [
+                $this->router->generate('runroom_samples.forms.hubspot', [
                     '_fragment' => 'form',
                 ])
             );
         }
 
         return $this->renderer->renderResponse(
-            '@RunroomSamples/Forms/contact.html.twig',
+            '@RunroomSamples/Forms/contact-hubspot.html.twig',
             $model
         );
     }

@@ -13,8 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Forms\Form\Type;
 
-use Runroom\SamplesBundle\Forms\Entity\Contact as EntityContact;
-use Runroom\SamplesBundle\Forms\Model\Contact;
+use Runroom\SamplesBundle\Forms\Model\ContactHubspot;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -51,50 +50,10 @@ class ContactHubspotFormType extends AbstractType
                     new Assert\Length(['max' => 255, 'maxMessage' => 'max_length']),
                 ],
             ])
-            ->add('subject', ChoiceType::class, [
-                'choices' => EntityContact::$subjectChoices,
-                'constraints' => [
-                    new Assert\Choice([
-                        'choices' => array_values(EntityContact::$subjectChoices),
-                        'strict' => true,
-                        'message' => 'choices',
-                    ]),
-                    new Assert\NotBlank(['message' => 'not_blank']),
-                ],
-            ])
-            ->add('type', ChoiceType::class, [
-                'choices' => EntityContact::$typeChoices,
-                'expanded' => true,
-                'constraints' => [
-                    new Assert\Choice([
-                        'choices' => array_values(EntityContact::$typeChoices),
-                        'strict' => true,
-                        'message' => 'choices',
-                    ]),
-                    new Assert\NotBlank(['message' => 'not_blank']),
-                ],
-            ])
-            ->add('preferences', ChoiceType::class, [
-                'choices' => EntityContact::$preferenceChoices,
-                'expanded' => true,
-                'multiple' => true,
-                'required' => false,
-                'constraints' => [
-                    new Assert\Choice([
-                        'choices' => array_values(EntityContact::$preferenceChoices),
-                        'strict' => true,
-                        'multiple' => true,
-                        'multipleMessage' => 'choices',
-                    ]),
-                ],
-            ])
             ->add('comment', TextareaType::class, [
                 'constraints' => [
                     new Assert\NotBlank(['message' => 'not_blank']),
                 ],
-            ])
-            ->add('newsletter', CheckboxType::class, [
-                'required' => false,
             ])
             ->add('privacyPolicy', CheckboxType::class, [
                 'constraints' => [
@@ -107,7 +66,7 @@ class ContactHubspotFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Contact::class,
+            'data_class' => ContactHubspot::class,
             'csrf_protection' => false,
         ]);
     }
