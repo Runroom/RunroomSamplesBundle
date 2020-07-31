@@ -20,7 +20,7 @@ class HubspotService
     /** @var Forms */
     protected $hubspotForms;
 
-    /** @var string */
+    /** @var int */
     protected $portalId;
 
     /** @var string */
@@ -28,7 +28,7 @@ class HubspotService
 
     public function __construct(
         Forms $hubspotForms,
-        string $portalId,
+        int $portalId,
         string $formId
     ) {
         $this->hubspotForms = $hubspotForms;
@@ -36,7 +36,11 @@ class HubspotService
         $this->formId = $formId;
     }
 
-    public function send(iterable $data): void
+    /**
+     * @phpstan-param array $data
+     * @psalm-param array $data
+     */
+    public function send(array $data): void
     {
         $this->hubspotForms->submit($this->portalId, $this->formId, $data);
     }
