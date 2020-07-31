@@ -35,8 +35,7 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
         EntityManagerInterface $entityManager,
         TranslatorInterface $translator,
         HubspotService $hubspotService
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->translator = $translator;
         $this->hubspotService = $hubspotService;
@@ -71,10 +70,10 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
             ],
             'legalConsentOptions' => [
                 'consent' => [
-                    'text' => $this->translator->trans('form.privacy_policy', [], 'messages','es'),
+                    'text' => $this->translator->trans('form.privacy_policy', [], 'messages', 'es'),
                     'consentToProcess' => $model->getPrivacyPolicy(),
                 ],
-            ]
+            ],
         ]);
     }
 

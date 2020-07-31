@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Forms\Model;
 
-use Runroom\SamplesBundle\Forms\Entity\Contact as EntityContact;
-
 class ContactHubspot
 {
     /** @var string|null */
