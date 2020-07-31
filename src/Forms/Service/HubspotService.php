@@ -17,8 +17,13 @@ use SevenShores\Hubspot\Resources\Forms;
 
 class HubspotService
 {
+    /** @var Forms */
     protected $hubspotForms;
+
+    /** @var string */
     protected $portalId;
+
+    /** @var string */
     protected $formId;
 
     public function __construct(
