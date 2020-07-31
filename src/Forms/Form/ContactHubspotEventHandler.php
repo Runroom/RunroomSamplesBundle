@@ -52,7 +52,7 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
     {
         $model = $event->getSubject()->getForm()->getData();
 
-        $this->hubspotForms->submit($this->portalId, $this->formId, [
+        $this->sendHubspot([
             'fields' => [
                 [
                     'name' => 'firstname',
@@ -85,5 +85,13 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
         return [
             'form.contact_hubspot_form.event.success' => 'onContactSuccess',
         ];
+    }
+
+    /**
+     * @param array{ fields: array{name: string, value: string}[], legalConsentOptions: array<string, string>[] } $data
+     */
+    private function sendHubspot(array $data): void
+    {
+        $this->hubspotForms->submit($this->portalId, $this->formId, $data);
     }
 }
