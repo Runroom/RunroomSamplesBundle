@@ -57,7 +57,7 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
                     'value' => $model->getName(),
                 ],
                 [
-                    'name' => 'mobilephone',
+                    'name' => 'phone',
                     'value' => $model->getPhone(),
                 ],
                 [
