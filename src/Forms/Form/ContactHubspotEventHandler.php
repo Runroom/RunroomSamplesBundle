@@ -61,7 +61,15 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
                 [
                     'name' => 'comentario',
                     'value' => $model->getComment(),
-                ]
+                ],
+                [
+                    'name' => 'comentario',
+                    'value' => $model->getComment(),
+                ],
+                [
+                    'name' => 'acepto_la_pol_tica_de_privacidad',
+                    'value' => $model->getPrivacyPolicy(),
+                ],
             ],
         ];
         $this->hubspotService->send($data);
