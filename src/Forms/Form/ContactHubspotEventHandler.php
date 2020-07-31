@@ -20,16 +20,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class ContactHubspotEventHandler implements EventSubscriberInterface
+final class ContactHubspotEventHandler implements EventSubscriberInterface
 {
     /** @var EntityManagerInterface */
-    protected $entityManager;
+    private $entityManager;
 
     /** @var TranslatorInterface */
-    protected $translator;
+    private $translator;
 
     /** @var HubspotService */
-    protected $hubspotService;
+    private $hubspotService;
 
     public function __construct(
         EntityManagerInterface $entityManager,
@@ -50,7 +50,7 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
     {
         $model = $event->getSubject()->getForm()->getData();
 
-        $data = [
+        $this->hubspotService->send([
             'fields' => [
                 [
                     'name' => 'firstname',
@@ -75,8 +75,7 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
                     'consentToProcess' => $model->getPrivacyPolicy(),
                 ],
             ]
-        ];
-        $this->hubspotService->send($data);
+        ]);
     }
 
     public static function getSubscribedEvents(): array

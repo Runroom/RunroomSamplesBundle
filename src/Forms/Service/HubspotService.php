@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Runroom\SamplesBundle\Forms\Service;
 
 use SevenShores\Hubspot\Resources\Forms;
