@@ -15,30 +15,35 @@ namespace Runroom\SamplesBundle\Forms\Form;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
-use Runroom\SamplesBundle\Forms\Service\HubspotService;
+use SevenShores\Hubspot\Resources\Forms;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Translation\TranslatorInterface;
 
 final class ContactHubspotEventHandler implements EventSubscriberInterface
 {
-    /** @var EntityManagerInterface */
-    private $entityManager;
-
     /** @var TranslatorInterface */
     private $translator;
 
-    /** @var HubspotService */
-    private $hubspotService;
+    /** @var Forms */
+    protected $hubspotForms;
+
+    /** @var int */
+    protected $portalId;
+
+    /** @var string */
+    protected $formId;
 
     public function __construct(
-        EntityManagerInterface $entityManager,
         TranslatorInterface $translator,
-        HubspotService $hubspotService
+        Forms $hubspotForms,
+        int $portalId,
+        string $formId
     ) {
-        $this->entityManager = $entityManager;
         $this->translator = $translator;
-        $this->hubspotService = $hubspotService;
+        $this->hubspotForms = $hubspotForms;
+        $this->portalId = $portalId;
+        $this->formId = $formId;
     }
 
     /**
@@ -49,7 +54,7 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
     {
         $model = $event->getSubject()->getForm()->getData();
 
-        $this->hubspotService->send([
+        $this->hubspotForms->submit($this->portalId, $this->formId, [
             'fields' => [
                 [
                     'name' => 'firstname',
