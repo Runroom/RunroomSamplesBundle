@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Forms\Form;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use SevenShores\Hubspot\Resources\Forms;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -22,9 +21,6 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 final class ContactHubspotEventHandler implements EventSubscriberInterface
 {
-    /** @var TranslatorInterface */
-    private $translator;
-
     /** @var Forms */
     protected $hubspotForms;
 
@@ -33,6 +29,8 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
 
     /** @var string */
     protected $formId;
+    /** @var TranslatorInterface */
+    private $translator;
 
     public function __construct(
         TranslatorInterface $translator,
