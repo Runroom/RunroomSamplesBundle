@@ -15,7 +15,6 @@ namespace Runroom\SamplesBundle\Forms\Form;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
-use Runroom\SamplesBundle\Forms\Entity\Contact;
 use Runroom\SamplesBundle\Forms\Service\HubspotService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -44,21 +43,6 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
     public function onContactSuccess(GenericEvent $event): void
     {
         $model = $event->getSubject()->getForm()->getData();
-
-        $contact = new Contact();
-        $contact->setName($model->getName());
-        $contact->setEmail($model->getEmail());
-        $contact->setPhone($model->getPhone());
-        $contact->setSubject($model->getSubject());
-        $contact->setType($model->getType());
-        $contact->setPreferences($model->getPreferences());
-        $contact->setComment($model->getComment());
-        $contact->setNewsletter($model->getNewsletter());
-        $contact->setPrivacyPolicy($model->getPrivacyPolicy());
-
-        $this->entityManager->persist($contact);
-        $this->entityManager->flush();
-
 
         $data = [
             'fields' => [
