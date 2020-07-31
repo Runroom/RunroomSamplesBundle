@@ -31,7 +31,7 @@ class HubspotService
         $this->formId = $formId;
     }
 
-    public function send(array $data)
+    public function send(iterable $data): void
     {
         $this->hubspotForms->submit($this->portalId, $this->formId, $data);
     }
