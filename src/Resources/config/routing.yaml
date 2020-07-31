@@ -13,6 +13,10 @@ runroom_samples.basic_entities.book:
     path: /book/{slug}
     controller: Runroom\SamplesBundle\BasicEntities\Controller\BookController::book
 
+runroom_samples.basic_entities.search:
+    path: /search
+    controller: Runroom\SamplesBundle\BasicEntities\Controller\SearchController::search
+
 # Forms
 runroom_samples.forms.contact:
     path: /contact

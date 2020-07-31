@@ -21,3 +21,19 @@ sonata_admin:
                     - Runroom\SamplesBundle\BasicEntities\Admin\BookAdmin
                     - Runroom\SamplesBundle\BasicEntities\Admin\CategoryAdmin
                     - Runroom\SamplesBundle\Forms\Admin\ContactAdmin
+
+fos_elastica:
+    indexes:
+        books:
+            types:
+                default:
+                    properties:
+                        id: null
+                    persistence:
+                        driver: orm
+                        model: Runroom\SamplesBundle\BasicEntities\Entity\Book
+                        listener:
+                            defer: true
+                            logger: true
+                        elastica_to_model_transformer:
+                            ignore_missing: true

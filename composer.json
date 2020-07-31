@@ -21,6 +21,7 @@
         "a2lix/translation-form-bundle": "^3.0",
         "doctrine/doctrine-bundle": "^2.1",
         "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.2",
+        "friendsofsymfony/elastica-bundle": "^5.1",
         "gedmo/doctrine-extensions": "^2.4",
         "knplabs/doctrine-behaviors": "^2.0.6",
         "runroom-packages/form-handler-bundle": "^0.8",
