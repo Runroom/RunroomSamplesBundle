@@ -38,8 +38,8 @@ services:
             - { name: sonata.admin, manager_type: orm, label: 'Contacts' }
 
     SevenShores\Hubspot\Http\Client:
-        bind:
-            $key: '%env(HUBSPOT_KEY)%'
+        arguments:
+            - { key: '%env(HUBSPOT_KEY)%' }
 
     SevenShores\Hubspot\Resources\Forms:
         bind:
