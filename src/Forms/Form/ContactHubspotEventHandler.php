@@ -68,10 +68,6 @@ class ContactHubspotEventHandler implements EventSubscriberInterface
                     'name' => 'comentario',
                     'value' => $model->getComment(),
                 ],
-                [
-                    'name' => 'comentario',
-                    'value' => $model->getComment(),
-                ],
             ],
             'legalConsentOptions' => [
                 'consent' => [
