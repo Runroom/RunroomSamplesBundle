@@ -18,6 +18,7 @@ use A2lix\TranslationFormBundle\A2lixTranslationFormBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use FOS\CKEditorBundle\FOSCKEditorBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 use Knp\DoctrineBehaviors\DoctrineBehaviorsBundle;
 use Runroom\FormHandlerBundle\RunroomFormHandlerBundle;
 use Runroom\RenderEventBundle\RunroomRenderEventBundle;
@@ -36,7 +37,6 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
-use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 
 final class Kernel extends BaseKernel
 {
