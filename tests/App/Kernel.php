@@ -36,6 +36,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 
 final class Kernel extends BaseKernel
 {
@@ -51,6 +52,7 @@ final class Kernel extends BaseKernel
             new FOSCKEditorBundle(),
             new FrameworkBundle(),
             new KnpMenuBundle(),
+            new KnpPaginatorBundle(),
             new SecurityBundle(),
             new TwigBundle(),
             new SonataMediaBundle(),

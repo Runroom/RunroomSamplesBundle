@@ -41,7 +41,7 @@ class BookService
     {
         // $books = $this->repository->findBy(['publish' => true], ['position' => 'ASC']);
 
-        $queryBuilder = $this->repository->getArticlesQueryBuilder();
+        $queryBuilder = $this->repository->getBooksQueryBuilder();
 
         $pagination = $this->paginator->paginate($queryBuilder, $page, self::MAX_RESULT);
 
