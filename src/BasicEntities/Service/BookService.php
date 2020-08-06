@@ -15,9 +15,9 @@ namespace Runroom\SamplesBundle\BasicEntities\Service;
 
 use Knp\Component\Pager\PaginatorInterface;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
+use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksListViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
-use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksListViewModel;
 
 class BookService
 {
