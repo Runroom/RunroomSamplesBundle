@@ -58,7 +58,8 @@ class BookController
         $model = $this->service->getBooksListViewModel($page);
 
         return $this->renderer->renderResponse(
-            ''
-        )
+            '@RunroomSamples/BasicEntities/book-list.html.twig',
+            $model
+        );
     }
 }
