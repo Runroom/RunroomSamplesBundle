@@ -31,6 +31,7 @@ class BookServiceTest extends TestCase
     /** @var BookService */
     private $service;
 
+    /** @var PaginatorInterface */
     private $paginator;
 
     protected function setUp(): void
