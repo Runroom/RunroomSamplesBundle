@@ -33,9 +33,9 @@ class BookController
         $this->service = $service;
     }
 
-    public function books(int $page): Response
+    public function books(): Response
     {
-        $model = $this->service->getBooksViewModel($page);
+        $model = $this->service->getBooksViewModel();
 
         return $this->renderer->renderResponse(
             '@RunroomSamples/BasicEntities/books.html.twig',

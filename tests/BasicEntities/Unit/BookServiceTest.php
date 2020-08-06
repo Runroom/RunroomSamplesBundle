@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
-use Knp\Component\Pager\Paginator;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -35,7 +34,7 @@ class BookServiceTest extends TestCase
     {
         $this->repository = $this->prophesize(BookRepository::class);
 
-        $this->service = new BookService($this->repository->reveal(), new Paginator());
+        $this->service = new BookService($this->repository->reveal());
     }
 
     /** @test */
@@ -45,7 +44,7 @@ class BookServiceTest extends TestCase
 
         $this->repository->findBy(['publish' => true], ['position' => 'ASC'])->willReturn($expectedBooks);
 
-        $model = $this->service->getBooksViewModel(1);
+        $model = $this->service->getBooksViewModel();
 
         self::assertSame($model->getBooks(), $expectedBooks);
     }

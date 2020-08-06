@@ -56,12 +56,12 @@ class BookControllerTest extends TestCase
         $expectedResponse = new Response();
         $model = new BooksViewModel();
 
-        $this->service->getBooksViewModel(1)->willReturn($model);
+        $this->service->getBooksViewModel()->willReturn($model);
 
         $this->renderer->renderResponse(self::BOOKS_VIEW, $model, null)
             ->willReturn($expectedResponse);
 
-        $response = $this->controller->books(1);
+        $response = $this->controller->books();
 
         self::assertSame($expectedResponse, $response);
     }
