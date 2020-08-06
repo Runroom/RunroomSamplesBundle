@@ -1,0 +1,7 @@
+{% extends '@RunroomSamples/base.html.twig' %}
+
+{% block content %}
+    {% for book in model.pagination.items %}
+        <p>{{ book.title }}</p>
+    {% endfor %}
+{% endblock content %}

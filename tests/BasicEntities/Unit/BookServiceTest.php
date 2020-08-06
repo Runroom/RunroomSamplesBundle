@@ -19,6 +19,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\Tests\BasicEntities\Fixtures\BookFixture;
+use Knp\Component\Pager\PaginatorInterface;
 
 class BookServiceTest extends TestCase
 {
@@ -30,11 +31,17 @@ class BookServiceTest extends TestCase
     /** @var BookService */
     private $service;
 
+    private $paginator;
+
     protected function setUp(): void
     {
         $this->repository = $this->prophesize(BookRepository::class);
+        $this->paginator = $this->prophesize(PaginatorInterface::class);
 
-        $this->service = new BookService($this->repository->reveal());
+        $this->service = new BookService(
+            $this->repository->reveal(),
+            $this->paginator->reveal()
+        );
     }
 
     /** @test */

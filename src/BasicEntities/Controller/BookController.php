@@ -52,4 +52,13 @@ class BookController
             $model
         );
     }
+
+    public function list(int $page): Response
+    {
+        $model = $this->service->getBooksListViewModel($page);
+
+        return $this->renderer->renderResponse(
+            ''
+        )
+    }
 }

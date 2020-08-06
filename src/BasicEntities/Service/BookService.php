@@ -17,6 +17,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
+use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksListViewModel;
 
 class BookService
 {
@@ -37,17 +38,12 @@ class BookService
         $this->paginator = $paginator;
     }
 
-    public function getBooksViewModel(int $page): BooksViewModel
+    public function getBooksViewModel(): BooksViewModel
     {
-        // $books = $this->repository->findBy(['publish' => true], ['position' => 'ASC']);
-
-        $queryBuilder = $this->repository->getBooksQueryBuilder();
-
-        $pagination = $this->paginator->paginate($queryBuilder, $page, self::MAX_RESULT);
+        $books = $this->repository->findBy(['publish' => true], ['position' => 'ASC']);
 
         $model = new BooksViewModel();
-        $model->setPagination($pagination);
-        // $model->setBooks($books);
+        $model->setBooks($books);
 
         return $model;
     }
@@ -58,6 +54,18 @@ class BookService
 
         $model = new BookViewModel();
         $model->setBook($book);
+
+        return $model;
+    }
+
+    public function getBooksListViewModel(int $page): BooksListViewModel
+    {
+        $queryBuilder = $this->repository->getBooksQueryBuilder();
+
+        $pagination = $this->paginator->paginate($queryBuilder, $page, self::MAX_RESULT);
+
+        $model = new BooksListViewModel();
+        $model->setPagination($pagination);
 
         return $model;
     }
