@@ -35,8 +35,8 @@ class ContactHubspotFormTypeTest extends TypeTestCase
         $form = $this->factory->create(ContactHubspotFormType::class, $model);
         $expected = new ContactHubspot();
         $form->submit($formData);
-        $this->assertTrue($form->isSynchronized());
-        $this->assertEquals($expected, $model);
+        self::assertTrue($form->isSynchronized());
+        self::assertEquals($expected, $model);
     }
 
     protected function getExtensions(): array
