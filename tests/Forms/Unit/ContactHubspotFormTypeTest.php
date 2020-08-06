@@ -15,6 +15,7 @@ namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
 use Runroom\SamplesBundle\Forms\Form\Type\ContactHubspotFormType;
 use Runroom\SamplesBundle\Forms\Model\ContactHubspot;
+use Symfony\Component\Form\AbstractExtension;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Validator\Validation;
@@ -39,6 +40,9 @@ class ContactHubspotFormTypeTest extends TypeTestCase
         self::assertEquals($expected, $model);
     }
 
+    /**
+     * @return AbstractExtension[]
+     */
     protected function getExtensions(): array
     {
         $validator = Validation::createValidatorBuilder()
