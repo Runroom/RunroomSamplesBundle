@@ -32,6 +32,7 @@ class BooksListViewModel
 
     /**
      * @param PaginationInterface<Book> $pagination
+     *
      * @return self */
     public function setPagination(PaginationInterface $pagination): self
     {
