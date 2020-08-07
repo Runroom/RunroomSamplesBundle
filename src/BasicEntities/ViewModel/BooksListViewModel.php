@@ -13,12 +13,13 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\ViewModel;
 
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BooksListViewModel
 {
-    /** @var PaginationInterface<Book> */
+    /** @var SlidingPaginationInterface<Book> */
     protected $pagination;
 
     /** @var array<mixed> */
@@ -31,10 +32,8 @@ class BooksListViewModel
     }
 
     /**
-     * @param PaginationInterface<Book> $pagination
-     *
-     * @return self */
-    public function setPagination(PaginationInterface $pagination): self
+     * @param SlidingPaginationInterface<Book> $pagination */
+    public function setPagination(SlidingPaginationInterface &$pagination): self
     {
         $this->pagination = $pagination;
         $this->paginationData = $pagination->getPaginationData();
