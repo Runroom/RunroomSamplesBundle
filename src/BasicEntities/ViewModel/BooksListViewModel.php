@@ -25,8 +25,8 @@ class BooksListViewModel
     /** @var array<mixed> */
     protected $paginationData;
 
-    /** @return PaginationInterface<Book>|null */
-    public function getPagination(): ?PaginationInterface
+    /** @return SlidingPaginationInterface<Book>|null */
+    public function getPagination(): ?SlidingPaginationInterface
     {
         return $this->pagination;
     }
