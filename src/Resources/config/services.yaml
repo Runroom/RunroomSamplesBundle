@@ -24,6 +24,10 @@ services:
         arguments: [null, Runroom\SamplesBundle\BasicEntities\Entity\Category, null]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'Categories' }
+    
+    Runroom\SamplesBundle\BasicEntities\Service\BookService:
+        public: true
+        arguments: ['@Runroom\SamplesBundle\BasicEntities\Repository\BookRepository', '@knp_paginator']
 
     # Forms
     Runroom\SamplesBundle\Forms\Controller\:
