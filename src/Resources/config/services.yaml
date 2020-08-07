@@ -29,7 +29,7 @@ services:
         public: true
         arguments: [Runroom\SamplesBundle\BasicEntities\Repository\BookRepository, Knp\Component\Pager\PaginatorInterface]
         tags:
-            - { name: sonata.admin, magaer_type: orm, label: 'Books' }
+            - { name: sonata.admin, manager_type: orm, label: 'Books' }
 
     # Forms
     Runroom\SamplesBundle\Forms\Controller\:
