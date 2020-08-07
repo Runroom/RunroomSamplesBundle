@@ -25,19 +25,23 @@ class ContactHubspotFormTypeTest extends TypeTestCase
     public function testSubmitValidData(): void
     {
         $formData = [
-            'name' => null,
-            'email' => null,
-            'phone' => null,
-            'comment' => null,
-            'privacyPolicy' => false,
+            'name' => 'John Doe',
+            'email' => 'johndoe@example.com',
+            'phone' => '123456789',
+            'comment' => 'Lorem ipsum',
+            'privacyPolicy' => true,
         ];
 
         $model = new ContactHubspot();
         $form = $this->factory->create(ContactHubspotFormType::class, $model);
-        $expected = new ContactHubspot();
         $form->submit($formData);
         self::assertTrue($form->isSynchronized());
-        self::assertEquals($expected, $model);
+        self::assertInstanceOf(ContactHubspot::class, $form->getData());
+        self::assertSame('John Doe', $model->getName());
+        self::assertSame('johndoe@example.com', $model->getEmail());
+        self::assertSame('123456789', $model->getPhone());
+        self::assertSame('Lorem ipsum', $model->getComment());
+        self::assertTrue($model->getPrivacyPolicy());
     }
 
     /**
