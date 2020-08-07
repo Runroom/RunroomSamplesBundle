@@ -14,22 +14,25 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\BasicEntities\ViewModel;
 
 use Knp\Component\Pager\Pagination\PaginationInterface;
+use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BooksListViewModel
 {
-    /** @var PaginationInterface */
+    /** @var PaginationInterface<Book> */
     protected $pagination;
 
-    /** @var array */
+    /** @var array<mixed> */
     protected $paginationData;
 
-    /** @return PaginationInterface|null */
+    /** @return PaginationInterface<Book>|null */
     public function getPagination(): ?PaginationInterface
     {
         return $this->pagination;
     }
 
-    /** @return BookListViewModel */
+    /**
+     * @param PaginationInterface<Book> $pagination
+     * @return self */
     public function setPagination(PaginationInterface $pagination): self
     {
         $this->pagination = $pagination;
@@ -38,19 +41,16 @@ class BooksListViewModel
         return $this;
     }
 
-    /** @return int|null */
     public function getPreviousPage(): ?int
     {
         return $this->getPaginationData('previous');
     }
 
-    /** @return int|null */
     public function getNextPage(): ?int
     {
         return $this->getPaginationData('next');
     }
 
-    /** return int|null */
     public function getPaginationData(string $data): ?int
     {
         return $this->paginationData[$data] ?? null;
