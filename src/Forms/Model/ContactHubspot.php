@@ -27,8 +27,8 @@ final class ContactHubspot
     /** @var string|null */
     private $comment;
 
-    /** @var bool|null */
-    private $privacyPolicy;
+    /** @var bool */
+    private $privacyPolicy = false;
 
     public function getName(): ?string
     {
