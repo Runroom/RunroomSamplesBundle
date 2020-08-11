@@ -20,7 +20,7 @@
         "php": "^7.3",
         "a2lix/translation-form-bundle": "^3.0",
         "doctrine/doctrine-bundle": "^2.1",
-        "egulias/email-validator": "^2.1",
+        "egulias/email-validator": "^2.1.16",
         "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.2",
         "gedmo/doctrine-extensions": "^2.4",
         "hubspot/hubspot-php": "^2.0",
