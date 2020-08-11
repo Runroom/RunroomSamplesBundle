@@ -46,8 +46,7 @@ class ContactServiceTest extends TestCase
     {
         $formAware = $this->prophesize(FormAwareInterface::class);
 
-        $this->handler->handleForm(ContactFormType::class)
-            ->willReturn($formAware->reveal());
+        $this->handler->handleForm(ContactFormType::class)->willReturn($formAware->reveal());
 
         $model = $this->service->getContactForm();
 
@@ -59,8 +58,7 @@ class ContactServiceTest extends TestCase
     {
         $formAware = $this->prophesize(FormAwareInterface::class);
 
-        $this->handler->handleForm(ContactHubspotFormType::class)
-            ->willReturn($formAware->reveal());
+        $this->handler->handleForm(ContactHubspotFormType::class)->willReturn($formAware->reveal());
 
         $model = $this->service->getContactHubspotForm();
 
