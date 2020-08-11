@@ -78,12 +78,12 @@ final class ContactHubspot
         return $this;
     }
 
-    public function getPrivacyPolicy(): ?bool
+    public function getPrivacyPolicy(): bool
     {
         return $this->privacyPolicy;
     }
 
-    public function setPrivacyPolicy(?bool $privacyPolicy): self
+    public function setPrivacyPolicy(bool $privacyPolicy): self
     {
         $this->privacyPolicy = $privacyPolicy;
 
