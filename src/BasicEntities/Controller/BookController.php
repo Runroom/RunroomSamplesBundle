@@ -15,6 +15,7 @@ namespace Runroom\SamplesBundle\BasicEntities\Controller;
 
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class BookController
@@ -53,8 +54,9 @@ class BookController
         );
     }
 
-    public function list(int $page): Response
+    public function list(Request $request): Response
     {
+        $page = $request->get('page', 1);
         $model = $this->service->getBooksListViewModel($page);
 
         return $this->renderer->renderResponse(
