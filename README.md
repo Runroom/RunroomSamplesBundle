@@ -12,6 +12,7 @@ RunroomSamplesBundle
 ![ci](https://github.com/Runroom/RunroomSamplesBundle/workflows/ci/badge.svg?branch=master)
 ![qa](https://github.com/Runroom/RunroomSamplesBundle/workflows/qa/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/Runroom/RunroomSamplesBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/Runroom/RunroomSamplesBundle)
+[![shepherd](https://shepherd.dev/github/Runroom/RunroomSamplesBundle/coverage.svg)](https://shepherd.dev/github/Runroom/RunroomSamplesBundle)
 
 This bundle is a collection of samples that we often need to implement in our projects. Currently this project is not usable outside the [ArchetypeSymfony](https://github.com/Runroom/archetype-symfony)
 
