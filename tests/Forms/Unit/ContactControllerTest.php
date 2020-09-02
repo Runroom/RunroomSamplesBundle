@@ -27,9 +27,6 @@ class ContactControllerTest extends TestCase
 {
     use ProphecyTrait;
 
-    private const INDEX_VIEW = '@RunroomSamples/Forms/contact.html.twig';
-    private const AJAX_FORM_VIEW = '@RunroomSamples/Forms/contact-ajax.html.twig';
-
     /** @var ObjectProphecy<PageRenderer> */
     private $renderer;
 
@@ -65,7 +62,7 @@ class ContactControllerTest extends TestCase
         $model->formIsValid()->willReturn(false);
 
         $this->service->getContactForm()->willReturn($model->reveal());
-        $this->renderer->renderResponse(self::INDEX_VIEW, $model->reveal(), null)
+        $this->renderer->renderResponse('@RunroomSamples/Forms/contact.html.twig', $model->reveal(), null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->contact();
@@ -81,7 +78,7 @@ class ContactControllerTest extends TestCase
         $model = $this->prophesize(FormAwareInterface::class);
 
         $this->service->getContactForm()->willReturn($model->reveal());
-        $this->renderer->renderResponse(self::AJAX_FORM_VIEW, $model->reveal(), null)
+        $this->renderer->renderResponse('@RunroomSamples/Forms/contact-ajax.html.twig', $model->reveal(), null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->contactAjax();
@@ -109,5 +106,23 @@ class ContactControllerTest extends TestCase
 
         self::assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
         self::assertSame(json_encode(['status' => 'error']), $response->getContent());
+    }
+
+    /** @test */
+    public function itRendersContactHubspot(): void
+    {
+        $expectedResponse = new Response();
+
+        $model = $this->prophesize(FormAwareInterface::class);
+
+        $model->formIsValid()->willReturn(false);
+
+        $this->service->getContactHubspotForm()->willReturn($model->reveal());
+        $this->renderer->renderResponse('@RunroomSamples/Forms/contact-hubspot.html.twig', $model->reveal(), null)
+            ->willReturn($expectedResponse);
+
+        $response = $this->controller->contactHubspot();
+
+        self::assertSame($expectedResponse, $response);
     }
 }

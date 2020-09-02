@@ -79,4 +79,22 @@ class ContactController
 
         return new JsonResponse(['status' => 'error'], Response::HTTP_BAD_REQUEST);
     }
+
+    public function contactHubspot(): Response
+    {
+        $model = $this->service->getContactHubspotForm();
+
+        if ($model->formIsValid()) {
+            return new RedirectResponse(
+                $this->router->generate('runroom_samples.forms.hubspot', [
+                    '_fragment' => 'form',
+                ])
+            );
+        }
+
+        return $this->renderer->renderResponse(
+            '@RunroomSamples/Forms/contact-hubspot.html.twig',
+            $model
+        );
+    }
 }

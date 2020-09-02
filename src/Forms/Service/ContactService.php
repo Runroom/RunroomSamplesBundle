@@ -16,6 +16,7 @@ namespace Runroom\SamplesBundle\Forms\Service;
 use Runroom\FormHandlerBundle\FormHandler;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
+use Runroom\SamplesBundle\Forms\Form\Type\ContactHubspotFormType;
 
 class ContactService
 {
@@ -30,5 +31,10 @@ class ContactService
     public function getContactForm(): FormAwareInterface
     {
         return $this->handler->handleForm(ContactFormType::class);
+    }
+
+    public function getContactHubspotForm(): FormAwareInterface
+    {
+        return $this->handler->handleForm(ContactHubspotFormType::class);
     }
 }

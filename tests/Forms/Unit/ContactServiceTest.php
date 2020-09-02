@@ -19,6 +19,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\FormHandlerBundle\FormHandler;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
+use Runroom\SamplesBundle\Forms\Form\Type\ContactHubspotFormType;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
 
 class ContactServiceTest extends TestCase
@@ -45,10 +46,21 @@ class ContactServiceTest extends TestCase
     {
         $formAware = $this->prophesize(FormAwareInterface::class);
 
-        $this->handler->handleForm(ContactFormType::class)
-            ->willReturn($formAware->reveal());
+        $this->handler->handleForm(ContactFormType::class)->willReturn($formAware->reveal());
 
         $model = $this->service->getContactForm();
+
+        self::assertSame($formAware->reveal(), $model);
+    }
+
+    /** @test */
+    public function itGeneratesDemoHubspotViewModel(): void
+    {
+        $formAware = $this->prophesize(FormAwareInterface::class);
+
+        $this->handler->handleForm(ContactHubspotFormType::class)->willReturn($formAware->reveal());
+
+        $model = $this->service->getContactHubspotForm();
 
         self::assertSame($formAware->reveal(), $model);
     }
