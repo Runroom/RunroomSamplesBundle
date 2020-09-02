@@ -25,6 +25,7 @@ use Runroom\SamplesBundle\RunroomSamplesBundle;
 use Runroom\SamplesBundle\Tests\App\Entity\Media;
 use Runroom\SortableBehaviorBundle\RunroomSortableBehaviorBundle;
 use Sonata\AdminBundle\SonataAdminBundle;
+use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
 use Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle;
 use Sonata\MediaBundle\SonataMediaBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -53,6 +54,7 @@ final class Kernel extends BaseKernel
             new SecurityBundle(),
             new TwigBundle(),
             new SonataMediaBundle(),
+            new SonataDoctrineBundle(),
             new SonataDoctrineORMAdminBundle(),
             new SonataAdminBundle(),
 
@@ -68,22 +70,22 @@ final class Kernel extends BaseKernel
         return __DIR__;
     }
 
-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
+    protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader): void
     {
-        $container->setParameter('kernel.default_locale', 'en');
+        $c->setParameter('kernel.default_locale', 'en');
 
-        $container->loadFromExtension('framework', [
+        $c->loadFromExtension('framework', [
             'test' => true,
             'router' => ['utf8' => true],
             'secret' => 'secret',
             'session' => ['storage_id' => 'session.storage.mock_file'],
         ]);
 
-        $container->loadFromExtension('security', [
+        $c->loadFromExtension('security', [
             'firewalls' => ['main' => ['anonymous' => true]],
         ]);
 
-        $container->loadFromExtension('doctrine', [
+        $c->loadFromExtension('doctrine', [
             'dbal' => ['url' => 'sqlite://:memory:', 'logging' => false],
             'orm' => [
                 'auto_mapping' => true,
@@ -104,16 +106,16 @@ final class Kernel extends BaseKernel
             ],
         ]);
 
-        $container->loadFromExtension('twig', [
+        $c->loadFromExtension('twig', [
             'exception_controller' => null,
             'strict_variables' => '%kernel.debug%',
         ]);
 
-        $container->loadFromExtension('a2lix_translation_form', [
+        $c->loadFromExtension('a2lix_translation_form', [
             'locales' => ['es', 'en', 'ca'],
         ]);
 
-        $container->loadFromExtension('sonata_media', [
+        $c->loadFromExtension('sonata_media', [
             'default_context' => 'default',
             'contexts' => ['default' => []],
             'cdn' => null,
@@ -122,7 +124,7 @@ final class Kernel extends BaseKernel
             'filesystem' => ['local' => null],
         ]);
 
-        $container->loadFromExtension('runroom_samples', [
+        $c->loadFromExtension('runroom_samples', [
             'class' => ['media' => Media::class],
         ]);
     }
