@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\Service;
 
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksListViewModel;
@@ -63,7 +64,7 @@ class BookService
         $queryBuilder = $this->repository->getBooksQueryBuilder();
 
         $pagination = $this->paginator->paginate($queryBuilder, $page, self::MAX_RESULT);
-
+        \assert($pagination instanceof SlidingPaginationInterface);
         $model = new BooksListViewModel();
         $model->setPagination($pagination);
 

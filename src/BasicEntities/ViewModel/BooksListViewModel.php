@@ -39,7 +39,7 @@ class BooksListViewModel
      * @phpstan-param SlidingPaginationInterface<Book> $pagination
      * @psalm-param SlidingPaginationInterface $pagination
      * */
-    public function setPagination(SlidingPaginationInterface &$pagination): self
+    public function setPagination(SlidingPaginationInterface $pagination): self
     {
         $this->pagination = $pagination;
         $this->paginationData = $pagination->getPaginationData();
