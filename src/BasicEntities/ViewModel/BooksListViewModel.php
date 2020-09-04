@@ -18,20 +18,27 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BooksListViewModel
 {
-    /** @var SlidingPaginationInterface<Book> */
+    /**
+     * @phpstan-var SlidingPaginationInterface<Book>
+     * @psalm-var SlidingPaginationInterface
+     */
     protected $pagination;
 
     /** @var array<mixed> */
     protected $paginationData;
 
-    /** @return SlidingPaginationInterface<Book>|null */
+    /** @phpstan-return SlidingPaginationInterface<Book>|null
+     * @psalm-return SlidingPaginationInterface|null
+     */
     public function getPagination(): ?SlidingPaginationInterface
     {
         return $this->pagination;
     }
 
     /**
-     * @param SlidingPaginationInterface<Book> $pagination */
+     * @phpstan-param SlidingPaginationInterface<Book> $pagination
+     * @psalm-param SlidingPaginationInterface $pagination
+     * */
     public function setPagination(SlidingPaginationInterface &$pagination): self
     {
         $this->pagination = $pagination;

@@ -4,4 +4,5 @@
     {% for book in model.pagination.items %}
         <p>{{ book.title }}</p>
     {% endfor %}
+    {{ knp_pagination_render(model.pagination) }}
 {% endblock content %}

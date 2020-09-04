@@ -56,7 +56,7 @@ class BookController
 
     public function list(Request $request): Response
     {
-        $page = $request->get('page', 1);
+        $page = (int) $request->get('page', 1);
         $model = $this->service->getBooksListViewModel($page);
 
         return $this->renderer->renderResponse(
