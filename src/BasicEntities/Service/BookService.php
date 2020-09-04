@@ -22,7 +22,7 @@ use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 class BookService
 {
     /** @var int */
-    private const MAX_RESULT = 10;
+    private const MAX_RESULT = 5;
 
     /** @var BookRepository */
     private $repository;
