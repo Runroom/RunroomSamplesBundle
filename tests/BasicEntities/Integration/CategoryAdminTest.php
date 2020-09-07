@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Runroom\SamplesBundle\Tests\Integration;
+namespace Runroom\SamplesBundle\Tests\BasicEntities\Integration;
 
 use Runroom\SamplesBundle\BasicEntities\Admin\CategoryAdmin;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
