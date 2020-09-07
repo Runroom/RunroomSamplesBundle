@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Runroom\SamplesBundle\Tests\Integration;
+namespace Runroom\SamplesBundle\Tests\Forms\Integration;
 
 use Runroom\SamplesBundle\Forms\Admin\ContactAdmin;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
