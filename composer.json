@@ -33,7 +33,7 @@
         "sonata-project/doctrine-orm-admin-bundle": "^3.20",
         "sonata-project/media-bundle": "^3.24",
         "symfony/config": "^4.4 || ^5.1",
-        "symfony/dependency-injection": "^4.4.8 || ^5.1",
+        "symfony/dependency-injection": "^4.4 || ^5.1",
         "symfony/event-dispatcher": "^4.4 || ^5.1",
         "symfony/event-dispatcher-contracts": "^1.1 || ^2.0",
         "symfony/form": "^4.4 || ^5.1",

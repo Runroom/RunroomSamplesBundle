@@ -31,10 +31,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('Runroom\SamplesBundle\\', __DIR__ . '/../../*');
+    $services->load('Runroom\SamplesBundle\\', '../../*')
+        ->exclude('../../{Resources,DependencyInjection}');
 
     // BasicEntities
-    $services->load('Runroom\SamplesBundle\BasicEntities\Controller\\', __DIR__ . '/../../BasicEntities/Controller')
+    $services->load('Runroom\SamplesBundle\BasicEntities\Controller\\', '../../BasicEntities/Controller')
         ->public()
         ->tag('controller.service_arguments');
 
@@ -49,7 +50,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->tag('sonata.admin', ['manager_type' => 'orm', 'label' => 'Categories']);
 
     // Forms
-    $services->load('Runroom\SamplesBundle\Forms\Controller\\', __DIR__ . '/../../Forms/Controller')
+    $services->load('Runroom\SamplesBundle\Forms\Controller\\', '../../Forms/Controller')
         ->public()
         ->tag('controller.service_arguments');
 
