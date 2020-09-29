@@ -23,6 +23,7 @@ use Sonata\DoctrineORMAdminBundle\Filter\DateRangeFilter;
 use Sonata\Form\Type\DateTimeRangePickerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+/** @extends AbstractAdmin<Contact> */
 class ContactAdmin extends AbstractAdmin
 {
     /** @param array{ _page?: int, _sort_order?: 'ASC'|'DESC', _sort_by?: string } $sortValues */
