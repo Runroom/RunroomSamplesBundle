@@ -1,0 +1,3 @@
+runroom_samples:
+    class:
+        media: Runroom\SamplesBundle\Tests\App\Entity\Media
