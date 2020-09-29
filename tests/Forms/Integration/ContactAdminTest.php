@@ -14,8 +14,10 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\Tests\Forms\Integration;
 
 use Runroom\SamplesBundle\Forms\Admin\ContactAdmin;
+use Runroom\SamplesBundle\Forms\Entity\Contact;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
 
+/** @extends SonataAdminTestCase<Contact> */
 class ContactAdminTest extends SonataAdminTestCase
 {
     /** @test */

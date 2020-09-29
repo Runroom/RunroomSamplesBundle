@@ -14,8 +14,10 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Integration;
 
 use Runroom\SamplesBundle\BasicEntities\Admin\CategoryAdmin;
+use Runroom\SamplesBundle\BasicEntities\Entity\Category;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
 
+/** @extends SonataAdminTestCase<Category> */
 class CategoryAdminTest extends SonataAdminTestCase
 {
     /** @test */
