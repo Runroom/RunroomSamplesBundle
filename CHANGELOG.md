@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- changelog-linker -->
 
+## [0.3.0] - 2020-07-08
+
+### Added
+
+- [#21] Hubspot integration example, Thanks to [@Gilaberte]
+
+### Fixed
+
+- [#24] Improve CI, start test with php 8.0, update phpunit, fix psalm
+
+### Removed
+
+- [#25] Remove verbosity from phpunit
+
 ## [v0.2.0] - 2020-07-08
 
 ### Changed
@@ -94,3 +108,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [#18]: https://github.com/Runroom/RunroomSamplesBundle/pull/18
 [#17]: https://github.com/Runroom/RunroomSamplesBundle/pull/17
 [v0.2.0]: https://github.com/Runroom/SamplesBundle/compare/v0.1.8...v0.2.0
+[#25]: https://github.com/Runroom/RunroomSamplesBundle/pull/25
+[#24]: https://github.com/Runroom/RunroomSamplesBundle/pull/24
+[#21]: https://github.com/Runroom/RunroomSamplesBundle/pull/21
+[@Gilaberte]: https://github.com/Gilaberte
+[0.3.0]: https://github.com/Runroom/SamplesBundle/compare/v0.2.0...0.3.0
