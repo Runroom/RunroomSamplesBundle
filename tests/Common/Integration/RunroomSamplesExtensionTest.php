@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Runroom package.
+ * This file is part of the RunroomSamplesBundle.
  *
  * (c) Runroom <runroom@runroom.com>
  *
@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\Tests\Common\Integration;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
-use Runroom\SamplesBundle\DependencyInjection\RunroomSamplesExtension;
 use Runroom\SamplesBundle\BasicEntities\Admin\BookAdmin;
 use Runroom\SamplesBundle\BasicEntities\Admin\CategoryAdmin;
 use Runroom\SamplesBundle\BasicEntities\Controller\BookController;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
+use Runroom\SamplesBundle\DependencyInjection\RunroomSamplesExtension;
 use Runroom\SamplesBundle\Forms\Admin\ContactAdmin;
 use Runroom\SamplesBundle\Forms\Controller\ContactController;
 use Runroom\SamplesBundle\Forms\Form\ContactEventHandler;

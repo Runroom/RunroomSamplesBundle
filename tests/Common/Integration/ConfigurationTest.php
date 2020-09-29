@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Runroom package.
+ * This file is part of the RunroomSamplesBundle.
  *
  * (c) Runroom <runroom@runroom.com>
  *
