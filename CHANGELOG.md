@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- changelog-linker -->
 
+## Unreleased
+
+### Fixed
+
+- [#27] Update composer, fix php8 build, move from prophecy to phpunit mocks
+
 ## [0.3.0] - 2020-07-08
 
 ### Added
@@ -113,3 +119,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [#21]: https://github.com/Runroom/RunroomSamplesBundle/pull/21
 [@Gilaberte]: https://github.com/Gilaberte
 [0.3.0]: https://github.com/Runroom/SamplesBundle/compare/v0.2.0...0.3.0
+[#27]: https://github.com/Runroom/RunroomSamplesBundle/pull/27
