@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\Forms\Controller\ContactController;
@@ -25,15 +25,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ContactControllerTest extends TestCase
 {
-    use ProphecyTrait;
-
-    /** @var ObjectProphecy<PageRenderer> */
+    /** @var MockObject&PageRenderer */
     private $renderer;
 
-    /** @var ObjectProphecy<UrlGeneratorInterface> */
-    private $router;
-
-    /** @var ObjectProphecy<ContactService> */
+    /** @var Stub&ContactService */
     private $service;
 
     /** @var ContactController */
@@ -41,14 +36,13 @@ class ContactControllerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->renderer = $this->prophesize(PageRenderer::class);
-        $this->router = $this->prophesize(UrlGeneratorInterface::class);
-        $this->service = $this->prophesize(ContactService::class);
+        $this->renderer = $this->createMock(PageRenderer::class);
+        $this->service = $this->createStub(ContactService::class);
 
         $this->controller = new ContactController(
-            $this->renderer->reveal(),
-            $this->router->reveal(),
-            $this->service->reveal(),
+            $this->renderer,
+            $this->createStub(UrlGeneratorInterface::class),
+            $this->service,
         );
     }
 
@@ -57,12 +51,12 @@ class ContactControllerTest extends TestCase
     {
         $expectedResponse = new Response();
 
-        $model = $this->prophesize(FormAwareInterface::class);
+        $model = $this->createStub(FormAwareInterface::class);
 
-        $model->formIsValid()->willReturn(false);
+        $model->method('formIsValid')->willReturn(false);
 
-        $this->service->getContactForm()->willReturn($model->reveal());
-        $this->renderer->renderResponse('@RunroomSamples/Forms/contact.html.twig', $model->reveal(), null)
+        $this->service->method('getContactForm')->willReturn($model);
+        $this->renderer->method('renderResponse')->with('@RunroomSamples/Forms/contact.html.twig', $model, null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->contact();
@@ -75,10 +69,10 @@ class ContactControllerTest extends TestCase
     {
         $expectedResponse = new Response();
 
-        $model = $this->prophesize(FormAwareInterface::class);
+        $model = $this->createStub(FormAwareInterface::class);
 
-        $this->service->getContactForm()->willReturn($model->reveal());
-        $this->renderer->renderResponse('@RunroomSamples/Forms/contact-ajax.html.twig', $model->reveal(), null)
+        $this->service->method('getContactForm')->willReturn($model);
+        $this->renderer->method('renderResponse')->with('@RunroomSamples/Forms/contact-ajax.html.twig', $model, null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->contactAjax();
@@ -87,20 +81,28 @@ class ContactControllerTest extends TestCase
     }
 
     /** @test */
-    public function itProcessesAjaxForm(): void
+    public function itProcessesAjaxFormValid(): void
     {
-        $model = $this->prophesize(FormAwareInterface::class);
+        $model = $this->createStub(FormAwareInterface::class);
 
-        $this->service->getContactForm()->willReturn($model);
+        $this->service->method('getContactForm')->willReturn($model);
 
-        $model->formIsValid()->willReturn(true);
+        $model->method('formIsValid')->willReturn(true);
 
         $response = $this->controller->contactAjaxPost();
 
         self::assertSame(Response::HTTP_OK, $response->getStatusCode());
         self::assertSame(json_encode(['status' => 'ok']), $response->getContent());
+    }
 
-        $model->formIsValid()->willReturn(false);
+    /** @test */
+    public function itProcessesAjaxFormError(): void
+    {
+        $model = $this->createStub(FormAwareInterface::class);
+
+        $this->service->method('getContactForm')->willReturn($model);
+
+        $model->method('formIsValid')->willReturn(false);
 
         $response = $this->controller->contactAjaxPost();
 
@@ -113,12 +115,12 @@ class ContactControllerTest extends TestCase
     {
         $expectedResponse = new Response();
 
-        $model = $this->prophesize(FormAwareInterface::class);
+        $model = $this->createStub(FormAwareInterface::class);
 
-        $model->formIsValid()->willReturn(false);
+        $model->method('formIsValid')->willReturn(false);
 
-        $this->service->getContactHubspotForm()->willReturn($model->reveal());
-        $this->renderer->renderResponse('@RunroomSamples/Forms/contact-hubspot.html.twig', $model->reveal(), null)
+        $this->service->method('getContactHubspotForm')->willReturn($model);
+        $this->renderer->method('renderResponse')->with('@RunroomSamples/Forms/contact-hubspot.html.twig', $model, null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->contactHubspot();

@@ -17,13 +17,13 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3 || ^8.0",
         "a2lix/translation-form-bundle": "^3.0",
         "doctrine/doctrine-bundle": "^2.1",
         "egulias/email-validator": "^2.1.16",
         "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.2",
-        "gedmo/doctrine-extensions": "^2.4",
-        "hubspot/hubspot-php": "^2.0",
+        "gedmo/doctrine-extensions": "^2.4 || ^3.0",
+        "hubspot/hubspot-php": "^3.0",
         "knplabs/doctrine-behaviors": "^2.0.6",
         "runroom-packages/form-handler-bundle": "^0.9",
         "runroom-packages/render-event-bundle": "^0.9",
@@ -48,11 +48,8 @@
     "require-dev": {
         "ergebnis/composer-normalize": "^2.2",
         "friendsofphp/php-cs-fixer": "^2.16",
-        "jangregor/phpstan-prophecy": "^0.8",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.1",
-        "phpspec/prophecy": "^1.11.1",
-        "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/phpstan": "^0.12",
         "phpstan/phpstan-doctrine": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",

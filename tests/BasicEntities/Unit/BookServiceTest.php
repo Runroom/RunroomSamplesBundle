@@ -13,18 +13,15 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\Tests\BasicEntities\Fixtures\BookFixture;
 
 class BookServiceTest extends TestCase
 {
-    use ProphecyTrait;
-
-    /** @var ObjectProphecy<BookRepository> */
+    /** @var MockObject&BookRepository */
     private $repository;
 
     /** @var BookService */
@@ -32,9 +29,9 @@ class BookServiceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->repository = $this->prophesize(BookRepository::class);
+        $this->repository = $this->createMock(BookRepository::class);
 
-        $this->service = new BookService($this->repository->reveal());
+        $this->service = new BookService($this->repository);
     }
 
     /** @test */
@@ -42,7 +39,7 @@ class BookServiceTest extends TestCase
     {
         $expectedBooks = [BookFixture::create()];
 
-        $this->repository->findBy(['publish' => true], ['position' => 'ASC'])->willReturn($expectedBooks);
+        $this->repository->method('findBy')->with(['publish' => true], ['position' => 'ASC'])->willReturn($expectedBooks);
 
         $model = $this->service->getBooksViewModel();
 
@@ -54,7 +51,7 @@ class BookServiceTest extends TestCase
     {
         $expectedBook = BookFixture::create();
 
-        $this->repository->findBySlug('slug')->willReturn($expectedBook);
+        $this->repository->method('findBySlug')->with('slug')->willReturn($expectedBook);
 
         $model = $this->service->getBookViewModel('slug');
 
