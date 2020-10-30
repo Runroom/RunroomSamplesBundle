@@ -13,9 +13,8 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\BasicEntities\Controller\BookController;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
@@ -25,15 +24,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BookControllerTest extends TestCase
 {
-    use ProphecyTrait;
-
     private const BOOKS_VIEW = '@RunroomSamples/BasicEntities/books.html.twig';
     private const BOOK_VIEW = '@RunroomSamples/BasicEntities/book.html.twig';
 
-    /** @var ObjectProphecy<PageRenderer> */
+    /** @var MockObject&PageRenderer */
     private $renderer;
 
-    /** @var ObjectProphecy<BookService> */
+    /** @var MockObject&BookService */
     private $service;
 
     /** @var BookController */
@@ -41,12 +38,12 @@ class BookControllerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->renderer = $this->prophesize(PageRenderer::class);
-        $this->service = $this->prophesize(BookService::class);
+        $this->renderer = $this->createMock(PageRenderer::class);
+        $this->service = $this->createMock(BookService::class);
 
         $this->controller = new BookController(
-            $this->renderer->reveal(),
-            $this->service->reveal()
+            $this->renderer,
+            $this->service
         );
     }
 
@@ -56,9 +53,8 @@ class BookControllerTest extends TestCase
         $expectedResponse = new Response();
         $model = new BooksViewModel();
 
-        $this->service->getBooksViewModel()->willReturn($model);
-
-        $this->renderer->renderResponse(self::BOOKS_VIEW, $model, null)
+        $this->service->method('getBooksViewModel')->with()->willReturn($model);
+        $this->renderer->method('renderResponse')->with(self::BOOKS_VIEW, $model, null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->books();
@@ -72,8 +68,8 @@ class BookControllerTest extends TestCase
         $expectedResponse = new Response();
         $model = new BookViewModel();
 
-        $this->service->getBookViewModel('book')->willReturn($model);
-        $this->renderer->renderResponse(self::BOOK_VIEW, $model, null)
+        $this->service->method('getBookViewModel')->with('book')->willReturn($model);
+        $this->renderer->method('renderResponse')->with(self::BOOK_VIEW, $model, null)
             ->willReturn($expectedResponse);
 
         $response = $this->controller->book('book');

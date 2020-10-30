@@ -13,9 +13,8 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Runroom\FormHandlerBundle\FormHandler;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
@@ -24,9 +23,7 @@ use Runroom\SamplesBundle\Forms\Service\ContactService;
 
 class ContactServiceTest extends TestCase
 {
-    use ProphecyTrait;
-
-    /** @var ObjectProphecy<FormHandler> */
+    /** @var MockObject&FormHandler */
     private $handler;
 
     /** @var ContactService */
@@ -34,34 +31,34 @@ class ContactServiceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->handler = $this->prophesize(FormHandler::class);
+        $this->handler = $this->createMock(FormHandler::class);
 
         $this->service = new ContactService(
-            $this->handler->reveal()
+            $this->handler
         );
     }
 
     /** @test */
     public function itGeneratesDemoViewModel(): void
     {
-        $formAware = $this->prophesize(FormAwareInterface::class);
+        $formAware = $this->createStub(FormAwareInterface::class);
 
-        $this->handler->handleForm(ContactFormType::class)->willReturn($formAware->reveal());
+        $this->handler->method('handleForm')->with(ContactFormType::class)->willReturn($formAware);
 
         $model = $this->service->getContactForm();
 
-        self::assertSame($formAware->reveal(), $model);
+        self::assertSame($formAware, $model);
     }
 
     /** @test */
     public function itGeneratesDemoHubspotViewModel(): void
     {
-        $formAware = $this->prophesize(FormAwareInterface::class);
+        $formAware = $this->createStub(FormAwareInterface::class);
 
-        $this->handler->handleForm(ContactHubspotFormType::class)->willReturn($formAware->reveal());
+        $this->handler->method('handleForm')->with(ContactHubspotFormType::class)->willReturn($formAware);
 
         $model = $this->service->getContactHubspotForm();
 
-        self::assertSame($formAware->reveal(), $model);
+        self::assertSame($formAware, $model);
     }
 }
