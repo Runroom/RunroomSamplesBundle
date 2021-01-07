@@ -88,9 +88,7 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param array{ fields: array{name: string, value: mixed}[], legalConsentOptions: array{consent: array{consentToProcess: mixed, text: string} } } $data
-     */
+    /** @param array{ fields: array{name: string, value: mixed}[], legalConsentOptions: array{consent: array{consentToProcess: mixed, text: string} } } $data */
     private function sendHubspot(array $data): void
     {
         $this->hubspotForms->submit($this->portalId, $this->formId, $data);
