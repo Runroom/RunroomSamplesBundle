@@ -22,7 +22,8 @@ use Symfony\Component\Validator\Validation;
 
 class ContactHubspotFormTypeTest extends TypeTestCase
 {
-    public function testSubmitValidData(): void
+    /** @test */
+    public function submitValidData(): void
     {
         $model = new ContactHubspot();
         $form = $this->factory->create(ContactHubspotFormType::class, $model);
@@ -42,9 +43,7 @@ class ContactHubspotFormTypeTest extends TypeTestCase
         self::assertTrue($model->getPrivacyPolicy());
     }
 
-    /**
-     * @return AbstractExtension[]
-     */
+    /** @return AbstractExtension[] */
     protected function getExtensions(): array
     {
         $validator = Validation::createValidatorBuilder()
