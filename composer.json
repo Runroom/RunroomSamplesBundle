@@ -20,7 +20,7 @@
         "php": "^7.3 || ^8.0",
         "a2lix/translation-form-bundle": "^3.0",
         "doctrine/doctrine-bundle": "^2.1",
-        "egulias/email-validator": "^2.1.16",
+        "egulias/email-validator": "^2.1.16 || ^3.0",
         "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.2",
         "gedmo/doctrine-extensions": "^2.4 || ^3.0",
         "hubspot/hubspot-php": "^3.0",
@@ -56,13 +56,13 @@
         "phpstan/phpstan-strict-rules": "^0.12",
         "phpstan/phpstan-symfony": "^0.12",
         "phpunit/phpunit": "^9.3",
-        "psalm/plugin-phpunit": "^0.12",
-        "psalm/plugin-symfony": "^1.2",
+        "psalm/plugin-phpunit": "^0.15",
+        "psalm/plugin-symfony": "^2.0",
         "runroom-packages/testing": "^0.9",
         "symfony/phpunit-bridge": "^5.1",
         "symplify/changelog-linker": "^8.0",
-        "vimeo/psalm": "^3.11",
-        "weirdan/doctrine-psalm-plugin": "^0.11"
+        "vimeo/psalm": "^4.3",
+        "weirdan/doctrine-psalm-plugin": "^1.0"
     },
     "config": {
         "sort-packages": true
