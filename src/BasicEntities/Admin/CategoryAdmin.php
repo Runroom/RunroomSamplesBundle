@@ -24,16 +24,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 /** @extends AbstractAdmin<Category> */
 class CategoryAdmin extends AbstractAdmin
 {
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
+    protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $datagridMapper
+        $filter
             ->add('translations.name', null, ['label' => 'Name'])
             ->add('books');
     }
 
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->addIdentifier('name', null, [
                 'sortable' => true,
                 'sort_field_mapping' => ['fieldName' => 'name'],
@@ -47,9 +47,9 @@ class CategoryAdmin extends AbstractAdmin
             ]);
     }
 
-    protected function configureFormFields(FormMapper $formMapper): void
+    protected function configureFormFields(FormMapper $form): void
     {
-        $formMapper
+        $form
             ->add('translations', TranslationsType::class, [
                 'label' => false,
                 'fields' => [

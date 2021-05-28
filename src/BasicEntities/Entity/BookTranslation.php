@@ -30,44 +30,27 @@ class BookTranslation implements TranslationInterface
     use ORMBehaviors\Translatable\TranslationTrait;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=5)
-     */
-    protected $locale;
-
-    /**
-     * @var int|null
-     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * @var string|null
-     *
      * @Assert\NotNull
      * @Assert\Length(max=255)
      * @ORM\Column(type="string")
      */
-    private $title;
+    private ?string $title = null;
 
     /**
-     * @var string|null
-     *
      * @Gedmo\Slug(fields={"title"}, unique_base="locale")
      * @ORM\Column(type="string", nullable=true)
      */
-    private $slug;
+    private ?string $slug = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
+    /** @ORM\Column(type="text", nullable=true) */
+    private ?string $description = null;
 
     public function setTitle(?string $title): self
     {

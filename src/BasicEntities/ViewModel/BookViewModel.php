@@ -17,8 +17,7 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BookViewModel
 {
-    /** @var Book */
-    private $book;
+    private ?Book $book = null;
 
     public function setBook(Book $book): void
     {

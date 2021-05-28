@@ -15,20 +15,11 @@ namespace Runroom\SamplesBundle\Forms\Model;
 
 final class ContactHubspot
 {
-    /** @var string|null */
-    private $name;
-
-    /** @var string|null */
-    private $email;
-
-    /** @var string|null */
-    private $phone;
-
-    /** @var string|null */
-    private $comment;
-
-    /** @var bool */
-    private $privacyPolicy = false;
+    private ?string $name = null;
+    private ?string $email = null;
+    private ?string $phone = null;
+    private ?string $comment = null;
+    private bool $privacyPolicy = false;
 
     public function getName(): ?string
     {

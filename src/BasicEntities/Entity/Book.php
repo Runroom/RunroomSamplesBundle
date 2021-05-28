@@ -34,37 +34,25 @@ class Book implements TranslatableInterface
     use Sortable;
 
     /**
-     * @var int|null
-     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * @var Category|null
-     *
      * @Assert\Valid
      * @Gedmo\SortableGroup
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="books")
      * @ORM\JoinColumn(referencedColumnName="id")
      */
-    private $category;
+    private ?Category $category = null;
 
-    /**
-     * @var MediaInterface|null
-     *
-     * @Assert\Valid
-     */
-    private $picture;
+    /** @Assert\Valid */
+    private ?MediaInterface $picture = null;
 
-    /**
-     * @var bool|null
-     *
-     * @ORM\Column(type="boolean")
-     */
-    private $publish;
+    /** @ORM\Column(type="boolean") */
+    private ?bool $publish = null;
 
     public function __toString(): string
     {

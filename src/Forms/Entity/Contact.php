@@ -34,26 +34,26 @@ class Contact
     private const PREFERENCE_MARKETING = 4;
 
     /** @var array<string, int> */
-    public static $subjectChoices = [
+    public static array $subjectChoices = [
         'form.subject.general' => self::SUBJECT_GENERAL,
         'form.subject.specific' => self::SUBJECT_SPECIFIC,
     ];
 
     /** @var array<string, int> */
-    public static $statusChoices = [
+    public static array $statusChoices = [
         'contact.status.unread' => self::STATUS_UNREAD,
         'contact.status.read' => self::STATUS_READ,
         'contact.status.processed' => self::STATUS_PROCESSED,
     ];
 
     /** @var array<string, int> */
-    public static $typeChoices = [
+    public static array $typeChoices = [
         'form.type.comment' => self::TYPE_COMMENT,
         'form.type.bug' => self::TYPE_BUG,
     ];
 
     /** @var array<string, int> */
-    public static $preferenceChoices = [
+    public static array $preferenceChoices = [
         'form.preference.design' => self::PREFERENCE_DESIGN,
         'form.preference.backend' => self::PREFERENCE_BACKEND,
         'form.preference.frontend' => self::PREFERENCE_FRONTEND,
@@ -61,90 +61,48 @@ class Contact
     ];
 
     /**
-     * @var int|null
-     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string")
-     */
-    private $name;
+    /** @ORM\Column(type="string") */
+    private ?string $name = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string")
-     */
-    private $email;
+    /** @ORM\Column(type="string") */
+    private ?string $email = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string")
-     */
-    private $phone;
+    /** @ORM\Column(type="string") */
+    private ?string $phone = null;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $subject;
+    /** @ORM\Column(type="integer") */
+    private ?int $subject = null;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $type;
+    /** @ORM\Column(type="integer") */
+    private ?int $type = null;
 
     /**
      * @var int[]|null
      *
      * @ORM\Column(type="array")
      */
-    private $preferences;
+    private ?array $preferences = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="text")
-     */
-    private $comment;
+    /** @ORM\Column(type="text") */
+    private ?string $comment = null;
 
-    /**
-     * @var bool|null
-     *
-     * @ORM\Column(type="boolean")
-     */
-    private $newsletter;
+    /** @ORM\Column(type="boolean") */
+    private ?bool $newsletter = null;
 
-    /**
-     * @var bool|null
-     *
-     * @ORM\Column(type="boolean")
-     */
-    private $privacyPolicy;
+    /** @ORM\Column(type="boolean") */
+    private ?bool $privacyPolicy = null;
 
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
+    /** @ORM\Column(type="datetime") */
+    private ?\DateTimeInterface $date = null;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $status = self::STATUS_UNREAD;
+    /** @ORM\Column(type="integer") */
+    private ?int $status = self::STATUS_UNREAD;
 
     public function __construct()
     {
@@ -271,12 +229,12 @@ class Contact
         return $this;
     }
 
-    public function getDate(): ?\DateTime
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(?\DateTime $date): self
+    public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
 

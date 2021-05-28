@@ -25,13 +25,11 @@ class Category implements TranslatableInterface
     use ORMBehaviors\Translatable\TranslatableTrait;
 
     /**
-     * @var int|null
-     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @var Collection<int, Book>
@@ -39,7 +37,7 @@ class Category implements TranslatableInterface
      * @ORM\OneToMany(targetEntity="Book", mappedBy="category")
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $books;
+    private Collection $books;
 
     public function __construct()
     {
@@ -73,8 +71,16 @@ class Category implements TranslatableInterface
         $this->books->removeElement($book);
     }
 
+    /** @param Collection<int, Book> $books */
+    public function setBooks(Collection $books): self
+    {
+        $this->books = $books;
+
+        return $this;
+    }
+
     /** @return Collection<int, Book> */
-    public function getBooks(): ?Collection
+    public function getBooks(): Collection
     {
         return $this->books;
     }

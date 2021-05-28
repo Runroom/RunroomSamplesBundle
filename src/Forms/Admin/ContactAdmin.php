@@ -17,7 +17,7 @@ use Runroom\SamplesBundle\Forms\Entity\Contact;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\DoctrineORMAdminBundle\Filter\DateRangeFilter;
 use Sonata\Form\Type\DateTimeRangePickerType;
@@ -26,22 +26,21 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 /** @extends AbstractAdmin<Contact> */
 class ContactAdmin extends AbstractAdmin
 {
-    /** @param array{ _page?: int, _sort_order?: 'ASC'|'DESC', _sort_by?: string } $sortValues */
     protected function configureDefaultSortValues(array &$sortValues): void
     {
         $sortValues['_sort_order'] = 'DESC';
         $sortValues['_sort_by'] = 'date';
     }
 
-    protected function configureRoutes(RouteCollection $collection): void
+    protected function configureRoutes(RouteCollectionInterface $collection): void
     {
         $collection->remove('create');
         $collection->remove('edit');
     }
 
-    protected function configureShowFields(ShowMapper $showMapper): void
+    protected function configureShowFields(ShowMapper $show): void
     {
-        $showMapper
+        $show
             ->add('date', null, [
                 'format' => 'd/m/Y h:i',
             ])
@@ -70,26 +69,32 @@ class ContactAdmin extends AbstractAdmin
             ]);
     }
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
+    protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $datagridMapper
+        $filter
             ->add('date', DateRangeFilter::class, [
                 'field_type' => DateTimeRangePickerType::class,
             ])
             ->add('name')
             ->add('email')
-            ->add('subject', null, [], ChoiceType::class, [
-                'choices' => Contact::$subjectChoices,
+            ->add('subject', null, [
+                'field_type' => ChoiceType::class,
+                'field_options' => [
+                    'choices' => Contact::$subjectChoices,
+                ],
             ])
             ->add('newsletter')
-            ->add('status', null, [], ChoiceType::class, [
-                'choices' => Contact::$statusChoices,
+            ->add('status', null, [
+                'field_type' => ChoiceType::class,
+                'field_options' => [
+                    'choices' => Contact::$statusChoices,
+                ],
             ]);
     }
 
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->add('date', null, [
                 'format' => 'd/m/Y h:i',
             ])

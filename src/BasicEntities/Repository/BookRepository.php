@@ -23,8 +23,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /** @extends ServiceEntityRepository<Book> */
 class BookRepository extends ServiceEntityRepository
 {
-    /** @var RequestStack */
-    private $requestStack;
+    private RequestStack $requestStack;
 
     public function __construct(ManagerRegistry $registry, RequestStack $requestStack)
     {
