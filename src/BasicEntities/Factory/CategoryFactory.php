@@ -26,8 +26,8 @@ final class CategoryFactory extends ModelFactory
     public function withTranslations(array $locales, array $defaultAttributes = []): self
     {
         return $this->addState([
-            'translations' => CategoryTranslationFactory::new(function () use ($locales, $defaultAttributes): array {
-                return array_merge($defaultAttributes, ['locale' => self::faker()->unique()->randomElement($locales)]);
+            'translations' => CategoryTranslationFactory::new(function () use (&$locales, $defaultAttributes): array {
+                return array_merge($defaultAttributes, ['locale' => array_pop($locales)]);
             })->many(\count($locales)),
         ]);
     }
@@ -36,7 +36,7 @@ final class CategoryFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'books' => BookFactory::new()->many(5),
+            'books' => BookFactory::new(['category' => null])->many(5),
         ];
     }
 
