@@ -26,8 +26,7 @@ class ContactServiceTest extends TestCase
     /** @var MockObject&FormHandler */
     private $handler;
 
-    /** @var ContactService */
-    private $service;
+    private ContactService $service;
 
     protected function setUp(): void
     {

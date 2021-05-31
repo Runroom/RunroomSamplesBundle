@@ -25,12 +25,12 @@
         "gedmo/doctrine-extensions": "^2.4 || ^3.0",
         "hubspot/hubspot-php": "^3.0",
         "knplabs/doctrine-behaviors": "^2.0.6",
-        "runroom-packages/form-handler-bundle": "^0.9",
-        "runroom-packages/render-event-bundle": "^0.9",
-        "runroom-packages/sortable-behavior-bundle": "^0.9",
-        "sonata-project/admin-bundle": "^3.75",
+        "runroom-packages/form-handler-bundle": "^0.10",
+        "runroom-packages/render-event-bundle": "^0.10",
+        "runroom-packages/sortable-behavior-bundle": "^0.10",
+        "sonata-project/admin-bundle": "^3.100 || ^4.0",
         "sonata-project/doctrine-extensions": "^1.9",
-        "sonata-project/doctrine-orm-admin-bundle": "^3.20",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.34 || ^4.0",
         "sonata-project/media-bundle": "^3.24",
         "symfony/config": "^4.4 || ^5.1",
         "symfony/dependency-injection": "^4.4 || ^5.1",
@@ -47,7 +47,7 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.2",
-        "friendsofphp/php-cs-fixer": "^2.16",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.1",
         "phpstan/phpstan": "^0.12",
@@ -58,11 +58,11 @@
         "phpunit/phpunit": "^9.3",
         "psalm/plugin-phpunit": "^0.15",
         "psalm/plugin-symfony": "^2.0",
-        "runroom-packages/testing": "^0.9",
+        "runroom-packages/testing": "^0.10",
         "symfony/phpunit-bridge": "^5.1",
-        "symplify/changelog-linker": "^8.0",
         "vimeo/psalm": "^4.3",
-        "weirdan/doctrine-psalm-plugin": "^1.0"
+        "weirdan/doctrine-psalm-plugin": "^1.0",
+        "zenstruck/foundry": "^1.10"
     },
     "config": {
         "sort-packages": true

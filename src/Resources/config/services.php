@@ -22,7 +22,7 @@ use Runroom\SortableBehaviorBundle\Controller\SortableAdminController;
 use SevenShores\Hubspot\Http\Client;
 use SevenShores\Hubspot\Resources\Forms;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\ref;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
@@ -63,7 +63,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->arg('$config', ['key' => '%env(HUBSPOT_KEY)%']);
 
     $services->set(Forms::class)
-        ->bind('$client', ref(Client::class));
+        ->bind('$client', new ReferenceConfigurator(Client::class));
 
     $services->set(ContactHubspotEventHandler::class)
         ->bind('$portalId', '%env(HUBSPOT_PORTAL_ID)%')

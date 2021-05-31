@@ -31,8 +31,7 @@ class ContactControllerTest extends TestCase
     /** @var Stub&ContactService */
     private $service;
 
-    /** @var ContactController */
-    private $controller;
+    private ContactController $controller;
 
     protected function setUp(): void
     {

@@ -17,32 +17,17 @@ use Runroom\SamplesBundle\Forms\Entity\Contact as EntityContact;
 
 class Contact
 {
-    /** @var string|null */
-    private $name;
-
-    /** @var string|null */
-    private $email;
-
-    /** @var string|null */
-    private $phone;
-
-    /** @var int|null */
-    private $subject = EntityContact::SUBJECT_GENERAL;
-
-    /** @var int|null */
-    private $type;
+    private ?string $name = null;
+    private ?string $email = null;
+    private ?string $phone = null;
+    private ?int $subject = EntityContact::SUBJECT_GENERAL;
+    private ?int $type = null;
 
     /** @var int[]|null */
-    private $preferences = [];
-
-    /** @var string|null */
-    private $comment;
-
-    /** @var bool|null */
-    private $newsletter;
-
-    /** @var bool|null */
-    private $privacyPolicy;
+    private ?array $preferences = [];
+    private ?string $comment = null;
+    private ?bool $newsletter = null;
+    private ?bool $privacyPolicy = null;
 
     public function getName(): ?string
     {

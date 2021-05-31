@@ -29,5 +29,5 @@ jobs:
       - run: vendor/bin/phpunit
       - run: composer phpstan
       - run: composer psalm -- --threads=$(nproc) --output-format=github --shepherd
-      - run: composer normalize --no-update-lock --dry-run --diff
+      - run: composer normalize --no-check-lock --no-update-lock --dry-run --diff
       - run: composer validate --strict

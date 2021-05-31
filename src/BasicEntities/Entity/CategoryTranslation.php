@@ -24,22 +24,18 @@ class CategoryTranslation implements TranslationInterface
     use ORMBehaviors\Translatable\TranslationTrait;
 
     /**
-     * @var int|null
-     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * @var string|null
-     *
      * @Assert\NotNull
      * @Assert\Length(max=255)
      * @ORM\Column(type="string")
      */
-    private $name;
+    private ?string $name = null;
 
     public function setName(?string $name): self
     {

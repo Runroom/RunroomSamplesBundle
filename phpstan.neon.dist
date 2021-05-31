@@ -11,9 +11,6 @@ parameters:
     paths:
         - src
         - tests
-    ignoreErrors:
-        - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition(.|\n)+#'
-        - '#Parameter .1 \$sortValues(.|\n)+#'
     excludes_analyse:
         - tests/App/var/*
     symfony:

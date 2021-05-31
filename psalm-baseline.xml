@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.7.3@38c452ae584467e939d55377aaf83b5a26f19dd1">
+  <file src="src/BasicEntities/Entity/Book.php">
+    <UndefinedInterfaceMethod occurrences="3">
+      <code>getDescription</code>
+      <code>getSlug</code>
+      <code>getTitle</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/BasicEntities/Entity/Category.php">
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getName</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/DependencyInjection/Configuration.php">
+    <PossiblyNullReference occurrences="1">
+      <code>end</code>
+    </PossiblyNullReference>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>end</code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="src/Forms/Admin/ContactAdmin.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>$collection</code>
+    </MethodSignatureMismatch>
+  </file>
+</files>

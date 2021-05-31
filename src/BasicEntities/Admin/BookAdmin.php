@@ -26,16 +26,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 /** @extends AbstractSortableAdmin<Book> */
 class BookAdmin extends AbstractSortableAdmin
 {
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
+    protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $datagridMapper
+        $filter
             ->add('translations.title', null, ['label' => 'Title'])
             ->add('category');
     }
 
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->add('picture', 'image')
             ->addIdentifier('title', null, [
                 'sortable' => true,
@@ -61,9 +61,9 @@ class BookAdmin extends AbstractSortableAdmin
             ]);
     }
 
-    protected function configureFormFields(FormMapper $formMapper): void
+    protected function configureFormFields(FormMapper $form): void
     {
-        $formMapper
+        $form
             ->add('translations', TranslationsType::class, [
                 'label' => false,
                 'fields' => [

@@ -17,8 +17,8 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BooksViewModel
 {
-    /** @var Book[] */
-    private $books;
+    /** @var Book[]|null */
+    private ?array $books = null;
 
     /** @param Book[] $books */
     public function setBooks(array $books): void
