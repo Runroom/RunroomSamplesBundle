@@ -30,6 +30,15 @@ class BookTranslation implements TranslationInterface
     use ORMBehaviors\Translatable\TranslationTrait;
 
     /**
+     * @var string|null
+     *
+     * Do not remove this property unless you are sure it won't break things.
+     *
+     * @ORM\Column(type="string", length=5)
+     */
+    protected $locale;
+
+    /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
