@@ -32,7 +32,7 @@ class BookTranslation implements TranslationInterface
     /**
      * @var string|null
      *
-     * Do not remove this property unless you are sure it won't break things
+     * This property is needed to do the Join::WITH on the BookRepository
      *
      * @ORM\Column(type="string", length=5)
      */
