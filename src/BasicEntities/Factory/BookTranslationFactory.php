@@ -26,7 +26,7 @@ final class BookTranslationFactory extends ModelFactory
             'title' => self::faker()->words(3, true),
             'slug' => self::faker()->unique()->slug(),
             'description' => self::faker()->paragraph(),
-            'locale' => self::faker()->unique()->languageCode,
+            'locale' => self::faker()->unique()->languageCode(),
         ];
     }
 

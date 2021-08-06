@@ -47,11 +47,9 @@ class ContactHubspotFormTypeTest extends TypeTestCase
     protected function getExtensions(): array
     {
         $validator = Validation::createValidatorBuilder()
-            ->enableAnnotationMapping()
+            ->enableAnnotationMapping(true)
             ->getValidator();
 
-        return [
-            new ValidatorExtension($validator),
-        ];
+        return [new ValidatorExtension($validator)];
     }
 }
