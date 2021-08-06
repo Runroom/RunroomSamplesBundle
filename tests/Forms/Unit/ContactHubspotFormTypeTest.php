@@ -18,6 +18,7 @@ use Runroom\SamplesBundle\Forms\Model\ContactHubspot;
 use Symfony\Component\Form\AbstractExtension;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Validator\Constraints\Cascade;
 use Symfony\Component\Validator\Validation;
 
 class ContactHubspotFormTypeTest extends TypeTestCase
@@ -43,11 +44,21 @@ class ContactHubspotFormTypeTest extends TypeTestCase
         self::assertTrue($model->getPrivacyPolicy());
     }
 
-    /** @return AbstractExtension[] */
+    /**
+     * @todo: Simplify this when dropping support for Symfony 4.4
+     *
+     * @psalm-suppress TooManyArguments
+     *
+     * @return AbstractExtension[]
+     *
+     * @see: enableAnnotationMapping accepts one argument and it must be set to true on Symfony 5.2
+     */
     protected function getExtensions(): array
     {
+        $annotationMappingArgument = class_exists(Cascade::class) ? true : null;
+
         $validator = Validation::createValidatorBuilder()
-            ->enableAnnotationMapping(true)
+            ->enableAnnotationMapping($annotationMappingArgument)
             ->getValidator();
 
         return [new ValidatorExtension($validator)];
