@@ -19,19 +19,19 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "a2lix/translation-form-bundle": "^3.0.4",
-        "doctrine/doctrine-bundle": "^2.1",
-        "egulias/email-validator": "^2.1.16 || ^3.0",
-        "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.2",
-        "gedmo/doctrine-extensions": "^2.4 || ^3.0",
-        "hubspot/hubspot-php": "^3.0",
+        "doctrine/doctrine-bundle": "^2.4",
+        "egulias/email-validator": "^3.0",
+        "friendsofsymfony/ckeditor-bundle": "^2.2",
+        "gedmo/doctrine-extensions": "^3.0",
+        "hubspot/hubspot-php": "^3.1",
         "knplabs/doctrine-behaviors": "^2.0.6",
         "runroom-packages/form-handler-bundle": "^0.11",
         "runroom-packages/render-event-bundle": "^0.11",
         "runroom-packages/sortable-behavior-bundle": "^0.11",
-        "sonata-project/admin-bundle": "^3.100 || ^4.0@dev",
-        "sonata-project/doctrine-extensions": "^1.9",
+        "sonata-project/admin-bundle": "^3.103 || ^4.0@dev",
+        "sonata-project/doctrine-extensions": "^1.13",
         "sonata-project/doctrine-orm-admin-bundle": "^3.34 || ^4.0@dev",
-        "sonata-project/media-bundle": "^3.24 || ^4.0@dev",
+        "sonata-project/media-bundle": "^3.32 || ^4.0@dev",
         "symfony/config": "^4.4 || ^5.3",
         "symfony/dependency-injection": "^4.4 || ^5.3",
         "symfony/event-dispatcher": "^4.4 || ^5.3",
@@ -61,7 +61,7 @@
         "psalm/plugin-symfony": "^2.0",
         "runroom-packages/testing": "^0.11",
         "symfony/phpunit-bridge": "^5.3",
-        "vimeo/psalm": "^4.3",
+        "vimeo/psalm": "^4.0",
         "weirdan/doctrine-psalm-plugin": "^1.0",
         "zenstruck/foundry": "^1.10"
     },
@@ -84,11 +84,6 @@
         }
     },
     "scripts": {
-        "changelog": [
-            "changelog-linker dump-merges --in-categories --ansi",
-            "changelog-linker link --ansi",
-            "changelog-linker cleanup --ansi"
-        ],
         "php-cs-fixer": "php-cs-fixer fix --ansi --verbose",
         "phpstan": "phpstan analyse --no-progress",
         "psalm": "psalm --stats"
