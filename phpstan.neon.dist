@@ -5,6 +5,7 @@ includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
     - vendor/phpstan/phpstan-symfony/rules.neon
+    - phpstan-baseline.neon
 
 parameters:
     level: 8
@@ -14,4 +15,9 @@ parameters:
     excludes_analyse:
         - tests/App/var/*
     symfony:
-        container_xml_path: '%rootDir%/../../../tests/App/var/cache/test/AppRunroom_SamplesBundle_Tests_App_KernelTestDebugContainer.xml'
+        container_xml_path: '%rootDir%/../../../tests/App/var/cache/test/Runroom_SamplesBundle_Tests_App_KernelTestDebugContainer.xml'
+    treatPhpDocTypesAsCertain: false
+    checkGenericClassInNonGenericObjectType: true
+    checkMissingIterableValueType: true
+    checkMissingVarTagTypehint: true
+    checkMissingTypehints: true
