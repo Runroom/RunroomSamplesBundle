@@ -73,10 +73,7 @@ final class Kernel extends BaseKernel
         return __DIR__;
     }
 
-    /**
-     * @todo: Simplify security configuration when dropping support for Symfony 4.4
-     * @todo: Simplify media configuration when dropping support for Sonata 3
-     */
+    /** @todo: Simplify security configuration when dropping support for Symfony 4.4 */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->setParameter('kernel.default_locale', 'en');
