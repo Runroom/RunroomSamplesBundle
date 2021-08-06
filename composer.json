@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "a2lix/translation-form-bundle": "^3.0",
+        "a2lix/translation-form-bundle": "^3.0.4",
         "doctrine/doctrine-bundle": "^2.1",
         "egulias/email-validator": "^2.1.16 || ^3.0",
         "friendsofsymfony/ckeditor-bundle": "^1.2 || ^2.2",
@@ -46,6 +46,7 @@
         "twig/twig": "^2.12 || ^3.0"
     },
     "require-dev": {
+        "a2lix/auto-form-bundle": "^0.3.1",
         "ergebnis/composer-normalize": "^2.2",
         "friendsofphp/php-cs-fixer": "^3.0",
         "matthiasnoback/symfony-config-test": "^4.2",

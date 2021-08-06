@@ -36,6 +36,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorageFactory;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 use Symfony\Component\Security\Http\Authentication\AuthenticatorManager;
 
@@ -72,6 +73,10 @@ final class Kernel extends BaseKernel
         return __DIR__;
     }
 
+    /**
+     * @todo: Simplify security configuration when dropping support for Symfony 4.4
+     * @todo: Simplify media configuration when dropping support for Sonata 3
+     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->setParameter('kernel.default_locale', 'en');
@@ -146,8 +151,20 @@ final class Kernel extends BaseKernel
         ]);
     }
 
-    protected function configureRoutes(RouteCollectionBuilder $routes): void
+    /**
+     * @todo: Simplify this method when dropping support for Symfony 4.4
+     *
+     * @param RouteCollectionBuilder|RoutingConfigurator $routes
+     */
+    protected function configureRoutes($routes): void
     {
+        if ($routes instanceof RoutingConfigurator) {
+            $routes->add('route.entity', '/entity/{slug}')
+                ->controller('controller');
+
+            return;
+        }
+
         $routes->add('/entity/{slug}', 'controller', 'route.entity');
     }
 }

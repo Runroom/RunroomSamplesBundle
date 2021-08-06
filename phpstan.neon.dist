@@ -14,4 +14,9 @@ parameters:
     excludes_analyse:
         - tests/App/var/*
     symfony:
-        container_xml_path: '%rootDir%/../../../tests/App/var/cache/test/AppRunroom_SamplesBundle_Tests_App_KernelTestDebugContainer.xml'
+        container_xml_path: '%rootDir%/../../../tests/App/var/cache/test/Runroom_SamplesBundle_Tests_App_KernelTestDebugContainer.xml'
+    treatPhpDocTypesAsCertain: false
+    checkGenericClassInNonGenericObjectType: true
+    checkMissingIterableValueType: true
+    checkMissingVarTagTypehint: true
+    checkMissingTypehints: true
