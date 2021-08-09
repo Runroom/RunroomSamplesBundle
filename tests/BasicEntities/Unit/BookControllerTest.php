@@ -15,65 +15,58 @@ namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\BasicEntities\Controller\BookController;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\DependencyInjection\Container;
+use Twig\Environment;
 
 class BookControllerTest extends TestCase
 {
-    private const BOOKS_VIEW = '@RunroomSamples/BasicEntities/books.html.twig';
-    private const BOOK_VIEW = '@RunroomSamples/BasicEntities/book.html.twig';
-
-    /** @var MockObject&PageRenderer */
-    private $renderer;
-
     /** @var MockObject&BookService */
     private $service;
+
+    /** @var MockObject&Environment */
+    private $twig;
 
     /** @var BookController */
     private $controller;
 
+    /** @psalm-suppress InternalMethod setContainer is internal on Symfony 5.x */
     protected function setUp(): void
     {
-        $this->renderer = $this->createMock(PageRenderer::class);
         $this->service = $this->createMock(BookService::class);
+        $this->twig = $this->createMock(Environment::class);
 
-        $this->controller = new BookController(
-            $this->renderer,
-            $this->service
-        );
+        $container = new Container();
+        $container->set('twig', $this->twig);
+
+        $this->controller = new BookController($this->service);
+        $this->controller->setContainer($container);
     }
 
     /** @test */
     public function itRenderBooks(): void
     {
-        $expectedResponse = new Response();
         $model = new BooksViewModel();
 
-        $this->service->method('getBooksViewModel')->with()->willReturn($model);
-        $this->renderer->method('renderResponse')->with(self::BOOKS_VIEW, $model, null)
-            ->willReturn($expectedResponse);
+        $this->service->method('getBooksViewModel')->willReturn($model);
 
         $response = $this->controller->books();
 
-        self::assertSame($expectedResponse, $response);
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /** @test */
     public function itRenderBook(): void
     {
-        $expectedResponse = new Response();
         $model = new BookViewModel();
 
         $this->service->method('getBookViewModel')->with('book')->willReturn($model);
-        $this->renderer->method('renderResponse')->with(self::BOOK_VIEW, $model, null)
-            ->willReturn($expectedResponse);
 
         $response = $this->controller->book('book');
 
-        self::assertSame($expectedResponse, $response);
+        self::assertSame(200, $response->getStatusCode());
     }
 }

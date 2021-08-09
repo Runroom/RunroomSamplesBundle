@@ -20,6 +20,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+/**
+ * This class shows how to use the PageRenderer, it is not using AbstractController on purpose.
+ */
 class ContactController
 {
     private PageRenderer $renderer;
@@ -56,11 +59,9 @@ class ContactController
 
     public function contactAjax(): Response
     {
-        $model = $this->service->getContactForm();
-
         return $this->renderer->renderResponse(
             '@RunroomSamples/Forms/contact-ajax.html.twig',
-            $model
+            $this->service->getContactForm()
         );
     }
 

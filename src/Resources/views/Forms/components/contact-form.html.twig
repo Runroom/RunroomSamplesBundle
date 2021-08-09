@@ -1,6 +1,6 @@
-{% form_theme model.formView 'helpers/fields.html.twig' %}
+{% form_theme page.content.formView 'helpers/fields.html.twig' %}
 
-{{- form_start(model.formView, {
+{{- form_start(page.content.formView, {
     'attr': {
         'id': 'contact-form',
         'novalidate': 'novalidate',
@@ -8,13 +8,13 @@
     },
     'action': action|default(null),
 }) -}}
-    {{- form_row(model.formView.name, {'attr': {
+    {{- form_row(page.content.formView.name, {'attr': {
         'data-rule-required': 'true',
         'data-rule-maxlength': 255,
         'data-msg-required': 'not_blank'|trans({}, 'validators'),
         'data-msg-maxlength': 'max_length'|trans({}, 'validators'),
     }}) -}}
-    {{- form_row(model.formView.email, {'attr': {
+    {{- form_row(page.content.formView.email, {'attr': {
         'data-rule-required': 'true',
         'data-rule-email': 'true',
         'data-rule-maxlength': 255,
@@ -22,29 +22,29 @@
         'data-msg-email': 'email'|trans({}, 'validators'),
         'data-msg-maxlength': 'max_length'|trans({}, 'validators'),
     }}) -}}
-    {{- form_row(model.formView.phone, {'attr': {
+    {{- form_row(page.content.formView.phone, {'attr': {
         'data-rule-required': 'true',
         'data-rule-maxlength': 255,
         'data-msg-required': 'not_blank'|trans({}, 'validators'),
         'data-msg-maxlength': 'max_length'|trans({}, 'validators'),
     }}) -}}
-    {{- form_row(model.formView.subject, {'attr': {
+    {{- form_row(page.content.formView.subject, {'attr': {
         'data-rule-required': 'true',
         'data-msg-required': 'not_blank'|trans({}, 'validators'),
     }}) -}}
-    {{- form_row(model.formView.type, {'radio_attr': {
+    {{- form_row(page.content.formView.type, {'radio_attr': {
         'data-rule-required': 'true',
         'data-msg-required': 'not_blank'|trans({}, 'validators'),
     }}) -}}
-    {{- form_row(model.formView.preferences) -}}
-    {{- form_row(model.formView.comment, {'attr': {
+    {{- form_row(page.content.formView.preferences) -}}
+    {{- form_row(page.content.formView.comment, {'attr': {
         'data-rule-required': 'true',
         'data-rule-maxlength': 255,
         'data-msg-required': 'not_blank'|trans({}, 'validators'),
         'data-msg-maxlength': 'max_length'|trans({}, 'validators'),
     }}) -}}
-    {{- form_row(model.formView.newsletter) -}}
-    {{- form_row(model.formView.privacyPolicy, {
+    {{- form_row(page.content.formView.newsletter) -}}
+    {{- form_row(page.content.formView.privacyPolicy, {
         'attr': {
             'data-rule-required': 'true',
             'data-msg-required': 'privacy_policy'|trans({}, 'validators'),
@@ -54,5 +54,5 @@
             '%url%': 'privacy_url'|translate
         },
     }) -}}
-    {{- form_row(model.formView.send) -}}
-{{- form_end(model.formView) -}}
+    {{- form_row(page.content.formView.send) -}}
+{{- form_end(page.content.formView) -}}
