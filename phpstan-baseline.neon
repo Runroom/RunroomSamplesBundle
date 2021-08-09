@@ -1,16 +1,13 @@
 parameters:
     ignoreErrors:
         -
+            message: "#^Call to an undefined method Knp\\\\DoctrineBehaviors\\\\Contract\\\\Entity\\\\TranslationInterface\\:\\:#"
+            path: .
+
+        -
             message: "#^Call to an undefined method Faker\\\\UniqueGenerator\\:\\:languageCode\\(\\)\\.$#"
-            count: 1
-            path: src/BasicEntities/Factory/BookTranslationFactory.php
+            path: .
 
         -
             message: "#^Call to an undefined method Faker\\\\UniqueGenerator\\:\\:slug\\(\\)\\.$#"
-            count: 1
-            path: src/BasicEntities/Factory/BookTranslationFactory.php
-
-        -
-            message: "#^Call to an undefined method Faker\\\\UniqueGenerator\\:\\:languageCode\\(\\)\\.$#"
-            count: 1
-            path: src/BasicEntities/Factory/CategoryTranslationFactory.php
+            path: .

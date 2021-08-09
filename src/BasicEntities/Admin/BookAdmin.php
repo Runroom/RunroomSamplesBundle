@@ -55,7 +55,7 @@ class BookAdmin extends AbstractSortableAdmin
                 'actions' => [
                     'delete' => [],
                     'move' => [
-                        'template' => '@SortableBehavior/sort.html.twig',
+                        'template' => '@RunroomSortableBehavior/sort.html.twig',
                     ],
                 ],
             ]);

@@ -13,40 +13,30 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\Controller;
 
-use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class BookController
+class BookController extends AbstractController
 {
-    private PageRenderer $renderer;
     private BookService $service;
 
-    public function __construct(
-        PageRenderer $renderer,
-        BookService $service
-    ) {
-        $this->renderer = $renderer;
+    public function __construct(BookService $service)
+    {
         $this->service = $service;
     }
 
     public function books(): Response
     {
-        $model = $this->service->getBooksViewModel();
-
-        return $this->renderer->renderResponse(
-            '@RunroomSamples/BasicEntities/books.html.twig',
-            $model
-        );
+        return $this->render('@RunroomSamples/BasicEntities/books.html.twig', [
+            'model' => $this->service->getBooksViewModel(),
+        ]);
     }
 
     public function book(string $slug): Response
     {
-        $model = $this->service->getBookViewModel($slug);
-
-        return $this->renderer->renderResponse(
-            '@RunroomSamples/BasicEntities/book.html.twig',
-            $model
-        );
+        return $this->render('@RunroomSamples/BasicEntities/book.html.twig', [
+            'model' => $this->service->getBookViewModel($slug),
+        ]);
     }
 }
