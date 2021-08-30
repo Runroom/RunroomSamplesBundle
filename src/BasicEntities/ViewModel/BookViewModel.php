@@ -17,14 +17,14 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BookViewModel
 {
-    private ?Book $book = null;
+    private Book $book;
 
-    public function setBook(Book $book): void
+    public function __construct(Book $book)
     {
         $this->book = $book;
     }
 
-    public function getBook(): ?Book
+    public function getBook(): Book
     {
         return $this->book;
     }

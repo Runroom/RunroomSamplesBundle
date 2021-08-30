@@ -45,16 +45,11 @@ class ContactController
 
         if ($model->formIsValid()) {
             return new RedirectResponse(
-                $this->router->generate('runroom_samples.forms.contact', [
-                    '_fragment' => 'form',
-                ])
+                $this->router->generate('runroom_samples.forms.contact', ['_fragment' => 'form'])
             );
         }
 
-        return $this->renderer->renderResponse(
-            '@RunroomSamples/Forms/contact.html.twig',
-            $model
-        );
+        return $this->renderer->renderResponse('@RunroomSamples/Forms/contact.html.twig', $model);
     }
 
     public function contactAjax(): Response
@@ -82,15 +77,10 @@ class ContactController
 
         if ($model->formIsValid()) {
             return new RedirectResponse(
-                $this->router->generate('runroom_samples.forms.hubspot', [
-                    '_fragment' => 'form',
-                ])
+                $this->router->generate('runroom_samples.forms.hubspot', ['_fragment' => 'form'])
             );
         }
 
-        return $this->renderer->renderResponse(
-            '@RunroomSamples/Forms/contact-hubspot.html.twig',
-            $model
-        );
+        return $this->renderer->renderResponse('@RunroomSamples/Forms/contact-hubspot.html.twig', $model);
     }
 }

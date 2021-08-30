@@ -50,14 +50,10 @@ final class ContactHubspotFormType extends AbstractType
                 ],
             ])
             ->add('comment', TextareaType::class, [
-                'constraints' => [
-                    new Assert\NotBlank(['message' => 'not_blank']),
-                ],
+                'constraints' => [new Assert\NotBlank(['message' => 'not_blank'])],
             ])
             ->add('privacyPolicy', CheckboxType::class, [
-                'constraints' => [
-                    new Assert\IsTrue(['message' => 'privacy_policy']),
-                ],
+                'constraints' => [new Assert\IsTrue(['message' => 'privacy_policy'])],
             ])
             ->add('send', SubmitType::class);
     }

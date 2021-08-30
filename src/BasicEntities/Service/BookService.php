@@ -28,21 +28,11 @@ class BookService
 
     public function getBooksViewModel(): BooksViewModel
     {
-        $books = $this->repository->findBy(['publish' => true], ['position' => 'ASC']);
-
-        $model = new BooksViewModel();
-        $model->setBooks($books);
-
-        return $model;
+        return new BooksViewModel($this->repository->findBy(['publish' => true], ['position' => 'ASC']));
     }
 
     public function getBookViewModel(string $slug): BookViewModel
     {
-        $book = $this->repository->findBySlug($slug);
-
-        $model = new BookViewModel();
-        $model->setBook($book);
-
-        return $model;
+        return new BookViewModel($this->repository->findBySlug($slug));
     }
 }
