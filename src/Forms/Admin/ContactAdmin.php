@@ -99,7 +99,7 @@ class ContactAdmin extends AbstractAdmin
                 'catalogue' => 'messages',
                 'choices' => array_flip(Contact::$statusChoices),
                 'editable' => true,
-                'template' => '@Samples/Forms/sonata/contact-status.html.twig',
+                'template' => '@RunroomSamples/Forms/sonata/contact-status.html.twig',
             ])
             ->add('_action', 'actions', [
                 'actions' => ['delete' => []],
