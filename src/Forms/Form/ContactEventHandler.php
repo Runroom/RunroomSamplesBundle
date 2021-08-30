@@ -53,8 +53,6 @@ class ContactEventHandler implements EventSubscriberInterface
 
     public static function getSubscribedEvents(): array
     {
-        return [
-            'form.contact_form.event.success' => 'onContactSuccess',
-        ];
+        return ['form.contact_form.event.success' => 'onContactSuccess'];
     }
 }

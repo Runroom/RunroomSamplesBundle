@@ -16,6 +16,7 @@ namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Runroom\SamplesBundle\BasicEntities\Controller\BookController;
+use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
@@ -49,7 +50,7 @@ class BookControllerTest extends TestCase
     /** @test */
     public function itRenderBooks(): void
     {
-        $model = new BooksViewModel();
+        $model = new BooksViewModel([]);
 
         $this->service->method('getBooksViewModel')->willReturn($model);
 
@@ -61,7 +62,7 @@ class BookControllerTest extends TestCase
     /** @test */
     public function itRenderBook(): void
     {
-        $model = new BookViewModel();
+        $model = new BookViewModel(new Book());
 
         $this->service->method('getBookViewModel')->with('book')->willReturn($model);
 

@@ -41,9 +41,7 @@ class CategoryAdmin extends AbstractAdmin
             ])
             ->add('books')
             ->add('_action', 'actions', [
-                'actions' => [
-                    'delete' => [],
-                ],
+                'actions' => ['delete' => []],
             ]);
     }
 
@@ -55,9 +53,7 @@ class CategoryAdmin extends AbstractAdmin
                 'fields' => [
                     'name' => [],
                 ],
-                'constraints' => [
-                    new Assert\Valid(),
-                ],
+                'constraints' => [new Assert\Valid()],
             ])
             ->add('books');
     }

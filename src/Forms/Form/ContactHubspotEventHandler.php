@@ -76,9 +76,7 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
 
     public static function getSubscribedEvents(): array
     {
-        return [
-            'form.contact_hubspot_form.event.success' => 'onContactSuccess',
-        ];
+        return ['form.contact_hubspot_form.event.success' => 'onContactSuccess'];
     }
 
     /** @param array{ fields: array{name: string, value: mixed}[], legalConsentOptions: array{consent: array{consentToProcess: mixed, text: string} } } $data */

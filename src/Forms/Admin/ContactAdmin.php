@@ -41,9 +41,7 @@ class ContactAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $show): void
     {
         $show
-            ->add('date', null, [
-                'format' => 'd/m/Y h:i',
-            ])
+            ->add('date', null, ['format' => 'd/m/Y h:i'])
             ->add('name')
             ->add('email')
             ->add('phone')
@@ -72,32 +70,24 @@ class ContactAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
         $filter
-            ->add('date', DateRangeFilter::class, [
-                'field_type' => DateTimeRangePickerType::class,
-            ])
+            ->add('date', DateRangeFilter::class, ['field_type' => DateTimeRangePickerType::class])
             ->add('name')
             ->add('email')
             ->add('subject', null, [
                 'field_type' => ChoiceType::class,
-                'field_options' => [
-                    'choices' => Contact::$subjectChoices,
-                ],
+                'field_options' => ['choices' => Contact::$subjectChoices],
             ])
             ->add('newsletter')
             ->add('status', null, [
                 'field_type' => ChoiceType::class,
-                'field_options' => [
-                    'choices' => Contact::$statusChoices,
-                ],
+                'field_options' => ['choices' => Contact::$statusChoices],
             ]);
     }
 
     protected function configureListFields(ListMapper $list): void
     {
         $list
-            ->add('date', null, [
-                'format' => 'd/m/Y h:i',
-            ])
+            ->add('date', null, ['format' => 'd/m/Y h:i'])
             ->addIdentifier('name')
             ->add('email', 'email')
             ->add('subject', 'choice', [
@@ -112,9 +102,7 @@ class ContactAdmin extends AbstractAdmin
                 'template' => '@Samples/Forms/sonata/contact-status.html.twig',
             ])
             ->add('_action', 'actions', [
-                'actions' => [
-                    'delete' => [],
-                ],
+                'actions' => ['delete' => []],
             ]);
     }
 }

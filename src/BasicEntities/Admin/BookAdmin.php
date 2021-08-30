@@ -48,15 +48,11 @@ class BookAdmin extends AbstractSortableAdmin
                 'sort_parent_association_mappings' => [['fieldName' => 'translations']],
             ])
             ->add('category')
-            ->add('publish', null, [
-                'editable' => true,
-            ])
+            ->add('publish', null, ['editable' => true])
             ->add('_action', 'actions', [
                 'actions' => [
                     'delete' => [],
-                    'move' => [
-                        'template' => '@RunroomSortableBehavior/sort.html.twig',
-                    ],
+                    'move' => ['template' => '@RunroomSortableBehavior/sort.html.twig'],
                 ],
             ]);
     }
@@ -68,17 +64,13 @@ class BookAdmin extends AbstractSortableAdmin
                 'label' => false,
                 'fields' => [
                     'title' => [],
-                    'slug' => [
-                        'display' => false,
-                    ],
+                    'slug' => ['display' => false],
                     'description' => [
                         'field_type' => CKEditorType::class,
                         'required' => false,
                     ],
                 ],
-                'constraints' => [
-                    new Assert\Valid(),
-                ],
+                'constraints' => [new Assert\Valid()],
             ])
             ->add('category')
             ->add('picture', MediaType::class, [
