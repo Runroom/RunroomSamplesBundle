@@ -7,12 +7,10 @@
                 <h2 class="t-h2">{{ 'form.messages.ok_title'|trans }}</h2>
                 <p class="p-big">{{ 'form.messages.ok_description'|trans }}</p>
             {% else %}
-                {% include '@RunroomSamples/Forms/components/contact-hubspot-form.html.twig' with {
-                    'action': path(
-                        app.request.attributes.get('_route'),
-                        app.request.attributes.get('_route_params')|merge({'_fragment': 'form'})
-                    ),
-                } %}
+                {{ include('@RunroomSamples/Forms/components/contact-hubspot-form.html.twig', {action: path(
+                    app.request.attributes.get('_route'),
+                    app.request.attributes.get('_route_params')|merge({'_fragment': 'form'})
+                )}) }}
             {% endif %}
         </section>
     </div>
