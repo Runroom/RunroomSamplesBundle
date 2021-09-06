@@ -4,10 +4,10 @@
     <div class="demo">
         <section class="demp__section u-wrapper js-form-container">
             <div class="js-form-display">
-                {% include '@RunroomSamples/Forms/components/contact-form.html.twig' with {
-                    'class': 'js-validate form js-form-ajax',
-                    'action': path('runroom_samples.forms.contact_ajax_post'),
-                } %}
+                {{ include('@RunroomSamples/Forms/components/contact-form.html.twig', {
+                    class: 'js-validate form js-form-ajax',
+                    action: path('runroom_samples.forms.contact_ajax_post'),
+                }) }}
             </div>
             <div class="form__ok js-form-success" style="display: none" aria-hidden="true">
                 <h2 class="t-h2">{{ 'form.messages.ok_title'|trans }}</h2>
