@@ -3,11 +3,3 @@ parameters:
         -
             message: "#^Call to an undefined method Knp\\\\DoctrineBehaviors\\\\Contract\\\\Entity\\\\TranslationInterface\\:\\:#"
             path: .
-
-        -
-            message: "#^Call to an undefined method Faker\\\\UniqueGenerator\\:\\:languageCode\\(\\)\\.$#"
-            path: .
-
-        -
-            message: "#^Call to an undefined method Faker\\\\UniqueGenerator\\:\\:slug\\(\\)\\.$#"
-            path: .
