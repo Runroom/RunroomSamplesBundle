@@ -11,12 +11,14 @@ parameters:
     paths:
         - src
         - tests
-    excludes_analyse:
+    excludePaths:
         - tests/App/var/*
     symfony:
         container_xml_path: '%rootDir%/../../../tests/App/var/cache/test/Runroom_SamplesBundle_Tests_App_KernelTestDebugContainer.xml'
     treatPhpDocTypesAsCertain: false
     checkGenericClassInNonGenericObjectType: true
+    checkInternalClassCaseSensitivity: true
     checkMissingIterableValueType: true
     checkMissingVarTagTypehint: true
     checkMissingTypehints: true
+    checkUninitializedProperties: true

@@ -151,6 +151,8 @@ final class Kernel extends BaseKernel
     /**
      * @todo: Simplify this method when dropping support for Symfony 4.4
      *
+     * @psalm-suppress DeprecatedClass
+     *
      * @param RouteCollectionBuilder|RoutingConfigurator $routes
      */
     protected function configureRoutes($routes): void

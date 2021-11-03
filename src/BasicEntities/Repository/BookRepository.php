@@ -20,7 +20,13 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/** @extends ServiceEntityRepository<Book> */
+/**
+ * @extends ServiceEntityRepository<Book>
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
+ *
+ * $_em, $_entityName and $_class are not directly set on this class but on parent classes
+ */
 class BookRepository extends ServiceEntityRepository
 {
     private RequestStack $requestStack;
