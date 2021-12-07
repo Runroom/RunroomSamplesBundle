@@ -34,7 +34,6 @@ class BookControllerTest extends TestCase
     /** @var BookController */
     private $controller;
 
-    /** @psalm-suppress InternalMethod setContainer is internal on Symfony 5.x */
     protected function setUp(): void
     {
         $this->service = $this->createMock(BookService::class);
