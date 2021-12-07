@@ -35,7 +35,11 @@ class RunroomSamplesExtension extends Extension
         $this->mapMediaField('picture', Book::class, $config);
     }
 
-    /** @param array{ class: array{ media: class-string } } $config */
+    /**
+     * @param array{ class: array{ media: class-string } } $config
+     *
+     * @phpstan-param class-string $entityName
+     */
     private function mapMediaField(string $fieldName, string $entityName, array $config): void
     {
         $options = OptionsBuilder::createManyToOne($fieldName, $config['class']['media'])
