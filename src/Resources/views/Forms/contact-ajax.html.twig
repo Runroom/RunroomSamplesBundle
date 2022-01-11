@@ -1,22 +1,20 @@
 {% extends '@RunroomSamples/Forms/contact.html.twig' %}
 
 {% block content %}
-    <div class="demo">
-        <section class="demp__section u-wrapper js-form-container">
-            <div class="js-form-display">
-                {{ include('@RunroomSamples/Forms/components/contact-form.html.twig', {
-                    class: 'js-validate form js-form-ajax',
-                    action: path('runroom_samples.forms.contact_ajax_post'),
-                }) }}
-            </div>
-            <div class="form__ok js-form-success" style="display: none" aria-hidden="true">
-                <h2 class="t-h2">{{ 'form.messages.ok_title'|trans }}</h2>
-                <p class="p-big">{{ 'form.messages.ok_description'|trans }}</p>
-            </div>
-            <div class="form__ko js-form-error" style="display: none" aria-hidden="true">
-                <h2 class="t-h2">{{ 'form.messages.ko_title'|trans }}</h2>
-                <p class="p-big">{{ 'form.messages.ko_description'|trans }}</p>
-            </div>
-        </section>
-    </div>
+    <section class="wrapper js-form-container">
+        <div class="js-form-display">
+            {{ include('@RunroomSamples/Forms/components/contact-form.html.twig', {
+                class: 'js-validate form js-form-ajax',
+                action: path('runroom_samples.forms.contact_ajax_post'),
+            }) }}
+        </div>
+        <div class="bg-green-600 text-white js-form-success" style="display: none" aria-hidden="true">
+            <h2 class="mb-2">{{ 'form.messages.ok_title'|trans }}</h2>
+            <p class="text-lg">{{ 'form.messages.ok_description'|trans }}</p>
+        </div>
+        <div class="bg-rose-500 text-white js-form-error" style="display: none" aria-hidden="true">
+            <h2 class="mb-2">{{ 'form.messages.ko_title'|trans }}</h2>
+            <p class="text-lg">{{ 'form.messages.ko_description'|trans }}</p>
+        </div>
+    </section>
 {% endblock %}
