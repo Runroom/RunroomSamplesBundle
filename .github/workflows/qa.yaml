@@ -25,3 +25,7 @@ jobs:
       - run: composer psalm -- --php-version=${{ matrix.php }} --threads=$(nproc) --output-format=github --shepherd
       - run: composer normalize --no-check-lock --no-update-lock --dry-run --diff
       - run: composer validate --strict
+      - run: bin/console lint:container
+      - run: bin/console lint:twig packages
+      - run: bin/console lint:xliff packages
+      - run: bin/console lint:yaml packages
