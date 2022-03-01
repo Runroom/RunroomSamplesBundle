@@ -19,7 +19,9 @@ use Zenstruck\Foundry\ModelFactory;
 /** @extends ModelFactory<BookTranslation> */
 final class BookTranslationFactory extends ModelFactory
 {
-    /** @return array<string, mixed> */
+    /**
+     * @return array<string, mixed>
+     */
     protected function getDefaults(): array
     {
         return [

@@ -40,7 +40,9 @@ class RunroomSamplesExtensionTest extends AbstractExtensionTestCase
         ]]);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itHasCoreServicesAlias(): void
     {
         // Basic Entities

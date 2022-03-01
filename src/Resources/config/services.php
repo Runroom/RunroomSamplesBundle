@@ -21,6 +21,8 @@ use Runroom\SamplesBundle\Forms\Form\ContactHubspotEventHandler;
 use Runroom\SortableBehaviorBundle\Controller\SortableAdminController;
 use SevenShores\Hubspot\Http\Client;
 use SevenShores\Hubspot\Resources\Forms;
+use Sonata\AdminBundle\Controller\CRUDController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
 
@@ -39,25 +41,50 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->public()
         ->tag('controller.service_arguments');
 
-    $services->set(BookAdmin::class)
+    $bookAdmin = $services->set(BookAdmin::class)
         ->public()
-        ->args([null, Book::class, SortableAdminController::class])
-        ->tag('sonata.admin', ['manager_type' => 'orm', 'label' => 'Books']);
+        ->tag('sonata.admin', [
+            'model_class' => Book::class,
+            'controller' => SortableAdminController::class,
+            'manager_type' => 'orm',
+            'label' => 'Books',
+        ]);
 
-    $services->set(CategoryAdmin::class)
+    /* @todo: Simplify this when dropping support for SonataAdminBundle 3 */
+    if (!is_a(CRUDController::class, AbstractController::class, true)) {
+        $bookAdmin->args([null, Book::class, SortableAdminController::class]);
+    }
+
+    $categoryAdmin = $services->set(CategoryAdmin::class)
         ->public()
-        ->args([null, Category::class, null])
-        ->tag('sonata.admin', ['manager_type' => 'orm', 'label' => 'Categories']);
+        ->tag('sonata.admin', [
+            'model_class' => Category::class,
+            'manager_type' => 'orm',
+            'label' => 'Categories',
+        ]);
+
+    /* @todo: Simplify this when dropping support for SonataAdminBundle 3 */
+    if (!is_a(CRUDController::class, AbstractController::class, true)) {
+        $categoryAdmin->args([null, Category::class, null]);
+    }
 
     // Forms
     $services->load('Runroom\SamplesBundle\Forms\Controller\\', '../../Forms/Controller')
         ->public()
         ->tag('controller.service_arguments');
 
-    $services->set(ContactAdmin::class)
+    $contactAdmin = $services->set(ContactAdmin::class)
         ->public()
-        ->args([null, Contact::class, null])
-        ->tag('sonata.admin', ['manager_type' => 'orm', 'label' => 'Contacts']);
+        ->tag('sonata.admin', [
+            'model_class' => Contact::class,
+            'manager_type' => 'orm',
+            'label' => 'Contacts',
+        ]);
+
+    /* @todo: Simplify this when dropping support for SonataAdminBundle 3 */
+    if (!is_a(CRUDController::class, AbstractController::class, true)) {
+        $contactAdmin->args([null, Contact::class, null]);
+    }
 
     $services->set(Client::class)
         ->arg('$config', ['key' => '%env(HUBSPOT_KEY)%']);

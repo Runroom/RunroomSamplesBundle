@@ -23,7 +23,9 @@ class Contact
     private ?int $subject = EntityContact::SUBJECT_GENERAL;
     private ?int $type = null;
 
-    /** @var int[]|null */
+    /**
+     * @var int[]|null
+     */
     private ?array $preferences = [];
     private ?string $comment = null;
     private ?bool $newsletter = null;
@@ -89,13 +91,17 @@ class Contact
         return $this;
     }
 
-    /** @return int[]|null */
+    /**
+     * @return int[]|null
+     */
     public function getPreferences(): ?array
     {
         return $this->preferences;
     }
 
-    /** @param int[]|null $preferences */
+    /**
+     * @param int[]|null $preferences
+     */
     public function setPreferences(?array $preferences): self
     {
         $this->preferences = $preferences;

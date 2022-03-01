@@ -25,13 +25,19 @@ use Twig\Environment;
 
 class BookControllerTest extends TestCase
 {
-    /** @var MockObject&BookService */
+    /**
+     * @var MockObject&BookService
+     */
     private $service;
 
-    /** @var MockObject&Environment */
+    /**
+     * @var MockObject&Environment
+     */
     private $twig;
 
-    /** @var BookController */
+    /**
+     * @var BookController
+     */
     private $controller;
 
     protected function setUp(): void
@@ -46,7 +52,9 @@ class BookControllerTest extends TestCase
         $this->controller->setContainer($container);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itRenderBooks(): void
     {
         $model = new BooksViewModel([]);
@@ -58,7 +66,9 @@ class BookControllerTest extends TestCase
         self::assertSame(200, $response->getStatusCode());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itRenderBook(): void
     {
         $model = new BookViewModel(new Book());

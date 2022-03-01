@@ -58,7 +58,9 @@ class BookTranslation implements TranslationInterface
      */
     private ?string $slug = null;
 
-    /** @ORM\Column(type="text", nullable=true) */
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
     private ?string $description = null;
 
     public function setTitle(?string $title): self
