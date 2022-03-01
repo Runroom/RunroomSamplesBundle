@@ -33,26 +33,34 @@ class Contact
     private const PREFERENCE_FRONTEND = 3;
     private const PREFERENCE_MARKETING = 4;
 
-    /** @var array<string, int> */
+    /**
+     * @var array<string, int>
+     */
     public static array $subjectChoices = [
         'form.subject.general' => self::SUBJECT_GENERAL,
         'form.subject.specific' => self::SUBJECT_SPECIFIC,
     ];
 
-    /** @var array<string, int> */
+    /**
+     * @var array<string, int>
+     */
     public static array $statusChoices = [
         'contact.status.unread' => self::STATUS_UNREAD,
         'contact.status.read' => self::STATUS_READ,
         'contact.status.processed' => self::STATUS_PROCESSED,
     ];
 
-    /** @var array<string, int> */
+    /**
+     * @var array<string, int>
+     */
     public static array $typeChoices = [
         'form.type.comment' => self::TYPE_COMMENT,
         'form.type.bug' => self::TYPE_BUG,
     ];
 
-    /** @var array<string, int> */
+    /**
+     * @var array<string, int>
+     */
     public static array $preferenceChoices = [
         'form.preference.design' => self::PREFERENCE_DESIGN,
         'form.preference.backend' => self::PREFERENCE_BACKEND,
@@ -67,19 +75,29 @@ class Contact
      */
     private ?int $id = null;
 
-    /** @ORM\Column(type="string") */
+    /**
+     * @ORM\Column(type="string")
+     */
     private ?string $name = null;
 
-    /** @ORM\Column(type="string") */
+    /**
+     * @ORM\Column(type="string")
+     */
     private ?string $email = null;
 
-    /** @ORM\Column(type="string") */
+    /**
+     * @ORM\Column(type="string")
+     */
     private ?string $phone = null;
 
-    /** @ORM\Column(type="integer") */
+    /**
+     * @ORM\Column(type="integer")
+     */
     private ?int $subject = null;
 
-    /** @ORM\Column(type="integer") */
+    /**
+     * @ORM\Column(type="integer")
+     */
     private ?int $type = null;
 
     /**
@@ -89,19 +107,29 @@ class Contact
      */
     private ?array $preferences = null;
 
-    /** @ORM\Column(type="text") */
+    /**
+     * @ORM\Column(type="text")
+     */
     private ?string $comment = null;
 
-    /** @ORM\Column(type="boolean") */
+    /**
+     * @ORM\Column(type="boolean")
+     */
     private ?bool $newsletter = null;
 
-    /** @ORM\Column(type="boolean") */
+    /**
+     * @ORM\Column(type="boolean")
+     */
     private ?bool $privacyPolicy = null;
 
-    /** @ORM\Column(type="datetime") */
+    /**
+     * @ORM\Column(type="datetime")
+     */
     private ?\DateTimeInterface $date = null;
 
-    /** @ORM\Column(type="integer") */
+    /**
+     * @ORM\Column(type="integer")
+     */
     private ?int $status = self::STATUS_UNREAD;
 
     public function __construct()
@@ -179,13 +207,17 @@ class Contact
         return $this;
     }
 
-    /** @return int[]|null */
+    /**
+     * @return int[]|null
+     */
     public function getPreferences(): ?array
     {
         return $this->preferences;
     }
 
-    /** @param int[]|null $preferences */
+    /**
+     * @param int[]|null $preferences
+     */
     public function setPreferences(?array $preferences): self
     {
         $this->preferences = $preferences;

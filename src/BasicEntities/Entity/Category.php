@@ -77,7 +77,9 @@ class Category implements TranslatableInterface
         $this->books->removeElement($book);
     }
 
-    /** @return Collection<int, Book> */
+    /**
+     * @return Collection<int, Book>
+     */
     public function getBooks(): Collection
     {
         return $this->books;

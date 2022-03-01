@@ -23,7 +23,9 @@ use Runroom\SamplesBundle\Forms\Service\ContactService;
 
 class ContactServiceTest extends TestCase
 {
-    /** @var MockObject&FormHandler */
+    /**
+     * @var MockObject&FormHandler
+     */
     private $handler;
 
     private ContactService $service;
@@ -37,7 +39,9 @@ class ContactServiceTest extends TestCase
         );
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itGeneratesDemoViewModel(): void
     {
         $formAware = $this->createStub(FormAwareInterface::class);
@@ -49,7 +53,9 @@ class ContactServiceTest extends TestCase
         self::assertSame($formAware, $model);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itGeneratesDemoHubspotViewModel(): void
     {
         $formAware = $this->createStub(FormAwareInterface::class);

@@ -25,10 +25,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ContactControllerTest extends TestCase
 {
-    /** @var MockObject&PageRenderer */
+    /**
+     * @var MockObject&PageRenderer
+     */
     private $renderer;
 
-    /** @var Stub&ContactService */
+    /**
+     * @var Stub&ContactService
+     */
     private $service;
 
     private ContactController $controller;
@@ -45,7 +49,9 @@ class ContactControllerTest extends TestCase
         );
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itRendersContact(): void
     {
         $expectedResponse = new Response();
@@ -63,7 +69,9 @@ class ContactControllerTest extends TestCase
         self::assertSame($expectedResponse, $response);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itRendersContactAjax(): void
     {
         $expectedResponse = new Response();
@@ -79,7 +87,9 @@ class ContactControllerTest extends TestCase
         self::assertSame($expectedResponse, $response);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itProcessesAjaxFormValid(): void
     {
         $model = $this->createStub(FormAwareInterface::class);
@@ -94,7 +104,9 @@ class ContactControllerTest extends TestCase
         self::assertSame(json_encode(['status' => 'ok']), $response->getContent());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itProcessesAjaxFormError(): void
     {
         $model = $this->createStub(FormAwareInterface::class);
@@ -109,7 +121,9 @@ class ContactControllerTest extends TestCase
         self::assertSame(json_encode(['status' => 'error']), $response->getContent());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function itRendersContactHubspot(): void
     {
         $expectedResponse = new Response();

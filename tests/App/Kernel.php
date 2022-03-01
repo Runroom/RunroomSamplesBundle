@@ -37,7 +37,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorageFactory;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Symfony\Component\Routing\RouteCollectionBuilder;
 use Symfony\Component\Security\Http\Authentication\AuthenticatorManager;
 
 final class Kernel extends BaseKernel
@@ -73,7 +72,9 @@ final class Kernel extends BaseKernel
         return __DIR__;
     }
 
-    /** @todo: Simplify security configuration when dropping support for Symfony 4.4 */
+    /**
+     * @todo: Simplify security configuration when dropping support for Symfony 4.4
+     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->setParameter('kernel.default_locale', 'en');
@@ -149,11 +150,11 @@ final class Kernel extends BaseKernel
     }
 
     /**
-     * @todo: Simplify this method when dropping support for Symfony 4.4
+     * @todo: Add typehint when dropping support for Symfony 4.4
      *
-     * @psalm-suppress DeprecatedClass
+     * @psalm-suppress TooManyArguments
      *
-     * @param RouteCollectionBuilder|RoutingConfigurator $routes
+     * @param RoutingConfigurator $routes
      */
     protected function configureRoutes($routes): void
     {

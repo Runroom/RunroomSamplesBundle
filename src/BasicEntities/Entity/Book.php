@@ -48,10 +48,14 @@ class Book implements TranslatableInterface
      */
     private ?Category $category = null;
 
-    /** @Assert\Valid */
+    /**
+     * @Assert\Valid
+     */
     private ?MediaInterface $picture = null;
 
-    /** @ORM\Column(type="boolean") */
+    /**
+     * @ORM\Column(type="boolean")
+     */
     private ?bool $publish = null;
 
     public function __toString(): string

@@ -23,7 +23,9 @@ use Symfony\Component\Validator\Validation;
 
 class ContactHubspotFormTypeTest extends TypeTestCase
 {
-    /** @test */
+    /**
+     * @test
+     */
     public function submitValidData(): void
     {
         $model = new ContactHubspot();
@@ -45,22 +47,23 @@ class ContactHubspotFormTypeTest extends TypeTestCase
     }
 
     /**
-     * @todo: Simplify this when dropping support for Symfony 4.4
-     *
      * @psalm-suppress TooManyArguments
      *
      * @return AbstractExtension[]
-     *
-     * @see: enableAnnotationMapping accepts one argument and it must be set to true on Symfony 5.2
      */
     protected function getExtensions(): array
     {
-        $annotationMappingArgument = class_exists(Cascade::class) ? true : null;
+        $validatorBuilder = Validation::createValidatorBuilder();
 
-        $validator = Validation::createValidatorBuilder()
-            ->enableAnnotationMapping($annotationMappingArgument)
-            ->getValidator();
+        /*
+         * @todo: Simplify this when dropping support for Symfony 4.4
+         */
+        if (class_exists(Cascade::class)) {
+            $validatorBuilder->enableAnnotationMapping(true);
+        } else {
+            $validatorBuilder->enableAnnotationMapping();
+        }
 
-        return [new ValidatorExtension($validator)];
+        return [new ValidatorExtension($validatorBuilder->getValidator())];
     }
 }
