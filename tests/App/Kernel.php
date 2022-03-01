@@ -24,6 +24,7 @@ use Runroom\RenderEventBundle\RunroomRenderEventBundle;
 use Runroom\SamplesBundle\RunroomSamplesBundle;
 use Runroom\SamplesBundle\Tests\App\Entity\Media;
 use Runroom\SortableBehaviorBundle\RunroomSortableBehaviorBundle;
+use Runroom\TranslationBundle\RunroomTranslationBundle;
 use Sonata\AdminBundle\SonataAdminBundle;
 use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
 use Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle;
@@ -63,6 +64,8 @@ final class Kernel extends BaseKernel
             new RunroomFormHandlerBundle(),
             new RunroomRenderEventBundle(),
             new RunroomSortableBehaviorBundle(),
+            new RunroomTranslationBundle(),
+
             new RunroomSamplesBundle(),
         ];
     }
