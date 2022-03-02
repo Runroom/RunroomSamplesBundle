@@ -76,7 +76,6 @@ class BookAdmin extends AbstractSortableAdmin
                         ],
                         'description' => [
                             'field_type' => CKEditorType::class,
-                            'required' => false,
                         ],
                     ],
                     'constraints' => [new Assert\Valid()],
