@@ -51,9 +51,13 @@ class CategoryAdmin extends AbstractAdmin
             ->add('translations', TranslationsType::class, [
                 'label' => false,
                 'fields' => [
-                    'name' => [],
+                    'name' => [
+                        'label' => 'Name*',
+                    ],
                 ],
-                'constraints' => [new Assert\Valid()],
+                'constraints' => [
+                    new Assert\Valid(),
+                ],
             ])
             ->add('books');
     }
