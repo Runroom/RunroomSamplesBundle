@@ -20,7 +20,8 @@ use Runroom\SortableBehaviorBundle\Admin\AbstractSortableAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\MediaBundle\Form\Type\MediaType;
+use Sonata\AdminBundle\Form\Type\ModelListType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /** @extends AbstractSortableAdmin<Book> */
@@ -60,23 +61,39 @@ class BookAdmin extends AbstractSortableAdmin
     protected function configureFormFields(FormMapper $form): void
     {
         $form
-            ->add('translations', TranslationsType::class, [
-                'label' => false,
-                'fields' => [
-                    'title' => [],
-                    'slug' => ['display' => false],
-                    'description' => [
-                        'field_type' => CKEditorType::class,
-                        'required' => false,
+            ->with('Translations', [
+                'box_class' => 'box box-solid box-primary',
+            ])
+                ->add('translations', TranslationsType::class, [
+                    'label' => false,
+                    'default_locale' => null,
+                    'fields' => [
+                        'title' => [
+                            'label' => 'Title*',
+                        ],
+                        'slug' => [
+                            'field_type' => HiddenType::class,
+                        ],
+                        'description' => [
+                            'field_type' => CKEditorType::class,
+                        ],
                     ],
-                ],
-                'constraints' => [new Assert\Valid()],
+                    'constraints' => [new Assert\Valid()],
+                ])
+            ->end()
+            ->with('Extra', [
+                'box_class' => 'box box-solid box-primary',
             ])
-            ->add('category')
-            ->add('picture', MediaType::class, [
-                'context' => 'default',
-                'provider' => 'sonata.media.provider.image',
-            ])
-            ->add('publish');
+                ->add('picture', ModelListType::class, [
+                    'required' => false,
+                ], [
+                    'link_parameters' => [
+                        'context' => 'default',
+                        'provider' => 'sonata.media.provider.image',
+                    ],
+                ])
+                ->add('category')
+                ->add('publish')
+            ->end();
     }
 }
