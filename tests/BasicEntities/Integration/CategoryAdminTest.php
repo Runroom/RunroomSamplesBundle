@@ -17,7 +17,9 @@ use Runroom\SamplesBundle\BasicEntities\Admin\CategoryAdmin;
 use Runroom\SamplesBundle\BasicEntities\Entity\Category;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
 
-/** @extends SonataAdminTestCase<Category> */
+/**
+ * @extends SonataAdminTestCase<Category>
+ */
 class CategoryAdminTest extends SonataAdminTestCase
 {
     /**

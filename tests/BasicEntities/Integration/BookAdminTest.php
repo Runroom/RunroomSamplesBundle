@@ -17,7 +17,9 @@ use Runroom\SamplesBundle\BasicEntities\Admin\BookAdmin;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
 
-/** @extends SonataAdminTestCase<Book> */
+/**
+ * @extends SonataAdminTestCase<Book>
+ */
 class BookAdminTest extends SonataAdminTestCase
 {
     /**

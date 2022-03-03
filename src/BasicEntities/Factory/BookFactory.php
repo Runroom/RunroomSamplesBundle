@@ -16,7 +16,9 @@ namespace Runroom\SamplesBundle\BasicEntities\Factory;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Zenstruck\Foundry\ModelFactory;
 
-/** @extends ModelFactory<Book> */
+/**
+ * @extends ModelFactory<Book>
+ */
 final class BookFactory extends ModelFactory
 {
     /**

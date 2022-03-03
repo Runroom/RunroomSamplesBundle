@@ -19,11 +19,26 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
+use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/** @extends AbstractAdmin<Category> */
+/**
+ * @extends AbstractAdmin<Category>
+ */
 class CategoryAdmin extends AbstractAdmin
 {
+    /**
+     * @todo: Simplify this when dropping support for Sonata 3
+     *
+     * @param RouteCollection|RouteCollectionInterface $collection
+     */
+    protected function configureRoutes(object $collection): void
+    {
+        $collection->remove('show');
+    }
+
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
         $filter
@@ -34,14 +49,17 @@ class CategoryAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list): void
     {
         $list
-            ->addIdentifier('name', null, [
+            ->add('name', null, [
                 'sortable' => true,
                 'sort_field_mapping' => ['fieldName' => 'name'],
                 'sort_parent_association_mappings' => [['fieldName' => 'translations']],
             ])
             ->add('books')
-            ->add('_action', 'actions', [
-                'actions' => ['delete' => []],
+            ->add(ListMapper::NAME_ACTIONS, ListMapper::TYPE_ACTIONS, [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => [],
+                ],
             ]);
     }
 
@@ -59,6 +77,11 @@ class CategoryAdmin extends AbstractAdmin
                     new Assert\Valid(),
                 ],
             ])
-            ->add('books');
+            ->add('books', ModelAutocompleteType::class, [
+                'by_reference' => false,
+                'multiple' => true,
+                'property' => 'translations.title',
+                'btn_add' => false,
+            ]);
     }
 }

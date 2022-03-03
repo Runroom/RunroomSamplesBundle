@@ -16,7 +16,7 @@ namespace Runroom\SamplesBundle\BasicEntities\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SortableBehaviorBundle\Behaviors\Sortable;
 use Sonata\MediaBundle\Model\MediaInterface;
@@ -30,7 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Book implements TranslatableInterface
 {
-    use ORMBehaviors\Translatable\TranslatableTrait;
+    use TranslatableTrait;
     use Sortable;
 
     /**
@@ -68,21 +68,6 @@ class Book implements TranslatableInterface
         return $this->id;
     }
 
-    public function getTitle(string $locale = null): ?string
-    {
-        return $this->translate($locale, false)->getTitle();
-    }
-
-    public function getSlug(string $locale = null): ?string
-    {
-        return $this->translate($locale, false)->getSlug();
-    }
-
-    public function getDescription(string $locale = null): ?string
-    {
-        return $this->translate($locale, false)->getDescription();
-    }
-
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
@@ -117,5 +102,20 @@ class Book implements TranslatableInterface
     public function getPublish(): ?bool
     {
         return $this->publish;
+    }
+
+    public function getTitle(string $locale = null): ?string
+    {
+        return $this->translate($locale, false)->getTitle();
+    }
+
+    public function getSlug(string $locale = null): ?string
+    {
+        return $this->translate($locale, false)->getSlug();
+    }
+
+    public function getDescription(string $locale = null): ?string
+    {
+        return $this->translate($locale, false)->getDescription();
     }
 }

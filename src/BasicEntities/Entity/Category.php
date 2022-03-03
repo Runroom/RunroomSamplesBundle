@@ -17,7 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
 
 /**
  * @ORM\Entity
@@ -28,7 +28,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  */
 class Category implements TranslatableInterface
 {
-    use ORMBehaviors\Translatable\TranslatableTrait;
+    use TranslatableTrait;
 
     /**
      * @ORM\Id
@@ -60,21 +60,25 @@ class Category implements TranslatableInterface
         return $this->id;
     }
 
-    public function getName(string $locale = null): ?string
-    {
-        return $this->translate($locale, false)->getName();
-    }
-
     public function addBook(Book $book): self
     {
-        $this->books[] = $book;
+        if (!$this->books->contains($book)) {
+            $this->books[] = $book;
+            $book->setCategory($this);
+        }
 
         return $this;
     }
 
-    public function removeBook(Book $book): void
+    public function removeBook(Book $book): self
     {
-        $this->books->removeElement($book);
+        if ($this->books->removeElement($book)) {
+            if ($book->getCategory() === $this) {
+                $book->getCategory(null);
+            }
+        }
+
+        return $this;
     }
 
     /**
@@ -83,5 +87,10 @@ class Category implements TranslatableInterface
     public function getBooks(): Collection
     {
         return $this->books;
+    }
+
+    public function getName(string $locale = null): ?string
+    {
+        return $this->translate($locale, false)->getName();
     }
 }
