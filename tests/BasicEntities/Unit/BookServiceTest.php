@@ -49,7 +49,7 @@ class BookServiceTest extends TestCase
 
         $model = $this->service->getBooksViewModel();
 
-        self::assertSame($model->getBooks(), $expectedBooks);
+        static::assertSame($model->getBooks(), $expectedBooks);
     }
 
     /**
@@ -63,6 +63,6 @@ class BookServiceTest extends TestCase
 
         $model = $this->service->getBookViewModel('slug');
 
-        self::assertSame($model->getBook(), $expectedBook);
+        static::assertSame($model->getBook(), $expectedBook);
     }
 }

@@ -63,7 +63,7 @@ class BookControllerTest extends TestCase
 
         $response = $this->controller->books();
 
-        self::assertSame(200, $response->getStatusCode());
+        static::assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -77,6 +77,6 @@ class BookControllerTest extends TestCase
 
         $response = $this->controller->book('book');
 
-        self::assertSame(200, $response->getStatusCode());
+        static::assertSame(200, $response->getStatusCode());
     }
 }

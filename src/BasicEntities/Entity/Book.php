@@ -30,8 +30,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Book implements TranslatableInterface
 {
-    use TranslatableTrait;
     use Sortable;
+    use TranslatableTrait;
 
     /**
      * @ORM\Id

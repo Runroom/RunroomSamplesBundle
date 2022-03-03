@@ -66,7 +66,7 @@ class ContactControllerTest extends TestCase
 
         $response = $this->controller->contact();
 
-        self::assertSame($expectedResponse, $response);
+        static::assertSame($expectedResponse, $response);
     }
 
     /**
@@ -84,7 +84,7 @@ class ContactControllerTest extends TestCase
 
         $response = $this->controller->contactAjax();
 
-        self::assertSame($expectedResponse, $response);
+        static::assertSame($expectedResponse, $response);
     }
 
     /**
@@ -100,8 +100,8 @@ class ContactControllerTest extends TestCase
 
         $response = $this->controller->contactAjaxPost();
 
-        self::assertSame(Response::HTTP_OK, $response->getStatusCode());
-        self::assertSame(json_encode(['status' => 'ok']), $response->getContent());
+        static::assertSame(Response::HTTP_OK, $response->getStatusCode());
+        static::assertSame(json_encode(['status' => 'ok']), $response->getContent());
     }
 
     /**
@@ -117,8 +117,8 @@ class ContactControllerTest extends TestCase
 
         $response = $this->controller->contactAjaxPost();
 
-        self::assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
-        self::assertSame(json_encode(['status' => 'error']), $response->getContent());
+        static::assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+        static::assertSame(json_encode(['status' => 'error']), $response->getContent());
     }
 
     /**
@@ -138,6 +138,6 @@ class ContactControllerTest extends TestCase
 
         $response = $this->controller->contactHubspot();
 
-        self::assertSame($expectedResponse, $response);
+        static::assertSame($expectedResponse, $response);
     }
 }

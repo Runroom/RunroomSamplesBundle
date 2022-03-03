@@ -50,7 +50,7 @@ class ContactServiceTest extends TestCase
 
         $model = $this->service->getContactForm();
 
-        self::assertSame($formAware, $model);
+        static::assertSame($formAware, $model);
     }
 
     /**
@@ -64,6 +64,6 @@ class ContactServiceTest extends TestCase
 
         $model = $this->service->getContactHubspotForm();
 
-        self::assertSame($formAware, $model);
+        static::assertSame($formAware, $model);
     }
 }
