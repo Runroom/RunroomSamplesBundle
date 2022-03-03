@@ -16,6 +16,7 @@ namespace Runroom\SamplesBundle\Tests\BasicEntities\Integration;
 use Runroom\SamplesBundle\BasicEntities\Admin\BookAdmin;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 
 /**
  * @extends SonataAdminTestCase<Book>
@@ -32,7 +33,7 @@ class BookAdminTest extends SonataAdminTestCase
         $this->assertAdminListContainsField('description');
         $this->assertAdminListContainsField('category');
         $this->assertAdminListContainsField('publish');
-        $this->assertAdminListContainsField('_action');
+        $this->assertAdminListContainsField(ListMapper::NAME_ACTIONS);
     }
 
     /**
