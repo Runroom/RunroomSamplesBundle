@@ -17,7 +17,9 @@ use Runroom\SamplesBundle\Forms\Admin\ContactAdmin;
 use Runroom\SamplesBundle\Forms\Entity\Contact;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
 
-/** @extends SonataAdminTestCase<Contact> */
+/**
+ * @extends SonataAdminTestCase<Contact>
+ */
 class ContactAdminTest extends SonataAdminTestCase
 {
     /**

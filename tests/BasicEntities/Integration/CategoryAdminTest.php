@@ -16,8 +16,11 @@ namespace Runroom\SamplesBundle\Tests\BasicEntities\Integration;
 use Runroom\SamplesBundle\BasicEntities\Admin\CategoryAdmin;
 use Runroom\SamplesBundle\BasicEntities\Entity\Category;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 
-/** @extends SonataAdminTestCase<Category> */
+/**
+ * @extends SonataAdminTestCase<Category>
+ */
 class CategoryAdminTest extends SonataAdminTestCase
 {
     /**
@@ -27,7 +30,7 @@ class CategoryAdminTest extends SonataAdminTestCase
     {
         $this->assertAdminListContainsField('name');
         $this->assertAdminListContainsField('books');
-        $this->assertAdminListContainsField('_action');
+        $this->assertAdminListContainsField(ListMapper::NAME_ACTIONS);
     }
 
     /**

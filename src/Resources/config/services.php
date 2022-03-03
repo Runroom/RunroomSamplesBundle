@@ -50,7 +50,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'label' => 'Books',
         ]);
 
-    /* @todo: Simplify this when dropping support for SonataAdminBundle 3 */
+    /**
+     * @todo: Simplify this when dropping support for SonataAdminBundle 3
+     */
     if (!is_a(CRUDController::class, AbstractController::class, true)) {
         $bookAdmin->args([null, Book::class, SortableAdminController::class]);
     }
@@ -63,7 +65,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'label' => 'Categories',
         ]);
 
-    /* @todo: Simplify this when dropping support for SonataAdminBundle 3 */
+    /**
+     * @todo: Simplify this when dropping support for SonataAdminBundle 3
+     */
     if (!is_a(CRUDController::class, AbstractController::class, true)) {
         $categoryAdmin->args([null, Category::class, null]);
     }
@@ -81,7 +85,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'label' => 'Contacts',
         ]);
 
-    /* @todo: Simplify this when dropping support for SonataAdminBundle 3 */
+    /**
+     * @todo: Simplify this when dropping support for SonataAdminBundle 3
+     */
     if (!is_a(CRUDController::class, AbstractController::class, true)) {
         $contactAdmin->args([null, Contact::class, null]);
     }

@@ -37,13 +37,13 @@ class ContactHubspotFormTypeTest extends TypeTestCase
             'comment' => 'Lorem ipsum',
             'privacyPolicy' => true,
         ]);
-        self::assertTrue($form->isSynchronized());
-        self::assertInstanceOf(ContactHubspot::class, $form->getData());
-        self::assertSame('John Doe', $model->getName());
-        self::assertSame('johndoe@example.com', $model->getEmail());
-        self::assertSame('123456789', $model->getPhone());
-        self::assertSame('Lorem ipsum', $model->getComment());
-        self::assertTrue($model->getPrivacyPolicy());
+        static::assertTrue($form->isSynchronized());
+        static::assertInstanceOf(ContactHubspot::class, $form->getData());
+        static::assertSame('John Doe', $model->getName());
+        static::assertSame('johndoe@example.com', $model->getEmail());
+        static::assertSame('123456789', $model->getPhone());
+        static::assertSame('Lorem ipsum', $model->getComment());
+        static::assertTrue($model->getPrivacyPolicy());
     }
 
     /**
@@ -55,7 +55,7 @@ class ContactHubspotFormTypeTest extends TypeTestCase
     {
         $validatorBuilder = Validation::createValidatorBuilder();
 
-        /*
+        /**
          * @todo: Simplify this when dropping support for Symfony 4.4
          */
         if (class_exists(Cascade::class)) {

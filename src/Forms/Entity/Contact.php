@@ -15,7 +15,9 @@ namespace Runroom\SamplesBundle\Forms\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity */
+/**
+ * @ORM\Entity
+ */
 class Contact
 {
     public const SUBJECT_GENERAL = 1;

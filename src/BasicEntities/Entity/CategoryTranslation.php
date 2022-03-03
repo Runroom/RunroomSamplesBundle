@@ -15,13 +15,15 @@ namespace Runroom\SamplesBundle\BasicEntities\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Knp\DoctrineBehaviors\Model\Translatable\TranslationTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/** @ORM\Entity */
+/**
+ * @ORM\Entity
+ */
 class CategoryTranslation implements TranslationInterface
 {
-    use ORMBehaviors\Translatable\TranslationTrait;
+    use TranslationTrait;
 
     /**
      * @ORM\Id

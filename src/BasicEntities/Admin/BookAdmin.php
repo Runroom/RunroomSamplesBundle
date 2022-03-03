@@ -19,14 +19,31 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Runroom\SortableBehaviorBundle\Admin\AbstractSortableAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
+use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/** @extends AbstractSortableAdmin<Book> */
+/**
+ * @extends AbstractSortableAdmin<Book>
+ */
 class BookAdmin extends AbstractSortableAdmin
 {
+    /**
+     * @todo: Simplify this when dropping support for Sonata 3
+     *
+     * @param RouteCollection|RouteCollectionInterface $collection
+     */
+    protected function configureRoutes(object $collection): void
+    {
+        parent::configureRoutes($collection);
+
+        $collection->remove('show');
+    }
+
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
         $filter
@@ -38,20 +55,23 @@ class BookAdmin extends AbstractSortableAdmin
     {
         $list
             ->add('picture', 'image')
-            ->addIdentifier('title', null, [
+            ->add('title', null, [
                 'sortable' => true,
                 'sort_field_mapping' => ['fieldName' => 'title'],
                 'sort_parent_association_mappings' => [['fieldName' => 'translations']],
             ])
-            ->add('description', 'html', [
+            ->add('description', FieldDescriptionInterface::TYPE_HTML, [
                 'sortable' => true,
                 'sort_field_mapping' => ['fieldName' => 'description'],
                 'sort_parent_association_mappings' => [['fieldName' => 'translations']],
             ])
             ->add('category')
-            ->add('publish', null, ['editable' => true])
-            ->add('_action', 'actions', [
+            ->add('publish', null, [
+                'editable' => true,
+            ])
+            ->add(ListMapper::NAME_ACTIONS, ListMapper::TYPE_ACTIONS, [
                 'actions' => [
+                    'edit' => [],
                     'delete' => [],
                     'move' => ['template' => '@RunroomSortableBehavior/sort.html.twig'],
                 ],
