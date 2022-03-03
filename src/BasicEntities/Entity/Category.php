@@ -74,7 +74,7 @@ class Category implements TranslatableInterface
     {
         if ($this->books->removeElement($book)) {
             if ($book->getCategory() === $this) {
-                $book->getCategory(null);
+                $book->setCategory(null);
             }
         }
 
