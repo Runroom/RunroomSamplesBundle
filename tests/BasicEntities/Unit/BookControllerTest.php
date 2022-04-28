@@ -35,10 +35,7 @@ class BookControllerTest extends TestCase
      */
     private $twig;
 
-    /**
-     * @var BookController
-     */
-    private $controller;
+    private BookController $controller;
 
     protected function setUp(): void
     {

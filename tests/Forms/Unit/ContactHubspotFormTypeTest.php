@@ -59,6 +59,9 @@ class ContactHubspotFormTypeTest extends TypeTestCase
          * @todo: Simplify this when dropping support for Symfony 4.4
          */
         if (class_exists(Cascade::class)) {
+            /**
+             * @noRector
+             */
             $validatorBuilder->enableAnnotationMapping(true);
         } else {
             $validatorBuilder->enableAnnotationMapping();
