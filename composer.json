@@ -91,8 +91,9 @@
         }
     },
     "scripts": {
-        "php-cs-fixer": "php-cs-fixer fix --ansi --verbose",
-        "phpstan": "phpstan analyse --no-progress",
-        "psalm": "psalm --stats"
+        "php-cs-fixer": "@php php-cs-fixer fix --ansi --verbose",
+        "phpstan": "@php phpstan analyse --no-progress",
+        "psalm": "@php psalm --stats",
+        "rector": "@php rector --no-progress-bar"
     }
 }
