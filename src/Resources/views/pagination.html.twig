@@ -1,1 +1,43 @@
-{{ knp_pagination_render(pagination)}}
+{% set paginationData = pagination.paginationData %}
+{% set route = app.request.attributes.get('_route') %}
+{% set routeParams = app.request.attributes.get('_route_params')|merge(app.request.query.all) %}
+
+{% if paginationData.pageCount > 1 %}
+    <div class="inline-block">
+        <div class="flex items-baseline flex-row border border-gray-400 rounded-sm w-auto">
+        {% if paginationData.first is defined and paginationData.current != paginationData.first %}
+            <span class="bg-white text-blue-600 px-3 py-2 text-lg border-r border-gray-400 font-bold">
+                <a href="{{ path(route, routeParams|merge({'page': paginationData.first})) }}">&lt;&lt;</a>
+            </span>
+        {% endif %}
+
+        {% if paginationData.previous is defined %}
+            <span class="bg-white text-blue-600 px-3 text-lg py-2 border-r border-gray-400">
+                <a rel="prev" href="{{ path(route, routeParams|merge({'page': paginationData.previous})) }}">&lt;</a>
+            </span>
+        {% endif %}
+
+        {% for page in paginationData.pagesInRange %}
+            {% if page != paginationData.current %}
+                <span class="bg-white text-blue-600 px-3 py-2 text-lg border-r border-gray-400">
+                    <a href="{{ path(route, routeParams|merge({'page': page})) }}">{{ page }}</a>
+                </span>
+            {% else %}
+                <span class="bg-blue-600 text-orange px-3 py-2 text-lg font-bold">{{ page }}</span>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginationData.next is defined %}
+            <span class="bg-white text-blue-600 px-3 py-2 text-lg border-r border-gray-400">
+                <a rel="next" href="{{ path(route, routeParams|merge({'page': paginationData.next})) }}">&gt;</a>
+            </span>
+        {% endif %}
+
+        {% if paginationData.last is defined and paginationData.current != paginationData.last %}
+            <span class="bg-white text-blue-600 px-3 py-2 text-lg border-gray-400 font-bold">
+                <a href="{{ path(route, routeParams|merge({'page': paginationData.last})) }}">&gt;&gt;</a>
+            </span>
+        {% endif %}
+        </div>
+    </div>
+{% endif %}
