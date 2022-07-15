@@ -58,7 +58,7 @@ class BookRepository extends ServiceEntityRepository
     {
         $request = $this->requestStack->getCurrentRequest() ?? new Request();
 
-        return $this->createQueryBuilder('book')
+        return $this->createQueryBuilder('books')
             ->where('books.publish = true')
             ->leftJoin('books.translations', 'translations', Join::WITH, 'translations.locale = :locale')
             ->setParameter('locale', $request->getLocale());
