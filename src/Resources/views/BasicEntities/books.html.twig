@@ -14,7 +14,7 @@
             </ul>
         </div>
         <div class="pagination">
-            {{ knp_pagination_render(model.pagination) }}
+            {% include '@RunroomSamples/pagination.html.twig' with { pagination: model.pagination } %}
         </div>
     </div>
 {% endblock %}
