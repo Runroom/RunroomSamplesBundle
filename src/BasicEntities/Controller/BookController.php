@@ -26,10 +26,10 @@ class BookController extends AbstractController
         $this->service = $service;
     }
 
-    public function books(): Response
+    public function books(int $page): Response
     {
         return $this->render('@RunroomSamples/BasicEntities/books.html.twig', [
-            'model' => $this->service->getBooksViewModel(),
+            'model' => $this->service->getBooksViewModel($page),
         ]);
     }
 

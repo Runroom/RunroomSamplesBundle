@@ -13,22 +13,34 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\Service;
 
+use Knp\Component\Pager\PaginatorInterface;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 
 class BookService
 {
-    private BookRepository $repository;
+    private const LIMIT_PER_PAGE = 9;
 
-    public function __construct(BookRepository $repository)
+    private BookRepository $repository;
+    private PaginatorInterface $paginator;
+
+    public function __construct(BookRepository $repository, PaginatorInterface $paginatorInterface)
     {
         $this->repository = $repository;
+        $this->paginator = $paginatorInterface;
     }
 
-    public function getBooksViewModel(): BooksViewModel
+    public function getBooksViewModel(int $page): BooksViewModel
     {
-        return new BooksViewModel($this->repository->findBy(['publish' => true], ['position' => 'ASC']));
+        $queryBuilder = $this->repository->getBooksQueryBuilder($page);
+
+        $pagination = $this->paginator->paginate($queryBuilder, $page, self::LIMIT_PER_PAGE);
+
+        $model = new BooksViewModel();
+        $model->setPagination($pagination);
+
+        return $model;
     }
 
     public function getBookViewModel(string $slug): BookViewModel

@@ -13,28 +13,51 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\ViewModel;
 
-use Runroom\SamplesBundle\BasicEntities\Entity\Book;
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
 
 class BooksViewModel
 {
     /**
-     * @var Book[]
+     * @phpstan-var SlidingPaginationInterface<Book>
+     * @psalm-var SlidingPaginationInterface
      */
-    private array $books;
+    protected $pagination;
 
-    /**
-     * @param Book[] $books
+    /** @var array<mixed> */
+    protected $paginationData;
+
+    /** @phpstan-return SlidingPaginationInterface<Book>|null
+     * @psalm-return SlidingPaginationInterface|null
      */
-    public function __construct(array $books)
+    public function getPagination(): ?SlidingPaginationInterface
     {
-        $this->books = $books;
+        return $this->pagination;
     }
 
     /**
-     * @return Book[]
-     */
-    public function getBooks(): array
+     * @phpstan-param SlidingPaginationInterface<Book> $pagination
+     * @psalm-param SlidingPaginationInterface $pagination
+     * */
+    public function setPagination(SlidingPaginationInterface $pagination): self
     {
-        return $this->books;
+        $this->pagination = $pagination;
+        $this->paginationData = $pagination->getPaginationData();
+
+        return $this;
+    }
+
+    public function getPreviousPage(): ?int
+    {
+        return $this->getPaginationData('previous');
+    }
+
+    public function getNextPage(): ?int
+    {
+        return $this->getPaginationData('next');
+    }
+
+    public function getPaginationData(string $data): ?int
+    {
+        return $this->paginationData[$data] ?? null;
     }
 }

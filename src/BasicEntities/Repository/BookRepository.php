@@ -15,6 +15,7 @@ namespace Runroom\SamplesBundle\BasicEntities\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,5 +52,15 @@ class BookRepository extends ServiceEntityRepository
             ->getQuery();
 
         return $query->getSingleResult();
+    }
+
+    public function getBooksQueryBuilder(): QueryBuilder
+    {
+        $request = $this->requestStack->getCurrentRequest() ?? new Request();
+
+        return $this->createQueryBuilder('book')
+            ->where('books.publish = true')
+            ->leftJoin('books.translations', 'translations', Join::WITH, 'translations.locale = :locale')
+            ->setParameter('locale', $request->getLocale());
     }
 }

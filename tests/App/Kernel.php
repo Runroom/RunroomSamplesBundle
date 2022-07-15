@@ -18,6 +18,7 @@ use A2lix\TranslationFormBundle\A2lixTranslationFormBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use FOS\CKEditorBundle\FOSCKEditorBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 use Knp\DoctrineBehaviors\DoctrineBehaviorsBundle;
 use Runroom\FormHandlerBundle\RunroomFormHandlerBundle;
 use Runroom\RenderEventBundle\RunroomRenderEventBundle;
@@ -54,6 +55,7 @@ final class Kernel extends BaseKernel
             new FOSCKEditorBundle(),
             new FrameworkBundle(),
             new KnpMenuBundle(),
+            new KnpPaginatorBundle(),
             new SecurityBundle(),
             new TwigBundle(),
             new SonataMediaBundle(),
