@@ -40,7 +40,6 @@ class BookService
         $model = new BooksViewModel();
         $model->setPagination($pagination);
 
-        dump($model);die;
         return $model;
     }
 

@@ -1,10 +1,20 @@
 {% extends '@RunroomSamples/base.html.twig' %}
 
 {% block content %}
-    {% for book in model.books %}
-        <a href="{{ path('runroom_samples.basic_entities.book', {slug: book.slug}) }}">
-            <p>{{ book.title }}</p>
-            <div>{{ book.description|raw }}</div>
-        </a>
-    {% endfor %}
+    <div class="u-wrapper">
+        <div class="list">
+            <ul>
+                {% for book in model.pagination.items %}
+                    <div class="book-item">
+                        <li>
+                            <a href="{{ path('runroom_samples.basic_entities.book', {slug: book.slug}) }}">{{book.title}}</a>
+                        </li>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="pagination">
+            {{ knp_pagination_render(model.pagination) }}
+        </div>
+    </div>
 {% endblock %}
