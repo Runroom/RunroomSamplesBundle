@@ -13,12 +13,17 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
+use Doctrine\ORM\QueryBuilder;
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Runroom\SamplesBundle\BasicEntities\Factory\BookFactory;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Zenstruck\Foundry\Test\Factories;
+
+use function PHPUnit\Framework\assertIsArray;
 
 class BookServiceTest extends TestCase
 {
@@ -29,13 +34,22 @@ class BookServiceTest extends TestCase
      */
     private $repository;
 
+    /**
+     * @var MockObject&PaginatorInterface
+     */
+    private $paginator;
+
     private BookService $service;
 
     protected function setUp(): void
     {
         $this->repository = $this->createMock(BookRepository::class);
+        $this->paginator = $this->createMock(PaginatorInterface::class);
 
-        $this->service = new BookService($this->repository);
+        $this->service = new BookService(
+            $this->repository,
+            $this->paginator
+        );
     }
 
     /**
@@ -43,13 +57,16 @@ class BookServiceTest extends TestCase
      */
     public function itBuildsBooksViewModel(): void
     {
-        $expectedBooks = [BookFactory::createOne()->object()];
+        $queryBuilder = $this->createStub(QueryBuilder::class);
+        $pagination = $this->createStub(SlidingPaginationInterface::class);
+        $page = 1;
 
-        $this->repository->method('findBy')->with(['publish' => true], ['position' => 'ASC'])->willReturn($expectedBooks);
+        $this->repository->method('getBooksQueryBuilder')->willReturn($queryBuilder);
+        $this->paginator->method('paginate')->with($queryBuilder, $page, BookService::LIMIT_PER_PAGE)->willReturn($pagination);
 
-        $model = $this->service->getBooksViewModel();
+        $model = $this->service->getBooksViewModel($page);
 
-        static::assertSame($model->getBooks(), $expectedBooks);
+        self::assertSame($model->getPagination(), $pagination);
     }
 
     /**

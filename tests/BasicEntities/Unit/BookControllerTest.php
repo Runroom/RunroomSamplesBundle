@@ -55,10 +55,11 @@ class BookControllerTest extends TestCase
     public function itRenderBooks(): void
     {
         $model = new BooksViewModel([]);
+        $page = 1;
 
-        $this->service->method('getBooksViewModel')->willReturn($model);
+        $this->service->method('getBooksViewModel')->with($page)->willReturn($model);
 
-        $response = $this->controller->books();
+        $response = $this->controller->books($page);
 
         static::assertSame(200, $response->getStatusCode());
     }
