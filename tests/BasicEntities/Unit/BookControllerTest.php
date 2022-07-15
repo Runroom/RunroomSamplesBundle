@@ -54,7 +54,7 @@ class BookControllerTest extends TestCase
      */
     public function itRenderBooks(): void
     {
-        $model = new BooksViewModel([]);
+        $model = new BooksViewModel();
         $page = 1;
 
         $this->service->method('getBooksViewModel')->with($page)->willReturn($model);

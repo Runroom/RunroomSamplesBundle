@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\BasicEntities\ViewModel;
 
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
+use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BooksViewModel
 {

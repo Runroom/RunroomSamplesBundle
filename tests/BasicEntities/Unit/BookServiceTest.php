@@ -23,8 +23,6 @@ use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\Service\BookService;
 use Zenstruck\Foundry\Test\Factories;
 
-use function PHPUnit\Framework\assertIsArray;
-
 class BookServiceTest extends TestCase
 {
     use Factories;
@@ -66,7 +64,7 @@ class BookServiceTest extends TestCase
 
         $model = $this->service->getBooksViewModel($page);
 
-        self::assertSame($model->getPagination(), $pagination);
+        static::assertSame($model->getPagination(), $pagination);
     }
 
     /**

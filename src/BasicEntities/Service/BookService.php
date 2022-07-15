@@ -20,7 +20,7 @@ use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 
 class BookService
 {
-    const LIMIT_PER_PAGE = 6;
+    public const LIMIT_PER_PAGE = 6;
 
     private BookRepository $repository;
     private PaginatorInterface $paginator;
@@ -33,7 +33,7 @@ class BookService
 
     public function getBooksViewModel(int $page): BooksViewModel
     {
-        $queryBuilder = $this->repository->getBooksQueryBuilder($page);
+        $queryBuilder = $this->repository->getBooksQueryBuilder();
 
         $pagination = $this->paginator->paginate($queryBuilder, $page, self::LIMIT_PER_PAGE);
 
