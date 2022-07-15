@@ -4,7 +4,3 @@ parameters:
             message: "#^Call to an undefined method Knp\\\\DoctrineBehaviors\\\\Contract\\\\Entity\\\\TranslationInterface\\:\\:#"
             path: .
 
-        -
-            message: "#^Method Symfony\\\\Component\\\\Validator\\\\ValidatorBuilder\\:\\:enableAnnotationMapping\\(\\) invoked with 1 parameter, 0 required\\.$#"
-            count: 1
-            path: tests/Forms/Unit/ContactHubspotFormTypeTest.php

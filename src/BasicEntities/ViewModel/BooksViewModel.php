@@ -27,6 +27,11 @@ class BooksViewModel
     /** @var array<mixed> */
     protected $paginationData;
 
+    public function __construct()
+    {
+        $this->paginationData = [];
+    }
+
     /** @phpstan-return SlidingPaginationInterface<Book>|null
      * @psalm-return SlidingPaginationInterface|null
      */
