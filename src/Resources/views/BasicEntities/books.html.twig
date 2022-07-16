@@ -12,7 +12,7 @@
                 </div>
                 <div class="py-5">
                     <div class="font-bold text-xl">{{ book.title }}</div>
-                    <p class="text-gray-700 text-base">
+                    <p class="text-gray-700 text-base wysiwyg">
                         {{ book.description|raw }}
                     </p>
                 </div>
@@ -25,7 +25,7 @@
         {% endfor %}
     </ul>
 
-    <div class="pagination">
+    <div class="flex justify-center my-10">
         {% include '@RunroomSamples/pagination.html.twig' with { pagination: model.pagination } %}
     </div>
 
