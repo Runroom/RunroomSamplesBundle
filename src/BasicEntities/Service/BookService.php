@@ -39,10 +39,8 @@ class BookService
         $pagination = $this->paginator->paginate($queryBuilder, $page, self::LIMIT_PER_PAGE);
 
         \assert($pagination instanceof SlidingPaginationInterface);
-        $model = new BooksViewModel();
-        $model->setPagination($pagination);
 
-        return $model;
+        return new BooksViewModel($pagination);
     }
 
     public function getBookViewModel(string $slug): BookViewModel
