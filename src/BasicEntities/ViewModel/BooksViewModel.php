@@ -20,6 +20,7 @@ class BooksViewModel
 {
     /**
      * @phpstan-var SlidingPaginationInterface<Book>
+     *
      * @psalm-var SlidingPaginationInterface
      */
     protected $pagination;
@@ -29,6 +30,7 @@ class BooksViewModel
 
     /**
      * @phpstan-param SlidingPaginationInterface<Book> $slidingPaginationInterface
+     *
      * @psalm-param SlidingPaginationInterface $slidingPaginationInterface
      */
     public function __construct(SlidingPaginationInterface $slidingPaginationInterface)
