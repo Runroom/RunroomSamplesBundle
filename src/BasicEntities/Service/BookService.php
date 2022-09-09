@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\Service;
 
-use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
-use Knp\Component\Pager\PaginatorInterface;
 use Runroom\SamplesBundle\BasicEntities\Repository\BookRepository;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BooksViewModel;
 use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
@@ -24,21 +22,15 @@ class BookService
     public const LIMIT_PER_PAGE = 6;
 
     private BookRepository $repository;
-    private PaginatorInterface $paginator;
 
-    public function __construct(BookRepository $repository, PaginatorInterface $paginatorInterface)
+    public function __construct(BookRepository $repository)
     {
         $this->repository = $repository;
-        $this->paginator = $paginatorInterface;
     }
 
     public function getBooksViewModel(int $page): BooksViewModel
     {
-        $queryBuilder = $this->repository->getBooksQueryBuilder();
-
-        $pagination = $this->paginator->paginate($queryBuilder, $page, self::LIMIT_PER_PAGE);
-
-        \assert($pagination instanceof SlidingPaginationInterface);
+        $pagination = $this->repository->getPaginatedBooks($page, self::LIMIT_PER_PAGE);
 
         return new BooksViewModel($pagination);
     }

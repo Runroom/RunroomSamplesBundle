@@ -13,9 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
-use Doctrine\ORM\QueryBuilder;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
-use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Runroom\SamplesBundle\BasicEntities\Factory\BookFactory;
@@ -32,22 +30,12 @@ class BookServiceTest extends TestCase
      */
     private $repository;
 
-    /**
-     * @var MockObject&PaginatorInterface
-     */
-    private $paginator;
-
     private BookService $service;
 
     protected function setUp(): void
     {
         $this->repository = $this->createMock(BookRepository::class);
-        $this->paginator = $this->createMock(PaginatorInterface::class);
-
-        $this->service = new BookService(
-            $this->repository,
-            $this->paginator
-        );
+        $this->service = new BookService($this->repository);
     }
 
     /**
@@ -55,12 +43,10 @@ class BookServiceTest extends TestCase
      */
     public function itBuildsBooksViewModel(): void
     {
-        $queryBuilder = $this->createStub(QueryBuilder::class);
         $pagination = $this->createStub(SlidingPaginationInterface::class);
         $page = 1;
 
-        $this->repository->method('getBooksQueryBuilder')->willReturn($queryBuilder);
-        $this->paginator->method('paginate')->with($queryBuilder, $page, BookService::LIMIT_PER_PAGE)->willReturn($pagination);
+        $this->repository->method('getPaginatedBooks')->willReturn($pagination);
 
         $model = $this->service->getBooksViewModel($page);
 

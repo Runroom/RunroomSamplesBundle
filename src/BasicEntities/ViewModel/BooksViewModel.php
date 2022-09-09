@@ -25,40 +25,23 @@ class BooksViewModel
      */
     protected $pagination;
 
-    /** @var array<mixed> */
-    protected $paginationData;
+    /**
+     * @phpstan-param SlidingPaginationInterface<Book> $pagination
+     *
+     * @psalm-param SlidingPaginationInterface $pagination
+     */
+    public function __construct(SlidingPaginationInterface $pagination)
+    {
+        $this->pagination = $pagination;
+    }
 
     /**
-     * @phpstan-param SlidingPaginationInterface<Book> $slidingPaginationInterface
+     * @phpstan-return SlidingPaginationInterface<Book>
      *
-     * @psalm-param SlidingPaginationInterface $slidingPaginationInterface
+     * @psalm-return SlidingPaginationInterface
      */
-    public function __construct(SlidingPaginationInterface $slidingPaginationInterface)
-    {
-        $this->pagination = $slidingPaginationInterface;
-        $this->paginationData = $slidingPaginationInterface->getPaginationData();
-    }
-
-    /** @phpstan-return SlidingPaginationInterface<Book>|null
-     * @psalm-return SlidingPaginationInterface|null
-     */
-    public function getPagination(): ?SlidingPaginationInterface
+    public function getPagination(): SlidingPaginationInterface
     {
         return $this->pagination;
-    }
-
-    public function getPreviousPage(): ?int
-    {
-        return $this->getPaginationData('previous');
-    }
-
-    public function getNextPage(): ?int
-    {
-        return $this->getPaginationData('next');
-    }
-
-    public function getPaginationData(string $data): ?int
-    {
-        return $this->paginationData[$data] ?? null;
     }
 }
