@@ -16,7 +16,8 @@ namespace Runroom\SamplesBundle\BasicEntities\Admin;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
-use Runroom\SortableBehaviorBundle\Admin\AbstractSortableAdmin;
+use Runroom\SortableBehaviorBundle\Admin\SortableAdminTrait;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
@@ -28,10 +29,14 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @extends AbstractSortableAdmin<Book>
+ * @extends AbstractAdmin<Book>
  */
-class BookAdmin extends AbstractSortableAdmin
+class BookAdmin extends AbstractAdmin
 {
+    use SortableAdminTrait {
+        configureRoutes as configureSortableRoutes;
+    }
+
     /**
      * @todo: Simplify this when dropping support for Sonata 3
      *
@@ -39,7 +44,7 @@ class BookAdmin extends AbstractSortableAdmin
      */
     protected function configureRoutes(object $collection): void
     {
-        parent::configureRoutes($collection);
+        $this->configureSortableRoutes($collection);
 
         $collection->remove('show');
     }

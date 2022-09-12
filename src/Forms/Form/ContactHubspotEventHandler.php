@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\Forms\Form;
 
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
-use SevenShores\Hubspot\Resources\Forms;
+use SevenShores\Hubspot\Endpoints\Forms;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -40,6 +40,7 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
 
     /**
      * @phpstan-param GenericEvent<FormAwareInterface> $event
+     *
      * @psalm-param GenericEvent $event
      */
     public function onContactSuccess(GenericEvent $event): void
