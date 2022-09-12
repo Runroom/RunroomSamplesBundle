@@ -1,14 +1,15 @@
-name: release
+name: Release
 
 on:
   push:
     tags: ['*']
 
 jobs:
-  release:
+  create:
+    name: Create
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 1
       - id: tag_name

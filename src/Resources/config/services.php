@@ -11,6 +11,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+use Runroom\FormHandlerBundle\FormHandler;
+use Runroom\RenderEventBundle\Renderer\PageRenderer;
 use Runroom\SamplesBundle\BasicEntities\Admin\BookAdmin;
 use Runroom\SamplesBundle\BasicEntities\Admin\CategoryAdmin;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
@@ -18,9 +20,8 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Category;
 use Runroom\SamplesBundle\Forms\Admin\ContactAdmin;
 use Runroom\SamplesBundle\Forms\Entity\Contact;
 use Runroom\SamplesBundle\Forms\Form\ContactHubspotEventHandler;
-use Runroom\SortableBehaviorBundle\Controller\SortableAdminController;
+use SevenShores\Hubspot\Endpoints\Forms;
 use SevenShores\Hubspot\Http\Client;
-use SevenShores\Hubspot\Resources\Forms;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -45,7 +46,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->public()
         ->tag('sonata.admin', [
             'model_class' => Book::class,
-            'controller' => SortableAdminController::class,
             'manager_type' => 'orm',
             'label' => 'Books',
         ]);
@@ -54,7 +54,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
      * @todo: Simplify this when dropping support for SonataAdminBundle 3
      */
     if (!is_a(CRUDController::class, AbstractController::class, true)) {
-        $bookAdmin->args([null, Book::class, SortableAdminController::class]);
+        $bookAdmin->args([null, Book::class, null]);
     }
 
     $categoryAdmin = $services->set(CategoryAdmin::class)
@@ -73,6 +73,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     }
 
     // Forms
+    $services->alias(PageRenderer::class, 'runroom.render_event.renderer.page');
+    $services->alias(FormHandler::class, 'runroom.form_handler.form_handler');
+
     $services->load('Runroom\SamplesBundle\Forms\Controller\\', '../../Forms/Controller')
         ->public()
         ->tag('controller.service_arguments');
