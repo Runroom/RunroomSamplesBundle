@@ -16,6 +16,7 @@ namespace Runroom\SamplesBundle\Forms\Form;
 use Doctrine\ORM\EntityManagerInterface;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Entity\Contact;
+use Runroom\SamplesBundle\Forms\Model\Contact as ModelContact;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -35,7 +36,14 @@ class ContactEventHandler implements EventSubscriberInterface
      */
     public function onContactSuccess(GenericEvent $event): void
     {
-        $model = $event->getSubject()->getForm()->getData();
+        $subject = $event->getSubject();
+        \assert($subject instanceof FormAwareInterface);
+
+        $form = $subject->getForm();
+        \assert(null !== $form);
+
+        $model = $form->getData();
+        \assert($model instanceof ModelContact);
 
         $contact = new Contact();
         $contact->setName($model->getName());

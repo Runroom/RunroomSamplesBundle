@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\Forms\Form;
 
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
+use Runroom\SamplesBundle\Forms\Model\ContactHubspot;
 use SevenShores\Hubspot\Endpoints\Forms;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -45,7 +46,14 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
      */
     public function onContactSuccess(GenericEvent $event): void
     {
-        $model = $event->getSubject()->getForm()->getData();
+        $subject = $event->getSubject();
+        \assert($subject instanceof FormAwareInterface);
+
+        $form = $subject->getForm();
+        \assert(null !== $form);
+
+        $model = $form->getData();
+        \assert($model instanceof ContactHubspot);
 
         $this->sendHubspot([
             'fields' => [
