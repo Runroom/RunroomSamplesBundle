@@ -1,4 +1,4 @@
-name: qa
+name: QA
 
 on:
   push:
@@ -7,18 +7,19 @@ on:
 
 jobs:
   php:
+    name: PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         php: ['8.1']
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: none
           tools: cs2pr
-      - uses: ramsey/composer-install@v1
+      - uses: ramsey/composer-install@v2
       - run: composer php-cs-fixer -- --dry-run --format=checkstyle | cs2pr
       - run: vendor/bin/phpunit
       - run: composer phpstan

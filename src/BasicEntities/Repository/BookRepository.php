@@ -57,7 +57,10 @@ class BookRepository extends ServiceEntityRepository
             ->setParameter('locale', $request->getLocale())
             ->getQuery();
 
-        return $query->getSingleResult();
+        $book = $query->getSingleResult();
+        \assert($book instanceof Book);
+
+        return $book;
     }
 
     /**

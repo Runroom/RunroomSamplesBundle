@@ -1,6 +1,6 @@
 runroom_samples.home:
     path: /
-    controller: Runroom\RenderEventBundle\Controller\TemplateController
+    controller: runroom.render_event.controller.template
     defaults:
         template: '@RunroomSamples/home.html.twig'
 
