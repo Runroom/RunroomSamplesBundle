@@ -16,6 +16,8 @@ namespace Runroom\SamplesBundle\BasicEntities\Repository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -30,12 +32,17 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class BookRepository extends ServiceEntityRepository
 {
     private RequestStack $requestStack;
+    private PaginatorInterface $paginator;
 
-    public function __construct(ManagerRegistry $registry, RequestStack $requestStack)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        RequestStack $requestStack,
+        PaginatorInterface $paginator
+    ) {
         parent::__construct($registry, Book::class);
 
         $this->requestStack = $requestStack;
+        $this->paginator = $paginator;
     }
 
     public function findBySlug(string $slug): Book
@@ -54,5 +61,25 @@ class BookRepository extends ServiceEntityRepository
         \assert($book instanceof Book);
 
         return $book;
+    }
+
+    /**
+     * @phpstan-return SlidingPaginationInterface<Book>
+     *
+     * @psalm-return SlidingPaginationInterface
+     */
+    public function getPaginatedBooks(int $page, int $limitPerPage): SlidingPaginationInterface
+    {
+        $request = $this->requestStack->getCurrentRequest() ?? new Request();
+
+        $queryBuilder = $this->createQueryBuilder('books')
+            ->where('books.publish = true')
+            ->leftJoin('books.translations', 'translations', Join::WITH, 'translations.locale = :locale')
+            ->setParameter('locale', $request->getLocale());
+
+        $pagination = $this->paginator->paginate($queryBuilder, $page, $limitPerPage);
+        \assert($pagination instanceof SlidingPaginationInterface);
+
+        return $pagination;
     }
 }

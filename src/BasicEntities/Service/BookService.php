@@ -19,6 +19,8 @@ use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 
 class BookService
 {
+    public const LIMIT_PER_PAGE = 6;
+
     private BookRepository $repository;
 
     public function __construct(BookRepository $repository)
@@ -26,9 +28,11 @@ class BookService
         $this->repository = $repository;
     }
 
-    public function getBooksViewModel(): BooksViewModel
+    public function getBooksViewModel(int $page): BooksViewModel
     {
-        return new BooksViewModel($this->repository->findBy(['publish' => true], ['position' => 'ASC']));
+        $pagination = $this->repository->getPaginatedBooks($page, self::LIMIT_PER_PAGE);
+
+        return new BooksViewModel($pagination);
     }
 
     public function getBookViewModel(string $slug): BookViewModel

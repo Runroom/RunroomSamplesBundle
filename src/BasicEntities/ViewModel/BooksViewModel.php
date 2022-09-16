@@ -13,28 +13,35 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\ViewModel;
 
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BooksViewModel
 {
     /**
-     * @var Book[]
+     * @phpstan-var SlidingPaginationInterface<Book>
+     *
+     * @psalm-var SlidingPaginationInterface
      */
-    private array $books;
+    protected $pagination;
 
     /**
-     * @param Book[] $books
+     * @phpstan-param SlidingPaginationInterface<Book> $pagination
+     *
+     * @psalm-param SlidingPaginationInterface $pagination
      */
-    public function __construct(array $books)
+    public function __construct(SlidingPaginationInterface $pagination)
     {
-        $this->books = $books;
+        $this->pagination = $pagination;
     }
 
     /**
-     * @return Book[]
+     * @phpstan-return SlidingPaginationInterface<Book>
+     *
+     * @psalm-return SlidingPaginationInterface
      */
-    public function getBooks(): array
+    public function getPagination(): SlidingPaginationInterface
     {
-        return $this->books;
+        return $this->pagination;
     }
 }

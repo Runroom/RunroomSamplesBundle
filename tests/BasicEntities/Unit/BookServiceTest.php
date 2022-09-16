@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Runroom\SamplesBundle\BasicEntities\Factory\BookFactory;
@@ -34,7 +35,6 @@ class BookServiceTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = $this->createMock(BookRepository::class);
-
         $this->service = new BookService($this->repository);
     }
 
@@ -43,13 +43,14 @@ class BookServiceTest extends TestCase
      */
     public function itBuildsBooksViewModel(): void
     {
-        $expectedBooks = [BookFactory::createOne()->object()];
+        $pagination = $this->createStub(SlidingPaginationInterface::class);
+        $page = 1;
 
-        $this->repository->method('findBy')->with(['publish' => true], ['position' => 'ASC'])->willReturn($expectedBooks);
+        $this->repository->method('getPaginatedBooks')->willReturn($pagination);
 
-        $model = $this->service->getBooksViewModel();
+        $model = $this->service->getBooksViewModel($page);
 
-        static::assertSame($model->getBooks(), $expectedBooks);
+        static::assertSame($model->getPagination(), $pagination);
     }
 
     /**

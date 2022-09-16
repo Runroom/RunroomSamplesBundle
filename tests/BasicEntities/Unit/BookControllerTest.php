@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\BasicEntities\Unit;
 
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Runroom\SamplesBundle\BasicEntities\Controller\BookController;
@@ -54,11 +55,12 @@ class BookControllerTest extends TestCase
      */
     public function itRenderBooks(): void
     {
-        $model = new BooksViewModel([]);
+        $model = new BooksViewModel($this->createStub(SlidingPaginationInterface::class));
+        $page = 1;
 
-        $this->service->method('getBooksViewModel')->willReturn($model);
+        $this->service->method('getBooksViewModel')->with($page)->willReturn($model);
 
-        $response = $this->controller->books();
+        $response = $this->controller->books($page);
 
         static::assertSame(200, $response->getStatusCode());
     }

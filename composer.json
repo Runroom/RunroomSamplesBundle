@@ -25,6 +25,7 @@
         "gedmo/doctrine-extensions": "^3.0",
         "hubspot/hubspot-php": "^5.0",
         "knplabs/doctrine-behaviors": "^2.0.6",
+        "knplabs/knp-paginator-bundle": "^5.8",
         "runroom-packages/form-handler-bundle": "^0.16",
         "runroom-packages/render-event-bundle": "^0.16",
         "runroom-packages/sortable-behavior-bundle": "^0.16",

@@ -6,8 +6,12 @@ runroom_samples.home:
 
 # BasicEntities
 runroom_samples.basic_entities.books:
-    path: /books
+    path: /books/{page}
     controller: Runroom\SamplesBundle\BasicEntities\Controller\BookController::books
+    defaults:
+        page: 1
+    requirements:
+        page: '\d+'
 
 runroom_samples.basic_entities.book:
     path: /book/{slug}

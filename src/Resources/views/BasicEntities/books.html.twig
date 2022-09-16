@@ -1,10 +1,33 @@
 {% extends '@RunroomSamples/base.html.twig' %}
 
+{% block contentClass %}books-list{% endblock %}
+
 {% block content %}
-    {% for book in model.books %}
-        <a href="{{ path('runroom_samples.basic_entities.book', {slug: book.slug}) }}">
-            <p>{{ book.title }}</p>
-            <div>{{ book.description|raw }}</div>
-        </a>
-    {% endfor %}
+<div class="wrapper">
+    <ul class="flex flex-wrap my-10">
+        {% for book in model.pagination.items %}
+            <li class="w-1/3 rounded shadow-lg p-5 book-item no-underline">
+                <div class="h-40 {% if book.picture %} bg-gradient-to-r from-orange-400 via-red-500 to-pink-500{% endif %}"
+                >
+                </div>
+                <div class="py-5">
+                    <div class="font-bold text-xl">{{ book.title }}</div>
+                    <p class="text-gray-700 text-base wysiwyg">
+                        {{ book.description|raw }}
+                    </p>
+                </div>
+            </li>
+            {# <div class="book-item">
+                <li>
+                    <a href="{{ path('runroom_samples.basic_entities.book', {slug: book.slug}) }}">{{book.title}}</a>
+                </li>
+            </div> #}
+        {% endfor %}
+    </ul>
+
+    <div class="flex justify-center my-10">
+        {% include '@RunroomSamples/pagination.html.twig' with { pagination: model.pagination } %}
+    </div>
+
+</div>
 {% endblock %}
