@@ -59,12 +59,12 @@
         "phpstan/phpstan-strict-rules": "^1.0",
         "phpstan/phpstan-symfony": "^1.0",
         "phpunit/phpunit": "^9.3",
-        "psalm/plugin-phpunit": "^0.17",
-        "psalm/plugin-symfony": "^3.0",
+        "psalm/plugin-phpunit": "^0.18",
+        "psalm/plugin-symfony": "^5.0",
         "rector/rector": "^0.14",
         "runroom-packages/testing": "^0.16",
         "symfony/phpunit-bridge": "^6.0",
-        "vimeo/psalm": "^4.0",
+        "vimeo/psalm": "^5.0",
         "weirdan/doctrine-psalm-plugin": "^2.0",
         "zenstruck/foundry": "^1.10"
     },
@@ -93,7 +93,7 @@
     "scripts": {
         "php-cs-fixer": "@php php-cs-fixer fix --ansi --verbose",
         "phpstan": "@php phpstan analyse --no-progress",
-        "psalm": "@php psalm --stats",
+        "psalm": "@php psalm --stats --no-cache",
         "rector": "@php rector --no-progress-bar"
     }
 }

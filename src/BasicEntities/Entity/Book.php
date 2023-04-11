@@ -24,7 +24,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
+ *
  * @ORM\Table(indexes={
+ *
  *     @ORM\Index(columns={"publish"}),
  * })
  */
@@ -35,15 +37,20 @@ class Book implements TranslatableInterface
 
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private ?int $id = null;
 
     /**
      * @Assert\Valid
+     *
      * @Gedmo\SortableGroup
+     *
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="books")
+     *
      * @ORM\JoinColumn(referencedColumnName="id")
      */
     private ?Category $category = null;

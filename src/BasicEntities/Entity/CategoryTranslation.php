@@ -27,14 +27,18 @@ class CategoryTranslation implements TranslationInterface
 
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private ?int $id = null;
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\Length(max=255)
+     *
      * @ORM\Column(type="string")
      */
     private ?string $name = null;

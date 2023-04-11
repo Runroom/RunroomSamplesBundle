@@ -32,7 +32,9 @@ class Category implements TranslatableInterface
 
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private ?int $id = null;
@@ -41,6 +43,7 @@ class Category implements TranslatableInterface
      * @var Collection<int, Book>
      *
      * @ORM\OneToMany(targetEntity="Book", mappedBy="category")
+     *
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private Collection $books;
