@@ -18,29 +18,19 @@ use Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface;
 use Knp\DoctrineBehaviors\Model\Translatable\TranslationTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class CategoryTranslation implements TranslationInterface
 {
     use TranslationTrait;
 
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    /**
-     * @Assert\NotNull
-     *
-     * @Assert\Length(max=255)
-     *
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: 'string')]
+    #[Assert\NotNull]
+    #[Assert\Length(max: 255)]
     private ?string $name = null;
 
     public function setName(?string $name): self

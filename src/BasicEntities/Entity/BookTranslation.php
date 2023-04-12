@@ -19,14 +19,9 @@ use Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface;
 use Knp\DoctrineBehaviors\Model\Translatable\TranslationTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity
- *
- * @ORM\Table(indexes={
- *
- *     @ORM\Index(columns={"slug"}),
- * })
- */
+#[ORM\Table]
+#[ORM\Index(columns: ['slug'])]
+#[ORM\Entity]
 class BookTranslation implements TranslationInterface
 {
     use TranslationTrait;
@@ -35,39 +30,25 @@ class BookTranslation implements TranslationInterface
      * @var string|null
      *
      * This property is needed to do the Join::WITH on the BookRepository
-     *
-     * @ORM\Column(type="string", length=5)
      */
+    #[ORM\Column(type: 'string', length: 5)]
     protected $locale;
 
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    /**
-     * @Assert\NotNull
-     *
-     * @Assert\Length(max=255)
-     *
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: 'string')]
+    #[Assert\NotNull]
+    #[Assert\Length(max: 255)]
     private ?string $title = null;
 
-    /**
-     * @Gedmo\Slug(fields={"title"}, unique_base="locale")
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Gedmo\Slug(fields: ['title'], unique_base: 'locale')]
     private ?string $slug = null;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $description = null;
 
     public function setTitle(?string $title): self

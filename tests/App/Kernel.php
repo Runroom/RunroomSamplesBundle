@@ -102,13 +102,13 @@ final class Kernel extends BaseKernel
                 'auto_mapping' => true,
                 'mappings' => [
                     'BasicEntities' => [
-                        'type' => 'annotation',
+                        'type' => 'attribute',
                         'dir' => '%kernel.project_dir%/../../src/BasicEntities/Entity',
                         'prefix' => 'Runroom\SamplesBundle\BasicEntities\Entity',
                         'is_bundle' => false,
                     ],
                     'Forms' => [
-                        'type' => 'annotation',
+                        'type' => 'attribute',
                         'dir' => '%kernel.project_dir%/../../src/Forms/Entity',
                         'prefix' => 'Runroom\SamplesBundle\Forms\Entity',
                         'is_bundle' => false,

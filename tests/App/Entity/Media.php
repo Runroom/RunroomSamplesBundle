@@ -16,18 +16,12 @@ namespace Runroom\SamplesBundle\Tests\App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\MediaBundle\Entity\BaseMedia;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class Media extends BaseMedia
 {
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
     public function getId(): ?int
