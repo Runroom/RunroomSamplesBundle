@@ -1,26 +1,44 @@
-FROM php:8.2-cli-alpine
+FROM alpine:3.17
 
+ARG PHP_VERSION=81
 ARG UID=1000
-ARG GID=1000
+ARG USER=app
 
-# Configure non-root user and group
-RUN addgroup -g $GID appgroup
-RUN adduser -u $UID -G appgroup -s /bin/sh -D appuser
+RUN apk add --no-cache \
+    php${PHP_VERSION} \
+    php${PHP_VERSION}-gd \
+    php${PHP_VERSION}-intl \
+    php${PHP_VERSION}-opcache \
+    php${PHP_VERSION}-zip \
+    php${PHP_VERSION}-phar \
+    php${PHP_VERSION}-iconv \
+    php${PHP_VERSION}-mbstring \
+    php${PHP_VERSION}-openssl \
+    php${PHP_VERSION}-curl \
+    php${PHP_VERSION}-dom \
+    php${PHP_VERSION}-tokenizer \
+    php${PHP_VERSION}-xml \
+    php${PHP_VERSION}-simplexml \
+    php${PHP_VERSION}-xmlreader \
+    php${PHP_VERSION}-xmlwriter \
+    php${PHP_VERSION}-session \
+    php${PHP_VERSION}-pdo_sqlite \
+    php${PHP_VERSION}-pecl-pcov --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    freetype-dev \
+    libzip-dev \
+    icu-dev
 
-# Instala Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+RUN adduser -u $UID -D $USER
 
-# Instala las dependencias necesarias
-RUN apk add --no-cache libpng-dev libjpeg-turbo-dev freetype-dev libzip-dev icu-dev
+ENV PATH="/usr/app/vendor/bin:/usr/app/bin:${PATH}" \
+    PHP_VERSION=${PHP_VERSION}
 
-ENV PATH="/usr/app/vendor/bin:/usr/app/bin:${PATH}"
+COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 
-# Habilita las extensiones
-RUN docker-php-ext-install gd zip intl opcache
+USER ${USER}
 
-USER appuser
-
-# Define el directorio de trabajo
 WORKDIR /usr/app
 
 # Define el comando de inicio para mantener el contenedor en ejecución

@@ -28,7 +28,7 @@ final class CategoryTranslationFactory extends ModelFactory
     {
         return [
             'name' => self::faker()->words(3, true),
-            'locale' => self::faker()->unique()->languageCode,
+            'locale' => self::faker()->unique()->languageCode(),
         ];
     }
 
