@@ -46,8 +46,6 @@ class ContactHubspotFormTypeTest extends TypeTestCase
     }
 
     /**
-     * @psalm-suppress TooManyArguments
-     *
      * @return AbstractExtension[]
      */
     protected function getExtensions(): array
@@ -56,7 +54,7 @@ class ContactHubspotFormTypeTest extends TypeTestCase
         /**
          * @noRector
          */
-        $validatorBuilder->enableAnnotationMapping(true);
+        $validatorBuilder->enableAnnotationMapping();
 
         return [new ValidatorExtension($validatorBuilder->getValidator())];
     }

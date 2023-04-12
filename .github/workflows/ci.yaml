@@ -23,10 +23,7 @@ jobs:
             symfony-require: 5.4.*
           - php: '8.2'
             dependencies: highest
-            symfony-require: 6.0.*
-          - php: '8.2'
-            dependencies: highest
-            symfony-require: 6.1.*
+            symfony-require: 6.2.*
     env:
       SYMFONY_REQUIRE: ${{matrix.symfony-require}}
     steps:
