@@ -20,7 +20,7 @@ jobs:
             symfony-require: highest
           - php: '8.2'
             dependencies: highest
-            symfony-require: 4.4.*
+            symfony-require: 5.4.*
           - php: '8.2'
             dependencies: highest
             symfony-require: 5.4.*
