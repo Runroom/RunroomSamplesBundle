@@ -40,6 +40,3 @@ COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 USER ${USER}
 
 WORKDIR /usr/app
-
-# Define el comando de inicio para mantener el contenedor en ejecución
-CMD ["tail", "-f", "/dev/null"]

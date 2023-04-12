@@ -1,34 +1,39 @@
 UID = $(shell id -u)
 GID = $(shell id -g)
-docker-exec = docker run --rm -v $(PWD):/usr/app -w /usr/app runroom_samples_bundle $(1)
+CONTAINER_NAME = runroom_samples_bundle
+docker-exec = docker run --rm -v $(PWD):/usr/app -w /usr/app $(CONTAINER_NAME) $(1)
 
 .PHONY: build halt destroy provision ssh composer-update composer-install composer-normalize phpstan psalm php-cs-fixer phpunit phpunit-coverage rector lint-qa
 
 up:
-	docker build -t runroom_samples_bundle .
-	docker run -d -v $(PWD):/usr/app --name runroom_samples_bundle runroom_samples_bundle
+	docker build -t $(CONTAINER_NAME) .
+	docker run -d -v $(PWD):/usr/app --name $(CONTAINER_NAME) $(CONTAINER_NAME)
 .PHONY: up
 
 halt:
-	docker stop runroom_samples_bundle
+	@if [ `docker ps --filter name=$(CONTAINER_NAME) --format "{{.ID}}"` ]; then \
+        docker stop $(CONTAINER_NAME); \
+    fi
 .PHONY: halt
 
 destroy:
-	docker stop runroom_samples_bundle && docker rm runroom_samples_bundle
+	@if [ `docker ps --filter name=$(CONTAINER_NAME) --format "{{.ID}}"` ]; then \
+        docker rm -f $(CONTAINER_NAME); \
+    fi
 .PHONY: destroy
 
 build: halt destroy
-	docker build --build-arg UID=$(UID) --build-arg GID=$(GID) -t runroom_samples_bundle .
+	docker build --build-arg UID=$(UID) --build-arg GID=$(GID) -t $(CONTAINER_NAME) .
 .PHONY: build
 
 provision: composer-install
 
 down:
-	docker stop runroom_samples_bundle && docker rm runroom_samples_bundle
+	docker stop $(CONTAINER_NAME) && docker rm $(CONTAINER_NAME)
 .PHONY: down
 
 ssh:
-	docker exec -it runroom_samples_bundle sh
+	docker run --rm -it -v $(PWD):/usr/app -w /usr/app $(CONTAINER_NAME) sh
 .PHONY: ssh
 
 composer-update:

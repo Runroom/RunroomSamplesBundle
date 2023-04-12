@@ -37,6 +37,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class Kernel extends BaseKernel
 {
@@ -92,7 +93,9 @@ final class Kernel extends BaseKernel
             'firewalls' => ['main' => []],
         ];
 
-        $securityConfig['enable_authenticator_manager'] = true;
+        if (!class_exists(IsGranted::class)) {
+            $securityConfig['enable_authenticator_manager'] = true;
+        }
 
         $container->loadFromExtension('security', $securityConfig);
 
