@@ -71,7 +71,7 @@ lint-qa:
 	$(call docker-exec,composer php-cs-fixer)
 	$(call docker-exec,phpunit --coverage-html /usr/app/coverage)
 	$(call docker-exec,composer phpstan)
-	$(call docker-exec,composer psalm -- --stats --php-version=8.2)
+	$(call docker-exec,composer psalm -- --stats)
 	$(call docker-exec,composer rector)
 	$(call docker-exec,composer normalize)
 	$(call docker-exec,bin/console lint:container)

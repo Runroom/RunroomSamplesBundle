@@ -144,6 +144,5 @@ final class Kernel extends BaseKernel
     {
         $routes->add('route.entity', '/entity/{slug}')
             ->controller('controller');
-
     }
 }

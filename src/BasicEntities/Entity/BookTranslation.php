@@ -105,4 +105,9 @@ class BookTranslation implements TranslationInterface
     {
         return $this->description;
     }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 }

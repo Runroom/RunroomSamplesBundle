@@ -54,4 +54,9 @@ class CategoryTranslation implements TranslationInterface
     {
         return $this->name;
     }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 }

@@ -1,13 +1,14 @@
 {
     "name": "runroom/samples-bundle",
-    "description": "Add a render event before rendering templates",
-    "license": "MIT",
     "type": "symfony-bundle",
+    "description": "Add a render event before rendering templates",
     "keywords": [
         "samples",
         "twig",
         "symfony"
     ],
+    "homepage": "https://github.com/runroom/RunroomSamplesBundle",
+    "license": "MIT",
     "authors": [
         {
             "name": "Runroom",
@@ -15,7 +16,6 @@
             "homepage": "https://www.runroom.com"
         }
     ],
-    "homepage": "https://github.com/runroom/RunroomSamplesBundle",
     "require": {
         "php": "^8.0",
         "a2lix/translation-form-bundle": "^3.0.4",
@@ -68,16 +68,6 @@
         "weirdan/doctrine-psalm-plugin": "^2.0",
         "zenstruck/foundry": "^1.10"
     },
-    "autoload": {
-        "psr-4": {
-            "Runroom\\SamplesBundle\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Runroom\\SamplesBundle\\Tests\\": "tests/"
-        }
-    },
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
@@ -88,6 +78,16 @@
     "extra": {
         "branch-alias": {
             "dev-master": "0.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Runroom\\SamplesBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Runroom\\SamplesBundle\\Tests\\": "tests/"
         }
     },
     "scripts": {
