@@ -23,7 +23,6 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
-use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -37,12 +36,7 @@ class BookAdmin extends AbstractAdmin
         configureRoutes as configureSortableRoutes;
     }
 
-    /**
-     * @todo: Simplify this when dropping support for Sonata 3
-     *
-     * @param RouteCollection|RouteCollectionInterface $collection
-     */
-    protected function configureRoutes(object $collection): void
+    protected function configureRoutes(RouteCollectionInterface $collection): void
     {
         $this->configureSortableRoutes($collection);
 

@@ -18,7 +18,6 @@ use Runroom\SamplesBundle\Forms\Model\ContactHubspot;
 use Symfony\Component\Form\AbstractExtension;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Symfony\Component\Validator\Constraints\Cascade;
 use Symfony\Component\Validator\Validation;
 
 class ContactHubspotFormTypeTest extends TypeTestCase
@@ -54,18 +53,10 @@ class ContactHubspotFormTypeTest extends TypeTestCase
     protected function getExtensions(): array
     {
         $validatorBuilder = Validation::createValidatorBuilder();
-
         /**
-         * @todo: Simplify this when dropping support for Symfony 4.4
+         * @noRector
          */
-        if (class_exists(Cascade::class)) {
-            /**
-             * @noRector
-             */
-            $validatorBuilder->enableAnnotationMapping(true);
-        } else {
-            $validatorBuilder->enableAnnotationMapping();
-        }
+        $validatorBuilder->enableAnnotationMapping(true);
 
         return [new ValidatorExtension($validatorBuilder->getValidator())];
     }

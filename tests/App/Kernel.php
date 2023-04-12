@@ -35,10 +35,8 @@ use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorageFactory;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Symfony\Component\Security\Http\Authentication\AuthenticatorManager;
 
 final class Kernel extends BaseKernel
 {
@@ -75,9 +73,6 @@ final class Kernel extends BaseKernel
         return __DIR__;
     }
 
-    /**
-     * @todo: Simplify security configuration when dropping support for Symfony 4.4
-     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->setParameter('kernel.default_locale', 'en');
@@ -89,11 +84,7 @@ final class Kernel extends BaseKernel
             'http_method_override' => false,
         ];
 
-        if (class_exists(NativeSessionStorageFactory::class)) {
-            $frameworkConfig['session'] = ['storage_factory_id' => 'session.storage.factory.mock_file'];
-        } else {
-            $frameworkConfig['session'] = ['storage_id' => 'session.storage.mock_file'];
-        }
+        $frameworkConfig['session'] = ['storage_factory_id' => 'session.storage.factory.mock_file'];
 
         $container->loadFromExtension('framework', $frameworkConfig);
 
@@ -101,11 +92,7 @@ final class Kernel extends BaseKernel
             'firewalls' => ['main' => []],
         ];
 
-        if (class_exists(AuthenticatorManager::class)) {
-            $securityConfig['enable_authenticator_manager'] = true;
-        } else {
-            $securityConfig['firewalls']['main']['anonymous'] = true;
-        }
+        $securityConfig['enable_authenticator_manager'] = true;
 
         $container->loadFromExtension('security', $securityConfig);
 
@@ -153,22 +140,10 @@ final class Kernel extends BaseKernel
         ]);
     }
 
-    /**
-     * @todo: Add typehint when dropping support for Symfony 4.4
-     *
-     * @psalm-suppress TooManyArguments
-     *
-     * @param RoutingConfigurator $routes
-     */
-    protected function configureRoutes($routes): void
+    protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        if ($routes instanceof RoutingConfigurator) {
-            $routes->add('route.entity', '/entity/{slug}')
-                ->controller('controller');
+        $routes->add('route.entity', '/entity/{slug}')
+            ->controller('controller');
 
-            return;
-        }
-
-        $routes->add('/entity/{slug}', 'controller', 'route.entity');
     }
 }
