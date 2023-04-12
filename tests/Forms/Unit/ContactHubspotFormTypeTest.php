@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
+use ReflectionClass;
+use ReflectionException;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactHubspotFormType;
 use Runroom\SamplesBundle\Forms\Model\ContactHubspot;
 use Symfony\Component\Form\AbstractExtension;
@@ -48,15 +50,28 @@ class ContactHubspotFormTypeTest extends TypeTestCase
     /**
      * @psalm-suppress TooManyArguments
      *
+     * @throws ReflectionException
+     *
      * @return AbstractExtension[]
      */
     protected function getExtensions(): array
     {
         $validatorBuilder = Validation::createValidatorBuilder();
-        /*
-         * @noRector
-         */
-        $validatorBuilder->enableAnnotationMapping(true);
+
+        $reflectionClass = new ReflectionClass($validatorBuilder);
+        $reflectionMethod = $reflectionClass->getMethod('enableAnnotationMapping');
+
+        if ($reflectionMethod->getNumberOfParameters() > 0) {
+            /*
+            * @noRector
+            */
+            $validatorBuilder->enableAnnotationMapping(true);
+        } else {
+            /*
+            * @noRector
+            */
+            $validatorBuilder->enableAnnotationMapping();
+        }
 
         return [new ValidatorExtension($validatorBuilder->getValidator())];
     }
