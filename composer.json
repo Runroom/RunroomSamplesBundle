@@ -45,7 +45,7 @@
         "symfony/translation": "^5.4 || ^6.0",
         "symfony/validator": "^5.4 || ^6.0",
         "symfony/yaml": "^5.4 || ^6.0",
-        "twig/twig": "^2.12 || ^3.0"
+        "twig/twig": "^3.0"
     },
     "require-dev": {
         "a2lix/auto-form-bundle": "^0.4",
