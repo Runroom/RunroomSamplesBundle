@@ -17,11 +17,8 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BookViewModel
 {
-    private Book $book;
-
-    public function __construct(Book $book)
+    public function __construct(private Book $book)
     {
-        $this->book = $book;
     }
 
     public function getBook(): Book

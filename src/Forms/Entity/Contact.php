@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
-class Contact
+class Contact implements \Stringable
 {
     public const SUBJECT_GENERAL = 1;
     private const SUBJECT_SPECIFIC = 2;

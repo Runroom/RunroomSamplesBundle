@@ -22,21 +22,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class ContactHubspotEventHandler implements EventSubscriberInterface
 {
-    private TranslatorInterface $translator;
-    private Forms $hubspotForms;
-    private int $portalId;
-    private string $formId;
-
-    public function __construct(
-        TranslatorInterface $translator,
-        Forms $hubspotForms,
-        int $portalId,
-        string $formId
-    ) {
-        $this->translator = $translator;
-        $this->hubspotForms = $hubspotForms;
-        $this->portalId = $portalId;
-        $this->formId = $formId;
+    public function __construct(private TranslatorInterface $translator, private Forms $hubspotForms, private int $portalId, private string $formId)
+    {
     }
 
     /**

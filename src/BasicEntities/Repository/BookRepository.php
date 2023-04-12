@@ -29,13 +29,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class BookRepository extends ServiceEntityRepository
 {
-    private RequestStack $requestStack;
-
-    public function __construct(ManagerRegistry $registry, RequestStack $requestStack)
+    public function __construct(ManagerRegistry $registry, private RequestStack $requestStack)
     {
         parent::__construct($registry, Book::class);
-
-        $this->requestStack = $requestStack;
     }
 
     public function findBySlug(string $slug): Book

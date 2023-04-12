@@ -26,10 +26,9 @@ use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
  *
  * $translations and $newTranslations are not direclty set
  */
-class Category implements TranslatableInterface
+class Category implements TranslatableInterface, \Stringable
 {
     use TranslatableTrait;
-
     /**
      * @ORM\Id
      *
@@ -38,7 +37,6 @@ class Category implements TranslatableInterface
      * @ORM\Column(type="integer")
      */
     private ?int $id = null;
-
     /**
      * @var Collection<int, Book>
      *
@@ -47,22 +45,18 @@ class Category implements TranslatableInterface
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private Collection $books;
-
     public function __construct()
     {
         $this->books = new ArrayCollection();
     }
-
     public function __toString(): string
     {
         return (string) $this->getName();
     }
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function addBook(Book $book): self
     {
         if (!$this->books->contains($book)) {
@@ -72,7 +66,6 @@ class Category implements TranslatableInterface
 
         return $this;
     }
-
     public function removeBook(Book $book): self
     {
         if ($this->books->removeElement($book)) {
@@ -83,7 +76,6 @@ class Category implements TranslatableInterface
 
         return $this;
     }
-
     /**
      * @return Collection<int, Book>
      */
@@ -91,7 +83,6 @@ class Category implements TranslatableInterface
     {
         return $this->books;
     }
-
     public function getName(string $locale = null): ?string
     {
         return $this->translate($locale, false)->getName();

@@ -22,11 +22,8 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 class ContactEventHandler implements EventSubscriberInterface
 {
-    protected EntityManagerInterface $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(protected EntityManagerInterface $entityManager)
     {
-        $this->entityManager = $entityManager;
     }
 
     /**

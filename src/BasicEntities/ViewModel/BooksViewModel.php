@@ -18,16 +18,10 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 class BooksViewModel
 {
     /**
-     * @var Book[]
-     */
-    private array $books;
-
-    /**
      * @param Book[] $books
      */
-    public function __construct(array $books)
+    public function __construct(private array $books)
     {
-        $this->books = $books;
     }
 
     /**

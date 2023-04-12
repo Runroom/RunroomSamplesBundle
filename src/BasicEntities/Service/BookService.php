@@ -19,11 +19,8 @@ use Runroom\SamplesBundle\BasicEntities\ViewModel\BookViewModel;
 
 class BookService
 {
-    private BookRepository $repository;
-
-    public function __construct(BookRepository $repository)
+    public function __construct(private BookRepository $repository)
     {
-        $this->repository = $repository;
     }
 
     public function getBooksViewModel(): BooksViewModel
