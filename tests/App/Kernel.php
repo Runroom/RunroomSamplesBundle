@@ -101,23 +101,7 @@ final class Kernel extends BaseKernel
 
         $container->loadFromExtension('doctrine', [
             'dbal' => ['url' => 'sqlite://:memory:', 'logging' => false],
-            'orm' => [
-                'auto_mapping' => true,
-                'mappings' => [
-                    'BasicEntities' => [
-                        'type' => 'attribute',
-                        'dir' => '%kernel.project_dir%/../../src/BasicEntities/Entity',
-                        'prefix' => 'Runroom\SamplesBundle\BasicEntities\Entity',
-                        'is_bundle' => false,
-                    ],
-                    'Forms' => [
-                        'type' => 'attribute',
-                        'dir' => '%kernel.project_dir%/../../src/Forms/Entity',
-                        'prefix' => 'Runroom\SamplesBundle\Forms\Entity',
-                        'is_bundle' => false,
-                    ],
-                ],
-            ],
+            'orm' => ['auto_mapping' => true],
         ]);
 
         $container->loadFromExtension('twig', [
@@ -141,6 +125,8 @@ final class Kernel extends BaseKernel
         $container->loadFromExtension('runroom_samples', [
             'class' => ['media' => Media::class],
         ]);
+
+        $loader->load(__DIR__ . '/../../src/Resources/config/app/config.yaml');
     }
 
     protected function configureRoutes(RoutingConfigurator $routes): void
