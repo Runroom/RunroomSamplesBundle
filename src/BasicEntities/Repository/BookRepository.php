@@ -29,8 +29,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class BookRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry, private RequestStack $requestStack)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        private RequestStack $requestStack
+    ) {
         parent::__construct($registry, Book::class);
     }
 

@@ -1,9 +1,8 @@
 UID = $(shell id -u)
 GID = $(shell id -g)
+PHP_VERSION="8.2"
 CONTAINER_NAME = runroom_samples_bundle
 docker-exec = docker run --rm -v $(PWD):/usr/app -w /usr/app $(CONTAINER_NAME) $(1)
-
-.PHONY: build halt destroy provision ssh composer-update composer-install composer-normalize phpstan psalm php-cs-fixer phpunit phpunit-coverage rector lint-qa
 
 up:
 	docker build -t $(CONTAINER_NAME) .
@@ -53,7 +52,7 @@ phpstan:
 .PHONY: phpstan
 
 psalm:
-	$(call docker-exec,composer psalm -- --stats)
+	$(call docker-exec,composer psalm -- --stats --php-version=$(PHP_VERSION))
 .PHONY: psalm
 
 php-cs-fixer:
@@ -76,7 +75,7 @@ lint-qa:
 	$(call docker-exec,composer php-cs-fixer)
 	$(call docker-exec,phpunit --coverage-html /usr/app/coverage)
 	$(call docker-exec,composer phpstan)
-	$(call docker-exec,composer psalm -- --stats)
+	$(call docker-exec,composer psalm -- --stats --php-version=$(PHP_VERSION))
 	$(call docker-exec,composer rector)
 	$(call docker-exec,composer normalize)
 	$(call docker-exec,bin/console lint:container)
