@@ -23,17 +23,11 @@ RUN apk add --no-cache \
     php${PHP_VERSION}-xmlwriter \
     php${PHP_VERSION}-session \
     php${PHP_VERSION}-pdo_sqlite \
-    php${PHP_VERSION}-pecl-pcov --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    freetype-dev \
-    libzip-dev \
-    icu-dev
+    php${PHP_VERSION}-pecl-pcov --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 RUN adduser -u $UID -D $USER
 
-ENV PATH="/usr/app/vendor/bin:/usr/app/bin:${PATH}" \
-    PHP_VERSION=${PHP_VERSION}
+ENV PATH="/usr/app/vendor/bin:/usr/app/bin:${PATH}"
 
 COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 

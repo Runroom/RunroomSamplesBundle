@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface;
 use Knp\DoctrineBehaviors\Model\Translatable\TranslationTrait;
@@ -25,10 +26,10 @@ class CategoryTranslation implements TranslationInterface
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: Types::STRING)]
     #[Assert\NotNull]
     #[Assert\Length(max: 255)]
     private ?string $name = null;

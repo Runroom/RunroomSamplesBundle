@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
@@ -29,18 +30,22 @@ class Book implements TranslatableInterface, \Stringable
 {
     use Sortable;
     use TranslatableTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
+
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'books')]
     #[ORM\JoinColumn(referencedColumnName: 'id')]
     #[Assert\Valid]
     #[Gedmo\SortableGroup]
     private ?Category $category = null;
+
     #[Assert\Valid]
     private ?MediaInterface $picture = null;
-    #[ORM\Column(type: 'boolean')]
+
+    #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $publish = null;
 
     public function __toString(): string

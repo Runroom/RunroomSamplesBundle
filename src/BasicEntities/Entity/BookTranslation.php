@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface;
@@ -31,24 +32,24 @@ class BookTranslation implements TranslationInterface
      *
      * This property is needed to do the Join::WITH on the BookRepository
      */
-    #[ORM\Column(type: 'string', length: 5)]
+    #[ORM\Column(type: Types::STRING, length: 5)]
     protected $locale;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: Types::STRING)]
     #[Assert\NotNull]
     #[Assert\Length(max: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(type: 'string', nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     #[Gedmo\Slug(fields: ['title'], unique_base: 'locale')]
     private ?string $slug = null;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
     public function setTitle(?string $title): self
