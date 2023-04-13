@@ -19,11 +19,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BookController extends AbstractController
 {
-    private BookService $service;
-
-    public function __construct(BookService $service)
+    public function __construct(private BookService $service)
     {
-        $this->service = $service;
     }
 
     public function books(): Response

@@ -15,34 +15,29 @@ namespace Runroom\SamplesBundle\BasicEntities\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
 use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
 
 /**
- * @ORM\Entity
- *
  * @psalm-suppress PropertyNotSetInConstructor
- *
  * $translations and $newTranslations are not direclty set
  */
-class Category implements TranslatableInterface
+#[ORM\Entity]
+class Category implements TranslatableInterface, \Stringable
 {
     use TranslatableTrait;
-
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
     /**
      * @var Collection<int, Book>
-     *
-     * @ORM\OneToMany(targetEntity="Book", mappedBy="category")
-     * @ORM\OrderBy({"position" = "ASC"})
      */
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Book::class)]
+    #[ORM\OrderBy(['position' => 'ASC'])]
     private Collection $books;
 
     public function __construct()

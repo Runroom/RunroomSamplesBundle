@@ -18,6 +18,8 @@ use Zenstruck\Foundry\ModelFactory;
 
 /**
  * @extends ModelFactory<Book>
+ *
+ * @method BookFactory addState(array|callable $attributes = [])
  */
 final class BookFactory extends ModelFactory
 {

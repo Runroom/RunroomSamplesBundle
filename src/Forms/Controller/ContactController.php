@@ -23,20 +23,13 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 /**
  * This class shows how to use the PageRenderer, it is not using AbstractController on purpose.
  */
-class ContactController
+final class ContactController
 {
-    private PageRenderer $renderer;
-    private UrlGeneratorInterface $router;
-    private ContactService $service;
-
     public function __construct(
-        PageRenderer $renderer,
-        UrlGeneratorInterface $router,
-        ContactService $service
+        private PageRenderer $renderer,
+        private UrlGeneratorInterface $router,
+        private ContactService $service
     ) {
-        $this->renderer = $renderer;
-        $this->router = $router;
-        $this->service = $service;
     }
 
     public function contact(): Response

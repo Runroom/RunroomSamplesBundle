@@ -35,10 +35,9 @@ use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorageFactory;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Symfony\Component\Security\Http\Authentication\AuthenticatorManager;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class Kernel extends BaseKernel
 {
@@ -76,35 +75,26 @@ final class Kernel extends BaseKernel
     }
 
     /**
-     * @todo: Simplify security configuration when dropping support for Symfony 4.4
+     * @todo: Simplify security config when dropping support for Symfony 5.4
      */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->setParameter('kernel.default_locale', 'en');
 
-        $frameworkConfig = [
+        $container->loadFromExtension('framework', [
             'test' => true,
             'router' => ['utf8' => true],
             'secret' => 'secret',
             'http_method_override' => false,
-        ];
-
-        if (class_exists(NativeSessionStorageFactory::class)) {
-            $frameworkConfig['session'] = ['storage_factory_id' => 'session.storage.factory.mock_file'];
-        } else {
-            $frameworkConfig['session'] = ['storage_id' => 'session.storage.mock_file'];
-        }
-
-        $container->loadFromExtension('framework', $frameworkConfig);
+            'session' => ['storage_factory_id' => 'session.storage.factory.mock_file'],
+        ]);
 
         $securityConfig = [
             'firewalls' => ['main' => []],
         ];
 
-        if (class_exists(AuthenticatorManager::class)) {
+        if (!class_exists(IsGranted::class)) {
             $securityConfig['enable_authenticator_manager'] = true;
-        } else {
-            $securityConfig['firewalls']['main']['anonymous'] = true;
         }
 
         $container->loadFromExtension('security', $securityConfig);
@@ -115,13 +105,13 @@ final class Kernel extends BaseKernel
                 'auto_mapping' => true,
                 'mappings' => [
                     'BasicEntities' => [
-                        'type' => 'annotation',
+                        'type' => 'attribute',
                         'dir' => '%kernel.project_dir%/../../src/BasicEntities/Entity',
                         'prefix' => 'Runroom\SamplesBundle\BasicEntities\Entity',
                         'is_bundle' => false,
                     ],
                     'Forms' => [
-                        'type' => 'annotation',
+                        'type' => 'attribute',
                         'dir' => '%kernel.project_dir%/../../src/Forms/Entity',
                         'prefix' => 'Runroom\SamplesBundle\Forms\Entity',
                         'is_bundle' => false,
@@ -153,22 +143,9 @@ final class Kernel extends BaseKernel
         ]);
     }
 
-    /**
-     * @todo: Add typehint when dropping support for Symfony 4.4
-     *
-     * @psalm-suppress TooManyArguments
-     *
-     * @param RoutingConfigurator $routes
-     */
-    protected function configureRoutes($routes): void
+    protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        if ($routes instanceof RoutingConfigurator) {
-            $routes->add('route.entity', '/entity/{slug}')
-                ->controller('controller');
-
-            return;
-        }
-
-        $routes->add('/entity/{slug}', 'controller', 'route.entity');
+        $routes->add('route.entity', '/entity/{slug}')
+            ->controller('controller');
     }
 }

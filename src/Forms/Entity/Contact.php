@@ -13,12 +13,11 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Forms\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
-class Contact
+#[ORM\Entity]
+class Contact implements \Stringable
 {
     public const SUBJECT_GENERAL = 1;
     private const SUBJECT_SPECIFIC = 2;
@@ -70,68 +69,45 @@ class Contact
         'form.preference.marketing' => self::PREFERENCE_MARKETING,
     ];
 
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: Types::STRING)]
     private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: Types::STRING)]
     private ?string $email = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: Types::STRING)]
     private ?string $phone = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $subject = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $type = null;
 
     /**
      * @var int[]|null
-     *
-     * @ORM\Column(type="array")
      */
+    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
     private ?array $preferences = null;
 
-    /**
-     * @ORM\Column(type="text")
-     */
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $comment = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $newsletter = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $privacyPolicy = null;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $status = self::STATUS_UNREAD;
 
     public function __construct()
@@ -139,7 +115,7 @@ class Contact
         $this->date = new \DateTime();
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->getName();
     }

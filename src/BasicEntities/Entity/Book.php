@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\BasicEntities\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
@@ -22,40 +23,29 @@ use Runroom\SortableBehaviorBundle\Behaviors\Sortable;
 use Sonata\MediaBundle\Model\MediaInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=BookRepository::class)
- * @ORM\Table(indexes={
- *     @ORM\Index(columns={"publish"}),
- * })
- */
-class Book implements TranslatableInterface
+#[ORM\Table]
+#[ORM\Index(columns: ['publish'])]
+#[ORM\Entity(repositoryClass: BookRepository::class)]
+class Book implements TranslatableInterface, \Stringable
 {
     use Sortable;
     use TranslatableTrait;
 
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
-    /**
-     * @Assert\Valid
-     * @Gedmo\SortableGroup
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="books")
-     * @ORM\JoinColumn(referencedColumnName="id")
-     */
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'books')]
+    #[ORM\JoinColumn(referencedColumnName: 'id')]
+    #[Assert\Valid]
+    #[Gedmo\SortableGroup]
     private ?Category $category = null;
 
-    /**
-     * @Assert\Valid
-     */
+    #[Assert\Valid]
     private ?MediaInterface $picture = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $publish = null;
 
     public function __toString(): string

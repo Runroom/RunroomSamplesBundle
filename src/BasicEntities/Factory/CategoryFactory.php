@@ -18,6 +18,8 @@ use Zenstruck\Foundry\ModelFactory;
 
 /**
  * @extends ModelFactory<Category>
+ *
+ * @method CategoryFactory addState(array|callable $attributes = [])
  */
 final class CategoryFactory extends ModelFactory
 {

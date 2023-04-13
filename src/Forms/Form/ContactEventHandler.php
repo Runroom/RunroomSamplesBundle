@@ -20,13 +20,10 @@ use Runroom\SamplesBundle\Forms\Model\Contact as ModelContact;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
-class ContactEventHandler implements EventSubscriberInterface
+final class ContactEventHandler implements EventSubscriberInterface
 {
-    protected EntityManagerInterface $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(private EntityManagerInterface $entityManager)
     {
-        $this->entityManager = $entityManager;
     }
 
     /**
