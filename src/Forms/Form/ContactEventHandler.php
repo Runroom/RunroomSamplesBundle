@@ -28,7 +28,6 @@ final class ContactEventHandler implements EventSubscriberInterface
 
     /**
      * @phpstan-param GenericEvent<FormAwareInterface> $event
-     *
      * @psalm-param GenericEvent $event
      */
     public function onContactSuccess(GenericEvent $event): void

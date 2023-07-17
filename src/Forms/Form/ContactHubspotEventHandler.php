@@ -32,7 +32,6 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
 
     /**
      * @phpstan-param GenericEvent<FormAwareInterface> $event
-     *
      * @psalm-param GenericEvent $event
      */
     public function onContactSuccess(GenericEvent $event): void

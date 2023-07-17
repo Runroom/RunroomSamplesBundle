@@ -24,13 +24,13 @@ use Zenstruck\Foundry\ModelFactory;
 final class CategoryFactory extends ModelFactory
 {
     /**
-     * @param string[] $locales
+     * @param string[]             $locales
      * @param array<string, mixed> $defaultAttributes
      */
     public function withTranslations(array $locales, array $defaultAttributes = []): self
     {
         return $this->addState([
-            'translations' => CategoryTranslationFactory::new(function () use (&$locales, $defaultAttributes): array {
+            'translations' => CategoryTranslationFactory::new(static function () use (&$locales, $defaultAttributes): array {
                 return array_merge($defaultAttributes, ['locale' => array_pop($locales)]);
             })->many(\count($locales)),
         ]);

@@ -15,7 +15,7 @@ namespace Runroom\SamplesBundle\Tests\Forms\Unit;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Runroom\FormHandlerBundle\FormHandler;
+use Runroom\FormHandlerBundle\FormHandlerInterface;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactFormType;
 use Runroom\SamplesBundle\Forms\Form\Type\ContactHubspotFormType;
@@ -23,26 +23,19 @@ use Runroom\SamplesBundle\Forms\Service\ContactService;
 
 class ContactServiceTest extends TestCase
 {
-    /**
-     * @var MockObject&FormHandler
-     */
-    private $handler;
-
+    private MockObject&FormHandlerInterface $handler;
     private ContactService $service;
 
     protected function setUp(): void
     {
-        $this->handler = $this->createMock(FormHandler::class);
+        $this->handler = $this->createMock(FormHandlerInterface::class);
 
         $this->service = new ContactService(
             $this->handler
         );
     }
 
-    /**
-     * @test
-     */
-    public function itGeneratesDemoViewModel(): void
+    public function testItGeneratesDemoViewModel(): void
     {
         $formAware = $this->createStub(FormAwareInterface::class);
 
@@ -53,10 +46,7 @@ class ContactServiceTest extends TestCase
         static::assertSame($formAware, $model);
     }
 
-    /**
-     * @test
-     */
-    public function itGeneratesDemoHubspotViewModel(): void
+    public function testItGeneratesDemoHubspotViewModel(): void
     {
         $formAware = $this->createStub(FormAwareInterface::class);
 

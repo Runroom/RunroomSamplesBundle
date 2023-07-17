@@ -15,6 +15,7 @@ namespace Runroom\SamplesBundle\Tests\App;
 
 use A2lix\AutoFormBundle\A2lixAutoFormBundle;
 use A2lix\TranslationFormBundle\A2lixTranslationFormBundle;
+use DAMA\DoctrineTestBundle\DAMADoctrineTestBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use FOS\CKEditorBundle\FOSCKEditorBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
@@ -48,6 +49,7 @@ final class Kernel extends BaseKernel
         return [
             new A2lixAutoFormBundle(),
             new A2lixTranslationFormBundle(),
+            new DAMADoctrineTestBundle(),
             new DoctrineBehaviorsBundle(),
             new DoctrineBundle(),
             new FOSCKEditorBundle(),

@@ -94,17 +94,17 @@ class Book implements TranslatableInterface, \Stringable
         return $this->publish;
     }
 
-    public function getTitle(string $locale = null): ?string
+    public function getTitle(?string $locale = null): ?string
     {
         return $this->translate($locale, false)->getTitle();
     }
 
-    public function getSlug(string $locale = null): ?string
+    public function getSlug(?string $locale = null): ?string
     {
         return $this->translate($locale, false)->getSlug();
     }
 
-    public function getDescription(string $locale = null): ?string
+    public function getDescription(?string $locale = null): ?string
     {
         return $this->translate($locale, false)->getDescription();
     }

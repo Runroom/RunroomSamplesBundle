@@ -22,10 +22,7 @@ use Runroom\Testing\TestCase\SonataAdminTestCase;
  */
 class ContactAdminTest extends SonataAdminTestCase
 {
-    /**
-     * @test
-     */
-    public function itHasAllShowFields(): void
+    public function testItHasAllShowFields(): void
     {
         $this->assertAdminShowContainsField('date');
         $this->assertAdminShowContainsField('name');
@@ -40,10 +37,7 @@ class ContactAdminTest extends SonataAdminTestCase
         $this->assertAdminShowContainsField('status');
     }
 
-    /**
-     * @test
-     */
-    public function itHasAllListFields(): void
+    public function testItHasAllListFields(): void
     {
         $this->assertAdminListContainsField('date');
         $this->assertAdminListContainsField('name');
@@ -54,10 +48,7 @@ class ContactAdminTest extends SonataAdminTestCase
         $this->assertAdminListContainsField('_action');
     }
 
-    /**
-     * @test
-     */
-    public function itHasAllFilterFields(): void
+    public function testItHasAllFilterFields(): void
     {
         $this->assertAdminFilterContainsField('date');
         $this->assertAdminFilterContainsField('name');
@@ -67,19 +58,13 @@ class ContactAdminTest extends SonataAdminTestCase
         $this->assertAdminFilterContainsField('status');
     }
 
-    /**
-     * @test
-     */
-    public function itDoesNotHaveDisabledRoutes(): void
+    public function testItDoesNotHaveDisabledRoutes(): void
     {
         $this->assertAdminRoutesDoesNotContainRoute('create');
         $this->assertAdminRoutesDoesNotContainRoute('edit');
     }
 
-    /**
-     * @test
-     */
-    public function itDoesDefineDefaultFilterParameters(): void
+    public function testItDoesDefineDefaultFilterParameters(): void
     {
         $this->assertAdminFilterParametersContainsFilter('_sort_order', 'DESC');
         $this->assertAdminFilterParametersContainsFilter('_sort_by', 'date');

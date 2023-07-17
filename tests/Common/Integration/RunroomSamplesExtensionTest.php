@@ -40,10 +40,7 @@ class RunroomSamplesExtensionTest extends AbstractExtensionTestCase
         ]]);
     }
 
-    /**
-     * @test
-     */
-    public function itHasCoreServicesAlias(): void
+    public function testItHasCoreServicesAlias(): void
     {
         // Basic Entities
         $this->assertContainerBuilderHasService(BookAdmin::class);

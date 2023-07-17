@@ -24,11 +24,7 @@ class BookServiceTest extends TestCase
 {
     use Factories;
 
-    /**
-     * @var MockObject&BookRepository
-     */
-    private $repository;
-
+    private MockObject&BookRepository $repository;
     private BookService $service;
 
     protected function setUp(): void
@@ -38,10 +34,7 @@ class BookServiceTest extends TestCase
         $this->service = new BookService($this->repository);
     }
 
-    /**
-     * @test
-     */
-    public function itBuildsBooksViewModel(): void
+    public function testItBuildsBooksViewModel(): void
     {
         $expectedBooks = [BookFactory::createOne()->object()];
 
@@ -52,10 +45,7 @@ class BookServiceTest extends TestCase
         static::assertSame($model->getBooks(), $expectedBooks);
     }
 
-    /**
-     * @test
-     */
-    public function itBuildsBookViewModel(): void
+    public function testItBuildsBookViewModel(): void
     {
         $expectedBook = BookFactory::new()->withTranslations(['es', 'en'])->create()->object();
 
