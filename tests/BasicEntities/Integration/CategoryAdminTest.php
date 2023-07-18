@@ -23,29 +23,20 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
  */
 class CategoryAdminTest extends SonataAdminTestCase
 {
-    /**
-     * @test
-     */
-    public function itHasAllListFields(): void
+    public function testItHasAllListFields(): void
     {
         $this->assertAdminListContainsField('name');
         $this->assertAdminListContainsField('books');
         $this->assertAdminListContainsField(ListMapper::NAME_ACTIONS);
     }
 
-    /**
-     * @test
-     */
-    public function itHasAllFormFields(): void
+    public function testItHasAllFormFields(): void
     {
         $this->assertAdminFormContainsField('translations');
         $this->assertAdminFormContainsField('books');
     }
 
-    /**
-     * @test
-     */
-    public function itHasAllFilterFields(): void
+    public function testItHasAllFilterFields(): void
     {
         $this->assertAdminFilterContainsField('translations.name');
         $this->assertAdminFilterContainsField('books');

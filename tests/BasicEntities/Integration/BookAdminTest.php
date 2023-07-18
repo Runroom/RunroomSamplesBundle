@@ -23,10 +23,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
  */
 class BookAdminTest extends SonataAdminTestCase
 {
-    /**
-     * @test
-     */
-    public function itHasAllListFields(): void
+    public function testItHasAllListFields(): void
     {
         $this->assertAdminListContainsField('picture');
         $this->assertAdminListContainsField('title');
@@ -36,10 +33,7 @@ class BookAdminTest extends SonataAdminTestCase
         $this->assertAdminListContainsField(ListMapper::NAME_ACTIONS);
     }
 
-    /**
-     * @test
-     */
-    public function itHasAllFormFields(): void
+    public function testItHasAllFormFields(): void
     {
         $this->assertAdminFormContainsField('translations');
         $this->assertAdminFormContainsField('category');
@@ -47,10 +41,7 @@ class BookAdminTest extends SonataAdminTestCase
         $this->assertAdminFormContainsField('publish');
     }
 
-    /**
-     * @test
-     */
-    public function itHasAllFilterFields(): void
+    public function testItHasAllFilterFields(): void
     {
         $this->assertAdminFilterContainsField('translations.title');
         $this->assertAdminFilterContainsField('category');

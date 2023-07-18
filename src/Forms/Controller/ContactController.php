@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Runroom\SamplesBundle\Forms\Controller;
 
-use Runroom\RenderEventBundle\Renderer\PageRenderer;
+use Runroom\RenderEventBundle\Renderer\PageRendererInterface;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -21,12 +21,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * This class shows how to use the PageRenderer, it is not using AbstractController on purpose.
+ * This class shows how to use the PageRendererInterface, it is not using AbstractController on purpose.
  */
 final class ContactController
 {
     public function __construct(
-        private PageRenderer $renderer,
+        private PageRendererInterface $renderer,
         private UrlGeneratorInterface $router,
         private ContactService $service
     ) {

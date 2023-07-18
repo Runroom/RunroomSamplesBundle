@@ -17,7 +17,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Runroom\FormHandlerBundle\ViewModel\FormAwareInterface;
-use Runroom\RenderEventBundle\Renderer\PageRenderer;
+use Runroom\RenderEventBundle\Renderer\PageRendererInterface;
 use Runroom\SamplesBundle\Forms\Controller\ContactController;
 use Runroom\SamplesBundle\Forms\Service\ContactService;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,21 +25,13 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ContactControllerTest extends TestCase
 {
-    /**
-     * @var MockObject&PageRenderer
-     */
-    private $renderer;
-
-    /**
-     * @var Stub&ContactService
-     */
-    private $service;
-
+    private MockObject&PageRendererInterface $renderer;
+    private Stub&ContactService $service;
     private ContactController $controller;
 
     protected function setUp(): void
     {
-        $this->renderer = $this->createMock(PageRenderer::class);
+        $this->renderer = $this->createMock(PageRendererInterface::class);
         $this->service = $this->createStub(ContactService::class);
 
         $this->controller = new ContactController(
@@ -49,10 +41,7 @@ class ContactControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function itRendersContact(): void
+    public function testItRendersContact(): void
     {
         $expectedResponse = new Response();
 
@@ -69,10 +58,7 @@ class ContactControllerTest extends TestCase
         static::assertSame($expectedResponse, $response);
     }
 
-    /**
-     * @test
-     */
-    public function itRendersContactAjax(): void
+    public function testItRendersContactAjax(): void
     {
         $expectedResponse = new Response();
 
@@ -87,10 +73,7 @@ class ContactControllerTest extends TestCase
         static::assertSame($expectedResponse, $response);
     }
 
-    /**
-     * @test
-     */
-    public function itProcessesAjaxFormValid(): void
+    public function testItProcessesAjaxFormValid(): void
     {
         $model = $this->createStub(FormAwareInterface::class);
 
@@ -104,10 +87,7 @@ class ContactControllerTest extends TestCase
         static::assertSame(json_encode(['status' => 'ok']), $response->getContent());
     }
 
-    /**
-     * @test
-     */
-    public function itProcessesAjaxFormError(): void
+    public function testItProcessesAjaxFormError(): void
     {
         $model = $this->createStub(FormAwareInterface::class);
 
@@ -121,10 +101,7 @@ class ContactControllerTest extends TestCase
         static::assertSame(json_encode(['status' => 'error']), $response->getContent());
     }
 
-    /**
-     * @test
-     */
-    public function itRendersContactHubspot(): void
+    public function testItRendersContactHubspot(): void
     {
         $expectedResponse = new Response();
 

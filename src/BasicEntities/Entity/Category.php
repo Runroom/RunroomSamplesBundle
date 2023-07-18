@@ -84,7 +84,7 @@ class Category implements TranslatableInterface, \Stringable
         return $this->books;
     }
 
-    public function getName(string $locale = null): ?string
+    public function getName(?string $locale = null): ?string
     {
         return $this->translate($locale, false)->getName();
     }

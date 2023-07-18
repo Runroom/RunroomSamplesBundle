@@ -22,10 +22,7 @@ use Symfony\Component\Validator\Validation;
 
 class ContactHubspotFormTypeTest extends TypeTestCase
 {
-    /**
-     * @test
-     */
-    public function submitValidData(): void
+    public function testItSubmitsValidData(): void
     {
         $model = new ContactHubspot();
         $form = $this->factory->create(ContactHubspotFormType::class, $model);
