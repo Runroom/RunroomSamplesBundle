@@ -103,8 +103,11 @@ class ContactAdmin extends AbstractAdmin
                 'editable' => true,
                 'template' => '@RunroomSamples/Forms/sonata/contact-status.html.twig',
             ])
-            ->add('_action', 'actions', [
-                'actions' => ['delete' => []],
+            ->add(ListMapper::NAME_ACTIONS, ListMapper::TYPE_ACTIONS, [
+                'actions' => [
+                    'show' => [],
+                    'delete' => [],
+                ],
             ]);
     }
 }
