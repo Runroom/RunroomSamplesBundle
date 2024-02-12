@@ -112,7 +112,7 @@ class Contact implements \Stringable
 
     public function __construct()
     {
-        $this->date = new \DateTime();
+        $this->date = new \DateTimeImmutable();
     }
 
     public function __toString(): string

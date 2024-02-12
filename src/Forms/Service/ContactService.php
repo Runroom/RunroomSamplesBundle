@@ -20,9 +20,7 @@ use Runroom\SamplesBundle\Forms\Form\Type\ContactHubspotFormType;
 
 class ContactService
 {
-    public function __construct(private FormHandlerInterface $handler)
-    {
-    }
+    public function __construct(private FormHandlerInterface $handler) {}
 
     public function getContactForm(): FormAwareInterface
     {

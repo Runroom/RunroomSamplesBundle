@@ -15,6 +15,4 @@ namespace Runroom\SamplesBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class RunroomSamplesBundle extends Bundle
-{
-}
+final class RunroomSamplesBundle extends Bundle {}

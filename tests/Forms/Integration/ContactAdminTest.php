@@ -16,6 +16,7 @@ namespace Runroom\SamplesBundle\Tests\Forms\Integration;
 use Runroom\SamplesBundle\Forms\Admin\ContactAdmin;
 use Runroom\SamplesBundle\Forms\Entity\Contact;
 use Runroom\Testing\TestCase\SonataAdminTestCase;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 
 /**
  * @extends SonataAdminTestCase<Contact>
@@ -45,7 +46,7 @@ class ContactAdminTest extends SonataAdminTestCase
         $this->assertAdminListContainsField('subject');
         $this->assertAdminListContainsField('newsletter');
         $this->assertAdminListContainsField('status');
-        $this->assertAdminListContainsField('_action');
+        $this->assertAdminListContainsField(ListMapper::NAME_ACTIONS);
     }
 
     public function testItHasAllFilterFields(): void

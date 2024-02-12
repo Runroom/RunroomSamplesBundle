@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.19
 
 ARG PHP_VERSION=82
 ARG UID=1000
@@ -23,7 +23,7 @@ RUN apk add --no-cache \
     php${PHP_VERSION}-xmlwriter \
     php${PHP_VERSION}-session \
     php${PHP_VERSION}-pdo_sqlite \
-    php${PHP_VERSION}-pecl-pcov --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+    php${PHP_VERSION}-pecl-pcov --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 
 RUN ln -snf /usr/bin/php${PHP_VERSION} /usr/bin/php
 
