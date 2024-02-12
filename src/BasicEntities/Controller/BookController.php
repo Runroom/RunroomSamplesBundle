@@ -19,9 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BookController extends AbstractController
 {
-    public function __construct(private BookService $service)
-    {
-    }
+    public function __construct(private BookService $service) {}
 
     public function books(): Response
     {

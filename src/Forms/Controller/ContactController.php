@@ -29,8 +29,7 @@ final class ContactController
         private PageRendererInterface $renderer,
         private UrlGeneratorInterface $router,
         private ContactService $service
-    ) {
-    }
+    ) {}
 
     public function contact(): Response
     {

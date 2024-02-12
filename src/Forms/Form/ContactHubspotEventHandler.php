@@ -27,8 +27,7 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
         private Forms $hubspotForms,
         private int $portalId,
         private string $formId
-    ) {
-    }
+    ) {}
 
     /**
      * @phpstan-param GenericEvent<FormAwareInterface> $event

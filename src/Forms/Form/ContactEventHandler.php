@@ -22,9 +22,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 final class ContactEventHandler implements EventSubscriberInterface
 {
-    public function __construct(private EntityManagerInterface $entityManager)
-    {
-    }
+    public function __construct(private EntityManagerInterface $entityManager) {}
 
     /**
      * @phpstan-param GenericEvent<FormAwareInterface> $event
