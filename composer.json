@@ -69,7 +69,7 @@
         "symfony/phpunit-bridge": "^7.0",
         "vimeo/psalm": "^5.1",
         "weirdan/doctrine-psalm-plugin": "^2.6",
-        "zenstruck/foundry": "^2.0"
+        "zenstruck/foundry": "^1.38.2 || ^2.0"
     },
     "conflict": {
         "symfony/doctrine-bridge": ">=7.0",
