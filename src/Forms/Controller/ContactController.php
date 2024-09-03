@@ -28,7 +28,7 @@ final class ContactController
     public function __construct(
         private PageRendererInterface $renderer,
         private UrlGeneratorInterface $router,
-        private ContactService $service
+        private ContactService $service,
     ) {}
 
     public function contact(): Response

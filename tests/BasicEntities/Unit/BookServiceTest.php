@@ -36,7 +36,7 @@ class BookServiceTest extends TestCase
 
     public function testItBuildsBooksViewModel(): void
     {
-        $expectedBooks = [BookFactory::createOne()->object()];
+        $expectedBooks = [BookFactory::createOne()];
 
         $this->repository->method('findBy')->with(['publish' => true], ['position' => 'ASC'])->willReturn($expectedBooks);
 
@@ -47,7 +47,7 @@ class BookServiceTest extends TestCase
 
     public function testItBuildsBookViewModel(): void
     {
-        $expectedBook = BookFactory::new()->withTranslations(['es', 'en'])->create()->object();
+        $expectedBook = BookFactory::new()->withTranslations(['es', 'en'])->create();
 
         $this->repository->method('findBySlug')->with('slug')->willReturn($expectedBook);
 

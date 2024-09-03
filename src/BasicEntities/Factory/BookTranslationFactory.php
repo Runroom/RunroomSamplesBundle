@@ -14,17 +14,22 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\BasicEntities\Factory;
 
 use Runroom\SamplesBundle\BasicEntities\Entity\BookTranslation;
-use Zenstruck\Foundry\ModelFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends ModelFactory<BookTranslation>
+ * @extends PersistentObjectFactory<BookTranslation>
  */
-final class BookTranslationFactory extends ModelFactory
+final class BookTranslationFactory extends PersistentObjectFactory
 {
+    public static function class(): string
+    {
+        return BookTranslation::class;
+    }
+
     /**
      * @return array<string, mixed>
      */
-    protected function getDefaults(): array
+    protected function defaults(): array
     {
         return [
             'title' => self::faker()->words(3, true),
@@ -32,10 +37,5 @@ final class BookTranslationFactory extends ModelFactory
             'description' => self::faker()->paragraph(),
             'locale' => self::faker()->unique()->languageCode(),
         ];
-    }
-
-    protected static function getClass(): string
-    {
-        return BookTranslation::class;
     }
 }

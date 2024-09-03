@@ -14,22 +14,25 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\BasicEntities\Factory;
 
 use Runroom\SamplesBundle\BasicEntities\Entity\Category;
-use Zenstruck\Foundry\ModelFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends ModelFactory<Category>
- *
- * @method CategoryFactory addState(array|callable $attributes = [])
+ * @extends PersistentObjectFactory<Category>
  */
-final class CategoryFactory extends ModelFactory
+final class CategoryFactory extends PersistentObjectFactory
 {
+    public static function class(): string
+    {
+        return Category::class;
+    }
+
     /**
      * @param string[]             $locales
      * @param array<string, mixed> $defaultAttributes
      */
     public function withTranslations(array $locales, array $defaultAttributes = []): self
     {
-        return $this->addState([
+        return $this->with([
             'translations' => CategoryTranslationFactory::new(static function () use (&$locales, $defaultAttributes): array {
                 return array_merge($defaultAttributes, ['locale' => array_pop($locales)]);
             })->many(\count($locales)),
@@ -39,15 +42,10 @@ final class CategoryFactory extends ModelFactory
     /**
      * @return array<string, mixed>
      */
-    protected function getDefaults(): array
+    protected function defaults(): array
     {
         return [
             'books' => BookFactory::new(['category' => null])->many(5),
         ];
-    }
-
-    protected static function getClass(): string
-    {
-        return Category::class;
     }
 }

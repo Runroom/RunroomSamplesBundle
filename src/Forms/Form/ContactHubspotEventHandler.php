@@ -26,7 +26,7 @@ final class ContactHubspotEventHandler implements EventSubscriberInterface
         private TranslatorInterface $translator,
         private Forms $hubspotForms,
         private int $portalId,
-        private string $formId
+        private string $formId,
     ) {}
 
     /**
