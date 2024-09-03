@@ -14,22 +14,25 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\BasicEntities\Factory;
 
 use Runroom\SamplesBundle\BasicEntities\Entity\Book;
-use Zenstruck\Foundry\ModelFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends ModelFactory<Book>
- *
- * @method BookFactory addState(array|callable $attributes = [])
+ * @extends PersistentObjectFactory<Book>
  */
-final class BookFactory extends ModelFactory
+final class BookFactory extends PersistentObjectFactory
 {
+    public static function class(): string
+    {
+        return Book::class;
+    }
+
     /**
      * @param string[]             $locales
      * @param array<string, mixed> $defaultAttributes
      */
     public function withTranslations(array $locales, array $defaultAttributes = []): self
     {
-        return $this->addState([
+        return $this->with([
             'translations' => BookTranslationFactory::new(static function () use (&$locales, $defaultAttributes): array {
                 return array_merge($defaultAttributes, ['locale' => array_pop($locales)]);
             })->many(\count($locales)),
@@ -40,16 +43,11 @@ final class BookFactory extends ModelFactory
     /**
      * @return array<string, mixed>
      */
-    protected function getDefaults(): array
+    protected function defaults(): array
     {
         return [
             'category' => CategoryFactory::new(),
             'publish' => self::faker()->boolean(),
         ];
-    }
-
-    protected static function getClass(): string
-    {
-        return Book::class;
     }
 }

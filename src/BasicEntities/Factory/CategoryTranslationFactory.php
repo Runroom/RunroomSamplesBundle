@@ -14,26 +14,26 @@ declare(strict_types=1);
 namespace Runroom\SamplesBundle\BasicEntities\Factory;
 
 use Runroom\SamplesBundle\BasicEntities\Entity\CategoryTranslation;
-use Zenstruck\Foundry\ModelFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends ModelFactory<CategoryTranslation>
+ * @extends PersistentObjectFactory<CategoryTranslation>
  */
-final class CategoryTranslationFactory extends ModelFactory
+final class CategoryTranslationFactory extends PersistentObjectFactory
 {
+    public static function class(): string
+    {
+        return CategoryTranslation::class;
+    }
+
     /**
      * @return array<string, mixed>
      */
-    protected function getDefaults(): array
+    protected function defaults(): array
     {
         return [
             'name' => self::faker()->words(3, true),
             'locale' => self::faker()->unique()->languageCode(),
         ];
-    }
-
-    protected static function getClass(): string
-    {
-        return CategoryTranslation::class;
     }
 }

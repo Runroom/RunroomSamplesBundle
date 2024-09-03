@@ -1,6 +1,6 @@
 FROM alpine:3.19
 
-ARG PHP_VERSION=82
+ARG PHP_VERSION=83
 ARG UID=1000
 ARG USER=app
 
@@ -23,7 +23,8 @@ RUN apk add --no-cache \
     php${PHP_VERSION}-xmlwriter \
     php${PHP_VERSION}-session \
     php${PHP_VERSION}-pdo_sqlite \
-    php${PHP_VERSION}-pecl-pcov --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+    php${PHP_VERSION}-fileinfo \
+    php${PHP_VERSION}-pecl-pcov --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 RUN ln -snf /usr/bin/php${PHP_VERSION} /usr/bin/php
 
@@ -31,7 +32,7 @@ RUN adduser -u $UID -D $USER
 
 ENV PATH="/usr/app/vendor/bin:/usr/app/bin:${PATH}"
 
-COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
 USER ${USER}
 
