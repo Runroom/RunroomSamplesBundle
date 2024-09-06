@@ -17,8 +17,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Runroom\DoctrineTranslatableBundle\Entity\TranslationInterface as TranslatableInterface;
-use Runroom\DoctrineTranslatableBundle\Model\TranslationTrait as TranslatableTrait;
+use Runroom\DoctrineTranslatableBundle\Entity\TranslatableInterface;
+use Runroom\DoctrineTranslatableBundle\Model\TranslatableTrait;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor

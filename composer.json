@@ -19,9 +19,9 @@
     "require": {
         "php": "^8.1",
         "a2lix/translation-form-bundle": "^3.2",
-        "doctrine/dbal": "^3.4",
-        "doctrine/doctrine-bundle": "^2.8",
-        "doctrine/orm": "^2.14",
+        "doctrine/dbal": "^3.6",
+        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/orm": "^2.19 || ^3.0",
         "egulias/email-validator": "^3.0 || ^4.0",
         "friendsofsymfony/ckeditor-bundle": "^2.3",
         "gedmo/doctrine-extensions": "^3.11",
