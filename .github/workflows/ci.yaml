@@ -40,9 +40,11 @@ jobs:
         run: |
             composer global config --no-plugins allow-plugins.symfony/flex true
             composer global require --no-progress --no-scripts --no-plugins symfony/flex
-      - uses: ramsey/composer-install@v2
+      - uses: ramsey/composer-install@v3
         with:
           dependency-versions: ${{ matrix.dependencies }}
           composer-options: ${{ matrix.composer-options }}
       - run: vendor/bin/phpunit --coverage-clover=clover.xml
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
