@@ -9,8 +9,8 @@ RunroomSamplesBundle
 [![Monthly Downloads](https://poser.pugx.org/runroom/samples-bundle/d/monthly)](https://packagist.org/packages/runroom/samples-bundle)
 [![Daily Downloads](https://poser.pugx.org/runroom/samples-bundle/d/daily)](https://packagist.org/packages/runroom/samples-bundle)
 
-![ci](https://github.com/Runroom/RunroomSamplesBundle/workflows/ci/badge.svg?branch=master)
-![qa](https://github.com/Runroom/RunroomSamplesBundle/workflows/qa/badge.svg?branch=master)
+[![CI](https://github.com/Runroom/RunroomSamplesBundle/actions/workflows/ci.yaml/badge.svg)](https://github.com/Runroom/RunroomSamplesBundle/actions/workflows/ci.yaml)
+[![QA](https://github.com/Runroom/RunroomSamplesBundle/actions/workflows/qa.yaml/badge.svg)](https://github.com/Runroom/RunroomSamplesBundle/actions/workflows/qa.yaml)
 [![codecov](https://codecov.io/gh/Runroom/RunroomSamplesBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/Runroom/RunroomSamplesBundle)
 [![shepherd](https://shepherd.dev/github/Runroom/RunroomSamplesBundle/coverage.svg)](https://shepherd.dev/github/Runroom/RunroomSamplesBundle)
 
