@@ -72,7 +72,6 @@
         "zenstruck/foundry": "^1.38.2 || ^2.0"
     },
     "conflict": {
-        "symfony/doctrine-bridge": ">=7.0",
         "symfony/security-bundle": ">=7.0"
     },
     "autoload": {
