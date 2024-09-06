@@ -19,7 +19,7 @@ use DAMA\DoctrineTestBundle\DAMADoctrineTestBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use FOS\CKEditorBundle\FOSCKEditorBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
-use Knp\DoctrineBehaviors\DoctrineBehaviorsBundle;
+use Runroom\DoctrineTranslatableBundle\RunroomDoctrineTranslatableBundle;
 use Runroom\FormHandlerBundle\RunroomFormHandlerBundle;
 use Runroom\RenderEventBundle\RunroomRenderEventBundle;
 use Runroom\SamplesBundle\RunroomSamplesBundle;
@@ -50,7 +50,6 @@ final class Kernel extends BaseKernel
             new A2lixAutoFormBundle(),
             new A2lixTranslationFormBundle(),
             new DAMADoctrineTestBundle(),
-            new DoctrineBehaviorsBundle(),
             new DoctrineBundle(),
             new FOSCKEditorBundle(),
             new FrameworkBundle(),
@@ -62,6 +61,7 @@ final class Kernel extends BaseKernel
             new SonataDoctrineORMAdminBundle(),
             new SonataAdminBundle(),
 
+            new RunroomDoctrineTranslatableBundle(),
             new RunroomFormHandlerBundle(),
             new RunroomRenderEventBundle(),
             new RunroomSortableBehaviorBundle(),
