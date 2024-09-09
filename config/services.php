@@ -32,11 +32,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('Runroom\SamplesBundle\\', '../../*')
-        ->exclude('../../{Resources,DependencyInjection}');
+    $services->load('Runroom\SamplesBundle\\', '../src/*')
+        ->exclude('../src/{DependencyInjection}');
 
     // BasicEntities
-    $services->load('Runroom\SamplesBundle\BasicEntities\Controller\\', '../../BasicEntities/Controller')
+    $services->load('Runroom\SamplesBundle\BasicEntities\Controller\\', '../src/BasicEntities/Controller')
         ->public()
         ->tag('controller.service_arguments');
 
@@ -60,7 +60,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->alias(PageRendererInterface::class, 'runroom.render_event.renderer.page');
     $services->alias(FormHandlerInterface::class, 'runroom.form_handler.form_handler');
 
-    $services->load('Runroom\SamplesBundle\Forms\Controller\\', '../../Forms/Controller')
+    $services->load('Runroom\SamplesBundle\Forms\Controller\\', '../src/Forms/Controller')
         ->public()
         ->tag('controller.service_arguments');
 
