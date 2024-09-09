@@ -38,7 +38,7 @@ class RunroomSamplesExtension extends Extension
          */
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
         $loader->load('services.php');
 
         $this->mapMediaField('picture', Book::class, $config);

@@ -30,7 +30,7 @@ class BookRepository extends ServiceEntityRepository
 {
     public function __construct(
         ManagerRegistry $registry,
-        private RequestStack $requestStack,
+        private readonly RequestStack $requestStack,
     ) {
         parent::__construct($registry, Book::class);
     }

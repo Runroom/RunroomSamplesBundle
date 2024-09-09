@@ -23,10 +23,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class ContactHubspotEventHandler implements EventSubscriberInterface
 {
     public function __construct(
-        private TranslatorInterface $translator,
-        private Forms $hubspotForms,
-        private int $portalId,
-        private string $formId,
+        private readonly TranslatorInterface $translator,
+        private readonly Forms $hubspotForms,
+        private readonly int $portalId,
+        private readonly string $formId,
     ) {}
 
     /**
