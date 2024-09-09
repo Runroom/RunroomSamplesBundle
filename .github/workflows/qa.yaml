@@ -28,6 +28,6 @@ jobs:
       - run: composer validate --strict
       - run: composer rector -- --dry-run
       - run: bin/console lint:container
-      - run: bin/console lint:twig src
-      - run: bin/console lint:xliff src
-      - run: bin/console lint:yaml src
+      - run: bin/console lint:twig templates
+      - run: bin/console lint:xliff config
+      - run: bin/console lint:yaml config

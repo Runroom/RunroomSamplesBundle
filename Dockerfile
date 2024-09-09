@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.20
 
 ARG PHP_VERSION=83
 ARG UID=1000
