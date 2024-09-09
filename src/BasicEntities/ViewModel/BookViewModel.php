@@ -17,7 +17,7 @@ use Runroom\SamplesBundle\BasicEntities\Entity\Book;
 
 class BookViewModel
 {
-    public function __construct(private Book $book) {}
+    public function __construct(private readonly Book $book) {}
 
     public function getBook(): Book
     {

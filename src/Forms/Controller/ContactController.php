@@ -26,9 +26,9 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 final class ContactController
 {
     public function __construct(
-        private PageRendererInterface $renderer,
-        private UrlGeneratorInterface $router,
-        private ContactService $service,
+        private readonly PageRendererInterface $renderer,
+        private readonly UrlGeneratorInterface $router,
+        private readonly ContactService $service,
     ) {}
 
     public function contact(): Response

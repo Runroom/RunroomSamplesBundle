@@ -20,7 +20,7 @@ class BooksViewModel
     /**
      * @param Book[] $books
      */
-    public function __construct(private array $books) {}
+    public function __construct(private readonly array $books) {}
 
     /**
      * @return Book[]
