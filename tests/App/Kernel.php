@@ -76,9 +76,6 @@ final class Kernel extends BaseKernel
         return __DIR__;
     }
 
-    /**
-     * @todo: Simplify security config when dropping support for Symfony 5.4
-     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->setParameter('kernel.default_locale', 'en');
@@ -92,15 +89,9 @@ final class Kernel extends BaseKernel
             'session' => ['storage_factory_id' => 'session.storage.factory.mock_file'],
         ]);
 
-        $securityConfig = [
+        $container->loadFromExtension('security', [
             'firewalls' => ['main' => []],
-        ];
-
-        if (!class_exists(IsGranted::class)) {
-            $securityConfig['enable_authenticator_manager'] = true;
-        }
-
-        $container->loadFromExtension('security', $securityConfig);
+        ]);
 
         $container->loadFromExtension('doctrine', [
             'dbal' => [
