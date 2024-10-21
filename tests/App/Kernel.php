@@ -38,7 +38,6 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class Kernel extends BaseKernel
 {
@@ -76,9 +75,6 @@ final class Kernel extends BaseKernel
         return __DIR__;
     }
 
-    /**
-     * @todo: Simplify security config when dropping support for Symfony 5.4
-     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->setParameter('kernel.default_locale', 'en');
@@ -92,15 +88,11 @@ final class Kernel extends BaseKernel
             'session' => ['storage_factory_id' => 'session.storage.factory.mock_file'],
         ]);
 
-        $securityConfig = [
-            'firewalls' => ['main' => []],
-        ];
-
-        if (!class_exists(IsGranted::class)) {
-            $securityConfig['enable_authenticator_manager'] = true;
-        }
-
-        $container->loadFromExtension('security', $securityConfig);
+        $container->loadFromExtension('security', [
+            'firewalls' => ['main' => [
+                'security' => false,
+            ]],
+        ]);
 
         $container->loadFromExtension('doctrine', [
             'dbal' => [
