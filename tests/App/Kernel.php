@@ -89,7 +89,9 @@ final class Kernel extends BaseKernel
         ]);
 
         $container->loadFromExtension('security', [
-            'firewalls' => ['main' => []],
+            'firewalls' => ['main' => [
+                'security' => false,
+            ]],
         ]);
 
         $container->loadFromExtension('doctrine', [
