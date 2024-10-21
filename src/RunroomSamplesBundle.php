@@ -15,4 +15,10 @@ namespace Runroom\SamplesBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class RunroomSamplesBundle extends Bundle {}
+final class RunroomSamplesBundle extends Bundle
+{
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
+}
