@@ -79,6 +79,8 @@ final class Kernel extends BaseKernel
     {
         $container->setParameter('kernel.default_locale', 'en');
 
+        $loader->load('@RunroomSamplesBundle/config/app/config.yaml');
+
         $container->loadFromExtension('framework', [
             'annotations' => false,
             'test' => true,
@@ -145,6 +147,8 @@ final class Kernel extends BaseKernel
 
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
+        $routes->import('@RunroomSamplesBundle/config/routing.yaml');
+
         $routes->add('route.entity', '/entity/{slug}')
             ->controller('controller');
     }
