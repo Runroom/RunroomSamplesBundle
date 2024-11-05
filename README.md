@@ -1,4 +1,4 @@
-RunroomSamplesBundle
+RunroomSamplesBfdsundle
 ====================
 
 [![Latest Stable Version](https://poser.pugx.org/runroom/samples-bundle/v/stable)](https://packagist.org/packages/runroom/samples-bundle)
